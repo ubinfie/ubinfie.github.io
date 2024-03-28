@@ -10,9 +10,18 @@ layout: default
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
         {{ page.date | date: date_format }}
       </time>
-    {% if page.contributors %}
-    {% include contributors-list.html contributors=page.contributors badge=true %}
-    {% endif %}
+      <div id="post-contributions">
+      {% if page.contributors %}
+      {% include contributors-list.html contributors=page.contributors badge=true %}
+      {% endif %}
+      </div>
+      <div id="post-tags">
+      {% if page.tags %}
+      {% for tag in page.tags %}
+      <a href="{{ site.baseurl }}/tag/{{ tag | slugify }}" class="tag">{{ tag }}</a>
+      {% endfor %}
+      {% endif %}
+      </div>
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">

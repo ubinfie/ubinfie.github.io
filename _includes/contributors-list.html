@@ -1,0 +1,9 @@
+{% if include.contributors %}
+<ul class="text-list">
+	{% for id in include.contributors %}
+	<li>
+		{% if include.badge %}{% include contributor-badge.html id=id %}{% else %}{% assign name = contributors[id].name | default: id -%}{{ name -}}{% endif %}
+	</li>
+	{% endfor %}
+</ul>
+{% endif %}

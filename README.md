@@ -1,6 +1,6 @@
 # µbinfie blog
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Please add your posts in `_posts/`, all your favourite markdown features should work as expected.
@@ -18,6 +18,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://hexylena.galaxians.org/"><img src="https://avatars.githubusercontent.com/u/458683?v=4?s=100" width="100px;" alt="Helena"/><br /><sub><b>Helena</b></sub></a><br /><a href="https://github.com/ubinfie/ubinfie/commits?author=hexylena" title="Code">💻</a> <a href="https://github.com/ubinfie/ubinfie/commits?author=hexylena" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://lskatz.github.io/"><img src="https://avatars.githubusercontent.com/u/14798?v=4?s=100" width="100px;" alt="Lee Katz"/><br /><sub><b>Lee Katz</b></sub></a><br /><a href="https://github.com/ubinfie/ubinfie/commits?author=lskatz" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/karinlag"><img src="https://avatars.githubusercontent.com/u/3314544?v=4?s=100" width="100px;" alt="Karin Lagesen"/><br /><sub><b>Karin Lagesen</b></sub></a><br /><a href="https://github.com/ubinfie/ubinfie/commits?author=karinlag" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://menzel.tech/"><img src="https://avatars.githubusercontent.com/u/1469600?v=4?s=100" width="100px;" alt="Peter Menzel"/><br /><sub><b>Peter Menzel</b></sub></a><br /><a href="https://github.com/ubinfie/ubinfie/commits?author=pmenzel" title="Documentation">📖</a></td>
     </tr>
   </tbody>
   <tfoot>

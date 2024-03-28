@@ -37,6 +37,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "pmenzel",
+      "name": "Peter Menzel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1469600?v=4",
+      "profile": "https://menzel.tech/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

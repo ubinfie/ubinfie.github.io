@@ -17,7 +17,8 @@
       "profile": "https://hexylena.galaxians.org/",
       "contributions": [
         "code",
-        "doc"
+        "doc",
+        "review"
       ]
     },
     {
@@ -26,7 +27,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/14798?v=4",
       "profile": "https://lskatz.github.io/",
       "contributions": [
-        "doc"
+        "doc",
+        "review"
       ]
     },
     {
@@ -35,7 +37,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/3314544?v=4",
       "profile": "https://github.com/karinlag",
       "contributions": [
-        "doc"
+        "doc",
+        "review"
       ]
     },
     {
@@ -44,7 +47,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/1469600?v=4",
       "profile": "https://menzel.tech/",
       "contributions": [
-        "doc"
+        "doc",
+        "review"
       ]
     },
     {
@@ -54,6 +58,87 @@
       "profile": "https://github.com/ammaraziz",
       "contributions": [
         "doc"
+      ]
+    },
+    {
+      "login": "boulund",
+      "name": "Fredrik Boulund",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4919402?v=4",
+      "profile": "https://github.com/boulund",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "cinnetcrash",
+      "name": "Gültekin Ünal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36562822?v=4",
+      "profile": "https://github.com/cinnetcrash",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "genomicepi",
+      "name": "Krisandra Allen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/91845410?v=4",
+      "profile": "https://github.com/genomicepi",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "happykhan",
+      "name": "Nabil-Fareed Alikhan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1452696?v=4",
+      "profile": "http://www.happykhan.com/",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "mbhall88",
+      "name": "Michael Hall",
+      "avatar_url": "https://avatars.githubusercontent.com/u/20403931?v=4",
+      "profile": "https://mbh.sh/",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "rpetit3",
+      "name": "Robert A. Petit III",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5334269?v=4",
+      "profile": "https://www.robertpetit.com/",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "samuell",
+      "name": "Samuel Lampa",
+      "avatar_url": "https://avatars.githubusercontent.com/u/125003?v=4",
+      "profile": "https://github.com/samuell",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "thanhleviet",
+      "name": "Thanh Lee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/247862?v=4",
+      "profile": "https://github.com/thanhleviet",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "vkkodali",
+      "name": "Vamsi Kodali",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19337104?v=4",
+      "profile": "https://github.com/vkkodali",
+      "contributions": [
+        "review"
       ]
     }
   ],

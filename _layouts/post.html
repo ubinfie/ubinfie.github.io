@@ -3,26 +3,31 @@ layout: default
 ---
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        {{ page.date | date: date_format }}
-      </time>
-      <div id="post-contributions">
-      {% if page.contributors %}
-      {% include contributors-list.html contributors=page.contributors badge=true %}
-      {% endif %}
-      </div>
-      <div id="post-tags">
-      {% if page.tags %}
-      {% for tag in page.tags %}
-      <a href="{{ site.baseurl }}/tag/{{ tag | slugify }}" class="tag">{{ tag }}</a>
-      {% endfor %}
-      {% endif %}
-      </div>
-  </header>
+	<header class="post-header">
+		<h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+		<div class="post-meta">
+			<div style="display: flex; justify-content: space-between">
+			<time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+			{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+			{{ page.date | date: date_format }}
+			</time>
+			<div id="post-tags">
+			{% if page.tags %}
+			<span class="text-muted">Tagged:</span>
+			{% for tag in page.tags %}
+			<a href="{{ site.baseurl }}/tag/{{ tag | slugify }}" class="tag">{{ tag }}</a>
+			{%- if forloop.last == false %}, {% endif %}
+			{% endfor %}
+			{% endif %}
+			</div>
+			</div>
+			{% if page.contributors %}
+			<span id="post-contributions">
+			{% include contributors-list.html contributors=page.contributors badge=true %}
+			</span >
+			{% endif %}
+		</div>
+	</header>
 
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}

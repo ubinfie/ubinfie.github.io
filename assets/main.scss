@@ -3,6 +3,11 @@
 
 @import "minima";
 
+
+header {
+	border-bottom: 1px solid grey;
+}
+
 ul.text-list, ol.text-list {
 	margin-left: 0;
 	list-style: none;

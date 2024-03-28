@@ -1,0 +1,35 @@
+{
+  "projectName": "ubinfie",
+  "projectOwner": "ubinfie",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "hexylena",
+      "name": "Helena",
+      "avatar_url": "https://avatars.githubusercontent.com/u/458683?v=4",
+      "profile": "https://hexylena.galaxians.org/",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "lskatz",
+      "name": "Lee Katz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/14798?v=4",
+      "profile": "https://lskatz.github.io/",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "linkToUsage": true
+}

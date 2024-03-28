@@ -46,6 +46,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "ammaraziz",
+      "name": "Ammar Aziz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7768245?v=4",
+      "profile": "https://github.com/ammaraziz",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

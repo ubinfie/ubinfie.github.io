@@ -14,11 +14,9 @@ On multi-user systems (e.g. shared Linux servers), multiple users can share  the
 
 Here we describe a setup with a shared (read-only) conda installation, with re-usable shared environments, and private per-user environments.
 
-
 ## Tutorial
 
 ### Creating the shared conda installation
-
 
 First, create a shared conda installation folder that is read-only for all regular users. Shared conda environments therein, which are available to all users, must be created by the sysadmin (or with a user account with the correct privileges for the conda folder). 
 
@@ -53,12 +51,24 @@ sudo "${CONDA_PATH}"/bin/conda config --system --add channels conda-forge
 
 Users can override default conda settings in their own `$HOME/.condarc` configuration files.
 
+
+### Creating environments in the shared conda installation
+Any user with sudo privileges can create environments in the shared folder:
+```bash
+# activate base 
+source /apps/conda/bin/activate
+
+#create new environment
+sudo conda create -n myenv ...
+```
+
 ### Using the shared conda installation
 Users can activate the shared conda base environment by running
 ```bash
 /apps/conda/bin/conda init
 ```
-to permanently initialize it for their user (this configures the user's `$HOME/.bashrc` to activate the shared conda base env upon login).
+to permanently initialize it for their user.
+This will add a section to the user's `$HOME/.bashrc`, which activates the shared conda base environment upon login.
 
 If users prefer not to automatically activate conda upon login, users can also opt to manually run 
 ```bash

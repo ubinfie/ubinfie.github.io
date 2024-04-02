@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-The µbinfie blog is a peer-reviewed collection of thing we microbial bioinformaticians have thought worth writing down for posterity.
+The µbinfie blog is a peer-reviewed collection of things that we microbial bioinformaticians have thought worth writing down for posterity.
 
 ## Editorial Board
 
@@ -22,8 +22,7 @@ The µbinfie blog is a peer-reviewed collection of thing we microbial bioinforma
 
 ### Joining
 
-Please let us know in #mmicro-blogsite that you wish to join the editorial board.
-(Don't know where to find this? Then this message probably isn't for you!)
+Please let us know that you wish to join the editorial board (in the appropriate place 😉)
 
 ### Leaving
 

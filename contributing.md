@@ -22,7 +22,7 @@ By contributing, you agree that we may redistribute your work under [this reposi
 
 We will address your issues and/or assess your change proposal as promptly as we can, and help you become a member of our community.
 
-If you have any questions, you can reach us using in #mmicro-blogsite.
+If you have any questions, you can reach us using GitHub issues, or another manner.
 
 # How can I contribute?
 
@@ -35,8 +35,7 @@ You can report mistakes or errors, create more contents, etc. Whatever is your b
 1. Click "Add a new file" in the top right
 1. Add your contents
 1. Commit those changes to a new branch (or a fork if you don't have access.)
-1. Open a pull request
-1https://github.com/ubinfie/ubinfie.github.io/tree/main/_posts. We will review and merge it.
+1. Open a pull request. We will review and merge it.
 
 # Running the website locally
 

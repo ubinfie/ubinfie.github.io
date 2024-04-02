@@ -13,6 +13,6 @@ When you review a post we expect you to go through roughly the following checkli
 
 1. If there is technical content (programming, command line commands) please consider running these yourself to check for their accuracy
 1. Ensure that citations are included where relevant and formatted properly.
-1. Check that everyone who was in the thread and wishes to be acknowledged is included in the contributors list.
+1. Check that everyone who was part of the discussion and wishes to be acknowledged is included in the contributors list.
 1. Ensure the formatting and layout is correct. This can generally be accomplished just by looking at the GitHub rendering of the markdown document.
 1. If there are CI tests, please ensure they pass before you merge.

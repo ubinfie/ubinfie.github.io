@@ -37,7 +37,7 @@ plugins:
 
 scholar:
   source: .
-  bibliography: "**/*.bib"
+  bibliography: references.bib
   sort_by: "year,month"
   bibliography_template: bibtemplate
   style: _layouts/g3.csl

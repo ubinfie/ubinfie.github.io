@@ -34,13 +34,14 @@ sudo chmod 755 "${CONDA_PATH}"
 
 # Download Miniconda installer
 CONDA_URL="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
-wget ${CONDA_URL} --output-document=/tmp/conda_installer.sh
+wget "${CONDA_URL}" --output-document=/tmp/conda_installer.sh
 
 # Install Miniconda
 # -b          run install in batch mode (without manual intervention),
 #             it is expected the license terms (if any) are agreed upon
-# -p PREFIX   install prefix, defaults to $PREFIX, must not contain spaces.
-sudo /tmp/conda_installer.sh -b -p "${CONDA_PATH}"
+# -u         update an existing installation (needed to install in existing dir)
+# -p PREFIX  install prefix, defaults to $PREFIX, must not contain spaces.
+sudo bash /tmp/conda_installer.sh -b -u -p "${CONDA_PATH}"
 
 # Set default conda settings for all users
 # (these will show up in $CONDA_PATH/.condarc)

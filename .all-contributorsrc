@@ -151,6 +151,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "tseemann",
+      "name": "Torsten Seemann",
+      "avatar_url": "https://avatars.githubusercontent.com/u/453972?v=4",
+      "profile": "https://tseemann.github.io/",
+      "contributions": [
+        "design"
+      ]
     }
   ],
   "contributorsPerLine": 7,

@@ -4,3 +4,8 @@
 # Anybody is free to add their name here
 
 _posts/     @ubinfie/editorial-board
+_config.yml @ubinfie/website
+_plugins    @ubinfie/website
+_includes   @ubinfie/website
+_layouts    @ubinfie/website
+assets      @ubinfie/website

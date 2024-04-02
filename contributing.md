@@ -45,3 +45,40 @@ You can report mistakes or errors, create more contents, etc. Whatever is your b
 1. Run `gem install bundler`
 1. `bundle install` will install this repository's dependencies
 1. `bundle exec jekyll serve --livereload` will run the website and dynamically reload it upon changes.
+
+# Writing Markdown
+
+This uses standard markdown so all of your favourite constructs are available like **bold** and *italic* and ~~struck~~ text.
+
+## Code Highlighting
+
+Code syntax highlighting is available when you tag the language you're using:
+
+````
+```perl
+$a = 0;
+```
+````
+
+will produce:
+
+```perl
+$a = 0;
+```
+
+## Footnotes
+
+These are also possible with `[^1]`, like so[^1].
+
+Their corresponding definition may be placed anywhere in the text, but should look like:
+
+```
+[^1]: Maybe you wanted to write an aside.
+```
+
+[^1]: Maybe you wanted to write an aside.
+
+## Citing
+
+Citations are possible with `{% raw %}{% cite Bankevich2012 %}{% endraw %}`, which render like: {% cite Bankevich2012 %}. They will appear at the bottom of the page and be appropriately hyperlinked.
+The BibTeX formatted citation should be placed in `references.bib`, we suggest using [doi2bib](https://www.doi2bib.org/) to convert your publication into the appropriate format.

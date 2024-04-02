@@ -86,7 +86,7 @@ Users can create their own custom conda environments like usual, e.g. `conda cre
 
 ### Activating Conda Dynamically
 
-If you do not like having conda always active due to shell startup speed impact, or having to remember to `source ...` it, you can do like @hexylena does and source it dynamically on first invocation.
+If you do not like having conda always active due to shell startup speed impact, or having to remember to `source ...` it, you can do like [@hexylena](https://github.com/hexylena) does and source it dynamically on first invocation.
 
 By adding this function to your shell initialisation (`$HOME/.bashrc`), when you run a conda command like `conda activate x` it will first delete the function definition before sourcing the conda hook and running your desired conda command:
 

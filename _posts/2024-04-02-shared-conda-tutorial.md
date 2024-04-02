@@ -53,12 +53,8 @@ Users can override default conda settings in their own `$HOME/.condarc` configur
 
 
 ### Creating environments in the shared conda installation
-Any user with sudo privileges can create environments in the shared folder:
+Any user with sudo privileges can create environments in the shared folder, simply with
 ```bash
-# activate base 
-source /apps/conda/bin/activate
-
-#create new environment
 sudo conda create -n myenv ...
 ```
 
@@ -68,13 +64,15 @@ Users can activate the shared conda base environment by running
 /apps/conda/bin/conda init
 ```
 to permanently initialize it for their user.
-This will add a section to the user's `$HOME/.bashrc`, which activates the shared conda base environment upon login.
+This will add a section to the user's `$HOME/.bashrc`, which activates the shared conda base environment upon login.  
+For activating an environment, one just run `conda activate myenv`.
 
 If users prefer not to automatically activate conda upon login, users can also opt to manually run 
 ```bash
 source /apps/conda/bin/activate [optional_conda_env_name]
 ```
 to temporarily activate it each time they want to use the shared conda installation (and use conda as usual for the rest of this bash session).
+
 
 
 ### User-specific conda environments

@@ -1,7 +1,10 @@
 ---
 layout: post
 title: The ideal setup for a multi-user conda installation
-tags: conda bash systems-administration
+tags:
+  - conda
+  - bash
+  - systems-administration
 contributors:
 - boulund
 - pmenzel

@@ -5,7 +5,7 @@ title: Contributing
 
 The µbinfie blog is a peer-reviewed collection of thing we microbial bioinformaticians have thought worth writing down for posterity.
 
-:+1::tada: First off, thanks for taking the time to contribute! :tada::+1:
+🎉 First off, thanks for taking the time to contribute! 🎉
 
 The following is a set of guidelines for contributing to this training material on GitHub.
 

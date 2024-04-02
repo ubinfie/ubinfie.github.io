@@ -58,7 +58,7 @@ Users can override default conda settings in their own `$HOME/.condarc` configur
 ### Creating environments in the shared conda installation
 Any user with sudo privileges can create environments in the shared folder, simply with
 ```bash
-sudo conda create -n myenv ...
+sudo /apps/conda/bin/conda create -n myenv ...
 ```
 
 ### Using the shared conda installation

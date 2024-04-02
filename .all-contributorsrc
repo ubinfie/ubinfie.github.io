@@ -18,7 +18,8 @@
       "contributions": [
         "code",
         "doc",
-        "review"
+        "review",
+        "content"
       ]
     },
     {
@@ -47,6 +48,7 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/1469600?v=4",
       "profile": "https://menzel.tech/",
       "contributions": [
+        "content",
         "doc",
         "review"
       ]
@@ -139,6 +141,15 @@
       "profile": "https://github.com/vkkodali",
       "contributions": [
         "review"
+      ]
+    },
+    {
+      "login": "bouland",
+      "name": "Simon Bouland",
+      "avatar_url": "https://avatars.githubusercontent.com/u/722872?v=4",
+      "profile": "https://github.com/bouland",
+      "contributions": [
+        "content"
       ]
     }
   ],

@@ -32,6 +32,7 @@ github_username:  ubinfie
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-tagging
 
 
 tag_page_layout: tag_page

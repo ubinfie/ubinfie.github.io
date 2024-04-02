@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The ideal setup for a multi-user conda installation
-tags: conda bash cluster
+tags: conda bash systems-administration
 contributors:
 - boulund
 - pmenzel

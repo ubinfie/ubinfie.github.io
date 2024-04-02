@@ -37,3 +37,11 @@ You can report mistakes or errors, create more contents, etc. Whatever is your b
 1. Commit those changes to a new branch (or a fork if you don't have access.)
 1. Open a pull request
 1https://github.com/ubinfie/ubinfie.github.io/tree/main/_posts. We will review and merge it.
+
+# Running the website locally
+
+1. We recommend using [`rvm`](https://rvm.io/rvm/install) to setup a Ruby installation
+1. Install a recent Ruby (e.g. 3.2.0) via `rvm install ruby-3.2.0`
+1. Run `gem install bundler`
+1. `bundle install` will install this repository's dependencies
+1. `bundle exec jekyll serve --livereload` will run the website and dynamically reload it upon changes.

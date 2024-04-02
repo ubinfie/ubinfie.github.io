@@ -33,9 +33,11 @@ layout: default
     {{ content }}
   </div>
 
-  {%- if site.disqus.shortname -%}
-    {%- include disqus_comments.html -%}
-  {%- endif -%}
-
+  {% if page.cited %}
+  <div class="citations">
+	<h2 id="references">References</h2>
+	{% bibliography --cited %}
+  </div>
+  {% endif %}
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>

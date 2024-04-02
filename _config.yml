@@ -32,8 +32,15 @@ github_username:  ubinfie
 theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-tagging
+  - jekyll/tagging
+  - jekyll/scholar
 
+scholar:
+  source: .
+  bibliography: "**/*.bib"
+  sort_by: "year,month"
+  bibliography_template: bibtemplate
+  style: _layouts/g3.csl
 
 tag_page_layout: tag_page
 tag_page_dir: tag

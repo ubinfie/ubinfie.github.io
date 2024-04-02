@@ -46,6 +46,30 @@ You can report mistakes or errors, create more contents, etc. Whatever is your b
 1. `bundle install` will install this repository's dependencies
 1. `bundle exec jekyll serve --livereload` will run the website and dynamically reload it upon changes.
 
+# Post Metadata
+
+Each post should have a metadata block at the top of the file. This is used to generate the post's page and should look like:
+
+```yaml
+---
+title: Welcome to the µbinfie blog
+tags: news blog meta
+contributors:
+- hexylena
+---
+```
+
+The tags can be provided as space separated, or as a proper yaml list. Contributors should be referenced in `CONTRIBUTORS.yaml`.
+
+If you wish to link to an external blog post, please format it like this:
+
+```
+---
+title: An external blog post
+external: https://example.org
+---
+```
+
 # Writing Markdown
 
 This uses standard markdown so all of your favourite constructs are available like **bold** and *italic* and ~~struck~~ text.

@@ -9,6 +9,9 @@ contributors:
 - boulund
 - pmenzel
 - hexylena
+reviewers:
+- karinlag
+- bebatut
 ---
 
 [Conda](https://docs.conda.io/projects/conda/en/stable/) and [Bioconda](https://bioconda.github.io/) have become crucial tools in most bioinformatician's toolkit. It is often used to install applications and create reproducible software environments containing multiple programs on their system or a compute cluster. 

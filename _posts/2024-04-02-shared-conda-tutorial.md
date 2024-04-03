@@ -52,7 +52,6 @@ sudo "${CONDA_PATH}"/bin/conda config --system --add channels bioconda
 sudo "${CONDA_PATH}"/bin/conda config --system --add channels conda-forge
 ```
 
-Users can override the default conda settings in their own `$HOME/.condarc` configuration file, [(see more)](https://conda.io/projects/conda/en/latest/user-guide/configuration/admin-multi-user-install.html#user-configuration-file).
 
 ### Creating environments in the shared conda installation
 Any user with sudo privileges can create environments in the shared folder:

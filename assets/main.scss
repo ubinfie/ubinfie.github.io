@@ -42,7 +42,7 @@ ul.text-list, ol.text-list {
 
 }
 
-.contributor-badge {
+.contributor-badge, .contributor-badge-inline {
     /* prevent breaking across lines */
     white-space: nowrap;
     display: inline-flex;

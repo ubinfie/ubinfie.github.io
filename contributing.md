@@ -73,6 +73,10 @@ external: https://example.org
 
 This uses standard markdown so all of your favourite constructs are available like **bold** and *italic* and ~~struck~~ text.
 
+## Mentioning People
+
+Simply write their username `@ username` (without the space) and it'll be rendered: @happykhan
+
 ## Code Highlighting
 
 Code syntax highlighting is available when you tag the language you're using:

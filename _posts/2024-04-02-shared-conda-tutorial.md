@@ -61,7 +61,7 @@ sudo /apps/conda/bin/conda create -n myenv ...
 ```
 
 ### Using the shared conda installation
-Users can activate the shared conda base environment by running
+Users can activate the shared conda base environment by running:
 ```bash
 /apps/conda/bin/conda init
 ```

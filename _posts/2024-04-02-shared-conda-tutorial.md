@@ -23,7 +23,7 @@ Here we describe a setup with a shared (read-only) conda installation, containin
 
 First, we create a shared conda installation folder that is read-only for all regular users. Shared conda environments therein will be available to all users, but must be created by a sysadmin (or by a user with write-privileges for the conda folder). 
 
-In this tutorial we'll use `/apps/conda` as the path, but please choose something appropriate for your system.
+In this tutorial we'll use `/apps/conda` as the shared conda folder, but please choose something appropriate for your system.
 
 We install conda by downloading and running the [Miniconda installer](https://repo.anaconda.com/miniconda/), but feel free to use the [full Anaconda installer](https://repo.anaconda.com/archive/) if that is your preference. We also set up folder permissions and an initial conda config, which includes the recommended [bioconda](https://bioconda.github.io/) and [conda-forge](https://conda-forge.org/) channels.
 

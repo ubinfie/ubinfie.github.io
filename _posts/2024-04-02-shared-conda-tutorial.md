@@ -69,7 +69,7 @@ to permanently initialize it for their user.
 This will add a section to the user's `$HOME/.bashrc`, which activates the shared conda base environment upon login.  
 For activating an environment users just run `conda activate myenv` as usual. This works for both shared and the user's own environments.
 
-If users prefer not to automatically activate conda upon login, they can also run 
+If users prefer not to automatically activate conda upon login, they can also run:
 ```bash
 source /apps/conda/bin/activate [optional_conda_env_name]
 ```

@@ -31,6 +31,11 @@ layout: default
 
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
+
+    {% if page.external %}
+    <p>This is an external blog post. You will be redirected shortly.
+    <a href="{{ page.external }}">Click here to be redirected now</a>
+    {% end %}
   </div>
 
   {% if page.cited %}

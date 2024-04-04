@@ -3,6 +3,14 @@
 
   {%- include head.html -%}
 
+  {% if page.external %}
+  <link rel="canonical" href="{{ page.external }}">
+  <script>location="{{ page.external }}"</script>
+  <meta http-equiv="refresh" content="0; url={{ page.external }}">
+  <meta name="robots" content="noindex">
+
+  {% endif %}
+
   <body>
 
     {%- include header.html -%}

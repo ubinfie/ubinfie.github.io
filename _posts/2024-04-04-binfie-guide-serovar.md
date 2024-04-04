@@ -7,6 +7,9 @@ tags:
 - naming
 contributions:
 - happykhan
+reviewers:
+- thanhleviet
+- pmenzel
 ---
 
 In the post, I will describe the basics of *Salmonella* serovar nomenclature. This post will act as a primer for bioinformaticians starting to work with *Salmonella* genomes, who are often at a loss.

@@ -89,3 +89,10 @@ ul.text-list, ol.text-list {
 	float: unset;
 	}
 
+
+a.external::after {
+  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==) "";
+  display: inline-block;
+  margin-left: 0.2em;
+  height: 1em;
+}

@@ -89,3 +89,9 @@ ul.text-list, ol.text-list {
 	float: unset;
 	}
 
+
+a.external::after {
+  content: "🔗";
+  display: inline-block;
+  margin-left: 0.2em;
+}

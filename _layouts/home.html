@@ -18,7 +18,7 @@ layout: default
         <span class="post-meta">{{ post.date | date: date_format }}</span>
         <h3>
           {% if post.external %}
-          <a class="post-link" href="{{ post.external }}">
+          <a class="post-link external" href="{{ post.external }}">
             {{ post.title | escape }}
           </a>
           {% else %}

@@ -90,7 +90,7 @@ If you do not like having conda always active due to shell startup speed impact,
 By adding this function to your shell initialisation (`$HOME/.bashrc`), when you run a conda command like `conda activate x` it will first delete the function definition before sourcing the conda hook and running your desired conda command:
 
 ```bash
-CONDA_DIR=/home/user/arbeit/deps/miniconda3
+CONDA_PATH=/apps/conda
 SHELL_NAME=basename $SHELL
 function conda {
         unset R_LIBS_USER
@@ -102,4 +102,4 @@ function conda {
 }
 ```
 
-Please note that you need to change `CONDA_DIR` to an appropriate value for your setup. This code should be placed in your shell initialization file, `~/.bashrc` for `bash`, `~/.zshrc` for `zsh` and so on.
+Please note that you need to change `CONDA_PATH` to an appropriate value for your setup. This code should be placed in your shell initialization file, `~/.bashrc` for `bash`, `~/.zshrc` for `zsh` and so on.

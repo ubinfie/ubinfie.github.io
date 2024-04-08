@@ -45,6 +45,11 @@ You can report mistakes or errors, create more contents, etc. Whatever is your b
 1. `bundle install` will install this repository's dependencies
 1. `bundle exec jekyll serve --livereload` will run the website and dynamically reload it upon changes.
 
+# Running the website using Docker
+
+1. [Install Docker](https://docs.docker.com/engine/install/) if you have not already done so.
+1. Run the `./serve.sh` script in the top level of the repository. This will download the Ruby 3.2 Docker image and use it to serve the website on `https://localhost:4000`.
+
 # Post Metadata
 
 Each post should have a metadata block at the top of the file. This is used to generate the post's page and should look like:

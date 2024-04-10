@@ -44,5 +44,29 @@ layout: default
 	{% bibliography --cited %}
   </div>
   {% endif %}
+  <details>
+	<summary>Citing this Post</summary>
+	<div class="highlighter-rouge">
+		<div class="highlight">
+			<pre class="highlight"><code id="citation-code">@misc{% raw %}{{% endraw %}{{ page.slug  }},
+	author = "{% for c in page.contributors %}{{ site.data.CONTRIBUTORS[c].name }}{% if forloop.last == false %} and {% endif %}{% endfor %}",
+	title = "{{ page.title }}",
+	year = "{{ page.date | date: "%Y"}}",
+	month = "{{ page.date| date: "%m"}}",
+	day = "{{ page.date| date: "%d" }}",
+	url = "{{ site.url }}{{ site.baseurl }}{{page.url}}",
+	note = "[Online; accessed TODAY]"
+}</code></pre>
+		</div>
+	</div>
+  </details>
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
+
+
+<script>
+// update the date on load, or leave fallback of 'today'
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+</script>

@@ -98,18 +98,6 @@ will produce:
 $a = 0;
 ```
 
-## Footnotes
-
-These are also possible with `[^1]`, like so[^1].
-
-Their corresponding definition may be placed anywhere in the text, but should look like:
-
-```
-[^1]: Maybe you wanted to write an aside.
-```
-
-[^1]: Maybe you wanted to write an aside.
-
 ## Citing
 
 Citations are possible with `{% raw %}{% cite Bankevich2012 %}{% endraw %}`, which render like: {% cite Bankevich2012 %}. They will appear at the bottom of the page and be appropriately hyperlinked.

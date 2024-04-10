@@ -53,8 +53,8 @@ layout: default
 	title = "{{ page.title }}",
 	year = "{{ page.date | date: "%Y"}}",
 	month = "{{ page.date| date: "%m"}}",
-	day = "{{ page.date| date: "%d" }}"
-	url = "{% raw %}\url{{% endraw %}{{ site.url }}{{ site.baseurl }}{{page.url}}{% raw %}}{% endraw %}",
+	day = "{{ page.date| date: "%d" }}",
+	url = "{{ site.url }}{{ site.baseurl }}{{page.url}}",
 	note = "[Online; accessed TODAY]"
 }</code></pre>
 		</div>

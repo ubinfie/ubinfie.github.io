@@ -37,6 +37,12 @@ You can report mistakes or errors, create more contents, etc. Whatever is your b
 1. Commit those changes to a new branch (or a fork if you don't have access.)
 1. Open a pull request. We will review and merge it.
 
+# Writing collaboratively
+A good methoded of writing a new post with multiple authors simultaneously is the online editor [HackMD.io](https://hackmd.io/new),
+where authors can edit the same document in real-time.
+Optionally, it is possible to log-in using your GitHub or Google account, which allows for adding comments to the document.
+Once the text is written, just copy and paste it to the new post as described above.
+
 # Running the website locally
 
 1. We recommend using [`rvm`](https://rvm.io/rvm/install) to setup a Ruby installation

@@ -1,10 +1,6 @@
 # Interactive bioinformatics
 
-This blog was suggested by Helena and inspired by this question from Peter:
-
-[screenshot1.png]
-
-So buckle up as we look at a wide range of very cool educational tools and projects.
+This blog was suggested by Helena and inspired a question on gamification of bioinformatics. So buckle up as we look at a wide range of very cool educational tools and projects.
 
 ## Educational
 

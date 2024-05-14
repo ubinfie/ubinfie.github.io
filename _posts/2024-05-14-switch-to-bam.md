@@ -123,3 +123,16 @@ KSNP4
 
 ### SNP analysis
 
+## Conclusion
+
+Bioinformatics software developers should be looking ahead
+to future proof their software.
+One way would be to accept more than just fastq as standard
+input.
+Although it might seem straightforward, there are several
+links in the genomic epidemiology chain that need to be
+updated.
+These include ensuring that all sequencing platforms output a bam
+but also updating QA/QC pipelines, primary analyses, and
+secondary analyses.
+

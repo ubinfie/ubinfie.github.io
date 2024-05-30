@@ -134,17 +134,15 @@ However, we need software to natively read these bam files.
 
 Bioinformatics software developers should be looking ahead
 to future proof their software.
-One way would be to accept more than just fastq as standard
-input.
+They need to accept bam natively as input.
 Although it might seem straightforward, there are several
 links in the genomic epidemiology chain that need to be
 updated.
-These include ensuring that all sequencing platforms output a bam
-but also updating QA/QC pipelines, primary analyses, and
+These include updating QA/QC pipelines, primary analyses, and
 secondary analyses.
 I should also say that I am guilty of this.
 For some of my own popular software such as 
-[Mashtree](https://github.com/lskatz/mashtree/tree/master/.github/workflows) 
+[Mashtree](https://github.com/lskatz/mashtree/tree/master/.github/workflows)
 and [Lyve-SET](https://github.com/lskatz/lyve-SET/), they do not natively read bam files!
 I wish I could say that I will address this right away, but with all my other responsibilities, it will be further down the road.
 Therefore I can say from my observations and my own personal experience, there is some work up ahead to get us moved over to bam files!

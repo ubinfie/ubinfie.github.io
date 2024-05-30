@@ -65,11 +65,10 @@ repository consists of the bam files alone.
 Now that the files are in the repository, how do you run QA on them?
 Some examples of a QA system include
 
-* SneakerNet
-* Phoenix
-* Pandoo
-* Nullarbor
-* Phoenix
+* [SneakerNet](https://github.com/lskatz/SneakerNet)
+* [Phoenix](https://github.com/CDCgov/phoenix)
+* [Pandoo](https://github.com/schultzm/pandoo)
+* [Nullarbor](https://github.com/tseemann/nullarbor)
 
 Which of these pipelines can read a bam file?
 To my knowledge, none of them! [Need help here: is this correct?]

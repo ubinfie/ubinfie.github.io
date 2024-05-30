@@ -40,7 +40,8 @@ because they are not aligned against anything.
 First, the sequencers would have to output bam files.
 Can they?
 The Illumina platforms and the Ion Torrent platforms do automatically.
-[Need help here: PacBio? ONT?]
+After calling with at least Dorado, ONT sequencing outputs bam files.
+[Need help here: PacBio? ]
 For platforms that do not have this automation,
 we would need an easy conversion.
 
@@ -127,6 +128,9 @@ There are other software packages in the world for specific pathogens like _Salm
 but for this generalized blog post, I did not investigate further.
 
 ## Conclusion
+
+The good part is that sequencing platforms output bam format natively, for what I can tell.
+However, we need software to natively read these bam files.
 
 Bioinformatics software developers should be looking ahead
 to future proof their software.

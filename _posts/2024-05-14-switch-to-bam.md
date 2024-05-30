@@ -60,6 +60,9 @@ Usually the fastq files end up in some kind of repository, organized by
 run or by organism.
 Instead of fastq files, it is easy to imagine that now the 
 repository consists of the bam files alone.
+One might be concerned about taking additional space,
+but actually unsorted bam may offer a storage space savings over individual fastq files,
+besides reduction in complexity gained by combining forward and reverse reads.
 
 ## QA/QC
 

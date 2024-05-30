@@ -120,10 +120,8 @@ Generally in my experience, people base genotyping on either
 [SRST2](https://github.com/katholt/srst2),
 [SAUTE](https://github.com/ncbi/SKESA),
 or [ARIBA](https://github.com/sanger-pathogens/ariba).
-
 Looking at each of these software packages, I could not find any documentation that bam is natively read.
 However, I could find that fasta or fastq were valid inputs.
-
 There are other software packages in the world for specific pathogens like _Salmonella_
 but for this generalized blog post, I did not investigate further.
 

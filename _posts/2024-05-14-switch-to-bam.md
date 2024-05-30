@@ -75,7 +75,7 @@ Some examples of a QA system include
 * [Nullarbor](https://github.com/tseemann/nullarbor)
 
 Which of these pipelines can read a bam file?
-To my knowledge, none of them! [Need help here: is this correct?]
+To my knowledge, none of them!
 This is one area where we need to see more adaptation of bam files.
 
 ## Primary analysis

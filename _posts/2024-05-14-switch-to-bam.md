@@ -11,7 +11,7 @@ reviewers:
 
 ---
 
-It has been over XX years since the formalization of the fastq format.
+It has been over 14 years since the formalization of the fastq format [^1].
 It describes sequences and their quality scores.
 For paired end reads, sequences are encoded in separate files, usually called R1 and R2.
 However, we have had a lot of innovations in sequence quality since then.
@@ -83,45 +83,43 @@ such as Salmonella serotyping or virulence factors detection.
 
 ### assembly
 
-Which assembly methods can read bam files?
+For genome assembly, many labs are using Shovill.
+However, Shovill does not natively read bam files.
+Therefore, this workflow breaks slightly unless there is some conversion step.
+
+Other assemblers that people commonly use for bacterial genomes are SPAdes and SKESA.
+SPAdes does read bam natively and so that is good.
+However, it does not appear that SKESA can read bam natively.
 
 ### MLST
 
-What takes bams?
+MLST software usually takes fasta or fastq files.
+At this point there are a million classic MLST software packages and for some additional information,
+please check out Page et al 2017 (ref).
+For whole genome MLST software tools, I could also not find any packages that natively read bam.
+Please see [my previous blog post](https://lskatz.github.io/posts/2023/04/09/wgMLST.html) for an in depth view into three of them.
+I could not find any MLST software that reads bam natively.
 
 ### Sketches
 
-Mash, etc
+If you're like me, you want to have a directory of at least some sketches from Mash.
+(see the [mashpit project](https://github.com/tongzhouxu/mashpit) for an exciting project!)
+It appears that Mash natively does not read bam according to the v2.3 usage menu.
+However it is promising that the Sourmash library [_does_ read bam](https://sourmash.readthedocs.io/en/latest/release-notes/sourmash-2.0.html#major-new-features-since-1-0) natively since version 2.
 
 ### Genotyping
 
-What takes bams?
+Generally in my experience, people base genotyping on either
+[KMA](https://bitbucket.org/genomicepidemiology/kma),
+[SRST2](https://github.com/katholt/srst2),
+[SAUTE](https://github.com/ncbi/SKESA),
+or [ARIBA](https://github.com/sanger-pathogens/ariba).
 
-Salmonella genotyping?
+Looking at each of these software packages, I could not find any documentation that bam is natively read.
+However, I could find that fasta or fastq were valid inputs.
 
-E. coli serogrouping?
-
-## Secondary analysis
-
-This is the stage of where we start seeing exciting things.
-What does the sample cluster with?
-We have a few methods out there that read assemblies.
-If they do, then that's fine because we have already used 
-the bam files to create an assembly at this point.
-If they use reads, then we'll need to make sure that these
-methods can read bam.
-
-### kmer
-
-Mashtree
-
-SKA
-
-KSNP4
-
-### MLST clustering
-
-### SNP analysis
+There are other software packages in the world for specific pathogens like _Salmonella_
+but for this generalized blog post, I did not investigate further.
 
 ## Conclusion
 
@@ -135,4 +133,11 @@ updated.
 These include ensuring that all sequencing platforms output a bam
 but also updating QA/QC pipelines, primary analyses, and
 secondary analyses.
+I should also say that I am guilty of this.
+For some of my own popular software such as 
+[Mashtree](https://github.com/lskatz/mashtree/tree/master/.github/workflows) 
+and [Lyve-SET](https://github.com/lskatz/lyve-SET/), they do not natively read bam files!
+I wish I could say that I will address this right away, but with all my other responsibilities, it will be further down the road.
+Therefore I can say from my observations and my own personal experience, there is some work up ahead to get us moved over to bam files!
 
+[^1] Peter J.A. Cock et al 2010 "The Sanger FASTQ file format for sequences with quality scores, and the Solexa/Illumina FASTQ variants", _NAR_ <https://academic.oup.com/nar/article/38/6/1767/3112533>

@@ -11,10 +11,15 @@ reviewers:
 
 ---
 
-It has been over 14 years since the formalization of the fastq format [^1].
+It has been over 14 years since the formalization of the fastq format {% cite Cock2009 %}.
 It describes sequences and their quality scores.
 For paired end reads, sequences are encoded in separate files, usually called R1 and R2.
-However, we have had a lot of innovations in sequence quality since then.
+Unfortunately despite the publication,
+fastq format is not entirely standardized!
+For example, it is possible to have a valid fastq format in either 4-line-per-entry format,
+or splitting sequences into multiple lines.
+Additionally, the defline itself is not entirely standardized and is basically free text.
+However, we have had a lot of innovations in sequence formats since then.
 One of those innovations is the BAM format which is the binary alignment/mapping format.
 R1 and R2 are encoded in the same file.
 
@@ -96,7 +101,7 @@ However, it does not appear that SKESA can read bam natively.
 
 MLST software usually takes fasta or fastq files.
 At this point there are a million classic MLST software packages and for some additional information,
-please check out Page et al 2017 (ref).
+please check out Page et al 2017 {% cite Page2017 %}.
 For whole genome MLST software tools, I could also not find any packages that natively read bam.
 Please see [my previous blog post](https://lskatz.github.io/posts/2023/04/09/wgMLST.html) for an in depth view into three of them.
 I could not find any MLST software that reads bam natively.
@@ -140,5 +145,3 @@ For some of my own popular software such as
 and [Lyve-SET](https://github.com/lskatz/lyve-SET/), they do not natively read bam files!
 I wish I could say that I will address this right away, but with all my other responsibilities, it will be further down the road.
 Therefore I can say from my observations and my own personal experience, there is some work up ahead to get us moved over to bam files!
-
-[^1] Peter J.A. Cock et al 2010 "The Sanger FASTQ file format for sequences with quality scores, and the Solexa/Illumina FASTQ variants", _NAR_ <https://academic.oup.com/nar/article/38/6/1767/3112533>

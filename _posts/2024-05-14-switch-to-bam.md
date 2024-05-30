@@ -64,6 +64,7 @@ Some examples of a QA system include
 * Phoenix
 * Pandoo
 * Nullarbor
+* Phoenix
 
 Which of these pipelines can read a bam file?
 To my knowledge, none of them! [Need help here: is this correct?]

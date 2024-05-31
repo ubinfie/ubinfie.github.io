@@ -8,7 +8,7 @@ contributors:
   - lskatz
   - SeanSierra-Patev
 reviewers:
-
+  - pmenzel
 ---
 
 It has been over 14 years since the formalization of the fastq format {% cite Cock2009 %}.

@@ -108,7 +108,6 @@ At this point there are a million classic MLST software packages and for some ad
 please check out Page et al 2017 {% cite Page2017 %}.
 For whole genome MLST software tools, I could also not find any packages that natively read bam.
 Please see [my previous blog post](https://lskatz.github.io/posts/2023/04/09/wgMLST.html) for an in depth view into three of them.
-I could not find any MLST software that reads bam natively.
 
 ### Sketches
 

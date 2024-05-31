@@ -129,9 +129,38 @@ However, I could find that fasta or fastq were valid inputs.
 There are other software packages in the world for specific pathogens like _Salmonella_
 but for this generalized blog post, I did not investigate further.
 
+## Other compression methods
+
+This article discusses the bam format, but there have been many attempts over the years to make other compression formats [^2].
+The [cram format](https://samtools.github.io/hts-specs/CRAMv3.pdf) is probably the best example.
+Cram has an even better lossless compression of sequences than bam,
+and I even confirmed it on my own sequence.
+
+```bash
+samtools import -1 1.fastq.gz -2 2.fastq.gz --order ro -O bam,level=0 | \
+  samtools sort -O cram --output-fmt-option archive -M - -o archive.cram
+```
+
+When viewing the same sequences in fastq.gz, bam, or cram, I get an astonishing reduction.
+
+```text
+-rw-------. 1 gzu2 users 81M May 30 20:03 unmapped.bam
+-rw-------. 1 gzu2 users 55M May 31 09:18 unmapped.cram
+-rw-------. 1 gzu2 users 55M Dec  6  2019 1.fastq.gz
+-rw-------. 1 gzu2 users 63M Dec  6  2019 2.fastq.gz
+```
+
+Cram is seemlessly incorporated into samtools and so you can freely convert between formats.
+In fact, [EBI stores a ton of cram files already](https://x.com/BonfieldJames/status/1182180199657607168).
+So why wouldn't we recommend cram up front?
+Admittedly, I started writing this article because I understood sam/bam much more than cram when starting this article.
+But also after some consideration, there is a bigger lift that would involve convincing many sequencing companies to adopt it.
+I can check a box on my nanopore that makes bams; I can't do the same for cram.
+That said, given an ideal world, I would encourage the sequencing companies to consider that check box.
+
 ## Conclusion
 
-The good part is that sequencing platforms output bam format natively, for what I can tell.
+The good part is that sequencing platforms output bam format natively, from what I can tell.
 However, we need software to natively read these bam files.
 
 Bioinformatics software developers should be looking ahead
@@ -150,3 +179,4 @@ I wish I could say that I will address this right away, but with all my other re
 Therefore I can say from my observations and my own personal experience, there is some work up ahead to get us moved over to bam files!
 
 [^1] To maintain focus in this article, I will gloss past interleaved reads.
+[^2] One such example of an organization trying to standardize is here: <https://www.genomeweb.com/informatics/will-bioinformatics-professionals-embrace-mpeg-g-data-compression-standard?utm_source=addthis_shares#.XcwmeiO9qjW.twitter>.

@@ -13,7 +13,7 @@ reviewers:
 
 It has been over 14 years since the formalization of the fastq format {% cite Cock2009 %}.
 It describes sequences and their quality scores.
-For paired end reads, sequences are encoded in separate files, usually called R1 and R2.
+For paired end reads, sequences are encoded in separate files, usually called R1 and R2 [^1].
 Unfortunately despite the publication,
 fastq format is not entirely standardized!
 For example, it is possible to have a valid fastq format in either 4-line-per-entry format,
@@ -49,9 +49,7 @@ One such easy conversion is with `samtools`, e.g.,
 
 ```shell
 samtools import -1 R1.fastq.gz -2 R2.fastq.gz --order ro -O bam,level=0 | \
-  samtools sort - -o sorted.bam
-# optionally, index
-samtools index sorted.bam
+  samtools sort -M - -o sorted.bam
 ```
 
 ## Repository
@@ -63,6 +61,9 @@ repository consists of the bam files alone.
 One might be concerned about taking additional space,
 but actually unsorted bam may offer a storage space savings over individual fastq files,
 besides reduction in complexity gained by combining forward and reverse reads.
+The above command uses `-M` in `samtools sort`, which sorts by minimizers, thereby saving tons of space.
+In my own anecdote, I transformed a 63M R1 and 55M R2 file into an 81M unmapped sorted bam file.
+This represents huge file storage savings.
 
 ## QA/QC
 
@@ -147,3 +148,5 @@ For some of my own popular software such as
 and [Lyve-SET](https://github.com/lskatz/lyve-SET/), they do not natively read bam files!
 I wish I could say that I will address this right away, but with all my other responsibilities, it will be further down the road.
 Therefore I can say from my observations and my own personal experience, there is some work up ahead to get us moved over to bam files!
+
+[^1] To maintain focus in this article, I will gloss past interleaved reads.

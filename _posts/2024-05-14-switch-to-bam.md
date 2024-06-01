@@ -143,17 +143,16 @@ samtools import -1 1.fastq.gz -2 2.fastq.gz --order ro -O bam,level=0 | \
 When viewing the same sequences in fastq.gz, bam, or cram, I get an astonishing reduction.
 
 ```text
--rw-------. 1 gzu2 users 81M May 30 20:03 unmapped.bam
--rw-------. 1 gzu2 users 55M May 31 09:18 unmapped.cram
--rw-------. 1 gzu2 users 55M Dec  6  2019 1.fastq.gz
--rw-------. 1 gzu2 users 63M Dec  6  2019 2.fastq.gz
+-rw-------. 1 user users 81M May 30 20:03 unmapped.bam
+-rw-------. 1 user users 55M May 31 09:18 unmapped.cram
+-rw-------. 1 user users 55M Dec  6  2019 1.fastq.gz
+-rw-------. 1 user users 63M Dec  6  2019 2.fastq.gz
 ```
 
 Cram is seemlessly incorporated into samtools and so you can freely convert between formats.
 In fact, [EBI stores a ton of cram files already](https://x.com/BonfieldJames/status/1182180199657607168).
 So why wouldn't we recommend cram up front?
-Admittedly, I started writing this article because I understood sam/bam much more than cram when starting this article.
-But also after some consideration, there is a bigger lift that would involve convincing many sequencing companies to adopt it.
+Probably because it is a bigger lift that would involve convincing many sequencing companies to adopt it.
 I can check a box on my nanopore that makes bams; I can't do the same for cram.
 That said, given an ideal world, I would encourage the sequencing companies to consider that check box.
 

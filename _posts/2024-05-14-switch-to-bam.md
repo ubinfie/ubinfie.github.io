@@ -57,7 +57,7 @@ samtools import -1 R1.fastq.gz -2 R2.fastq.gz --order ro -O bam,level=0 | \
 
 Usually the fastq files end up in some kind of repository, organized by
 run or by organism.
-Instead of fastq files, it is easy to imagine that now the 
+Instead of fastq files, it is easy to imagine that now the
 repository consists of the uBAM files alone.
 One might be concerned about taking additional space,
 but actually uBAM files may offer a storage space savings over individual fastq files,
@@ -171,7 +171,7 @@ updated.
 These include updating QA/QC pipelines, primary analyses, and
 secondary analyses.
 I should also say that I am guilty of this.
-For some of my own popular software such as 
+For some of my own popular software such as
 [Mashtree](https://github.com/lskatz/mashtree/tree/master/.github/workflows)
 and [Lyve-SET](https://github.com/lskatz/lyve-SET/), they do not natively read uBAM files!
 I wish I could say that I will address this right away, but with all my other responsibilities, it will be further down the road.

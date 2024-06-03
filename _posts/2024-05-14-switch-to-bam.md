@@ -11,8 +11,8 @@ reviewers:
   - pmenzel
 ---
 
-It has been over 14 years since the formalization of the fastq format {% cite Cock2009 %}.
-It describes sequences and their quality scores.
+It has been over 14 years since the formalization of the fastq format {% cite Cock2009 %},
+which describes sequences and their quality scores.
 For paired end reads, sequences are encoded in separate files, usually called R1 and R2 [^1].
 Unfortunately despite the publication,
 fastq format is not entirely standardized!

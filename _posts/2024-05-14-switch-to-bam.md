@@ -9,9 +9,10 @@ contributors:
   - SeanSierra-Patev
 reviewers:
   - pmenzel
+  - hexylena 
 ---
 
-It has been over 14 years since the formalization of the fastq format {% cite Cock2009 %},
+It has been over 14 years since the formalization of the fastq format ({% cite Cock2009 %}),
 which describes sequences and their quality scores.
 For paired end reads, sequences are encoded in separate files, usually called R1 and R2 [^1].
 Unfortunately despite the publication,
@@ -37,10 +38,10 @@ because they are not aligned against anything.
 
 ## Sequencing
 
-First, the sequencers would have to output bam files.
+First, the sequencers would have to output uBAM files.
 Can they?
 The Illumina platforms and the Ion Torrent platforms do automatically.
-After calling with at least Dorado, ONT sequencing outputs bam files.
+After calling with at least Dorado, ONT sequencing outputs uBAM files.
 [Need help here: PacBio? ]
 For platforms that do not have this automation,
 we would need an easy conversion.
@@ -57,13 +58,13 @@ samtools import -1 R1.fastq.gz -2 R2.fastq.gz --order ro -O bam,level=0 | \
 Usually the fastq files end up in some kind of repository, organized by
 run or by organism.
 Instead of fastq files, it is easy to imagine that now the 
-repository consists of the bam files alone.
+repository consists of the uBAM files alone.
 One might be concerned about taking additional space,
-but actually unsorted bam may offer a storage space savings over individual fastq files,
+but actually uBAM files may offer a storage space savings over individual fastq files,
 besides reduction in complexity gained by combining forward and reverse reads.
 The above command uses `-M` in `samtools sort`, which sorts by minimizers, thereby saving tons of space.
-In my own anecdote, I transformed a 63M R1 and 55M R2 file into an 81M unmapped sorted bam file.
-A 31% storage reduction, in this case, can represents huge file storage savings across an entire sequencing data repository.
+In my own anecdote, I transformed a 63M R1 and 55M R2 file into an 81M unmapped sorted uBAM file.
+A 31% storage reduction, in this case, can represent huge file storage savings across an entire sequencing data repository.
 
 ## QA/QC
 
@@ -75,9 +76,9 @@ Some examples of a QA system include
 * [Pandoo](https://github.com/schultzm/pandoo)
 * [Nullarbor](https://github.com/tseemann/nullarbor)
 
-Which of these pipelines can read a bam file?
+Which of these pipelines can read a uBAM file?
 To my knowledge, none of them!
-This is one area where we need to see more adaptation of bam files.
+This is one area where we need to see more adaptation of uBAM files.
 
 ## Primary analysis
 
@@ -94,27 +95,27 @@ such as Salmonella serotyping or virulence factors detection.
 ### assembly
 
 For genome assembly, many labs are using Shovill.
-However, Shovill does not natively read bam files.
+However, Shovill does not natively read uBAM files.
 Therefore, this workflow breaks slightly unless there is some conversion step.
 
 Other assemblers that people commonly use for bacterial genomes are SPAdes and SKESA.
-SPAdes does read bam natively and so that is good.
-However, it does not appear that SKESA can read bam natively.
+SPAdes does read uBAM natively and so that is good.
+However, it does not appear that SKESA can read uBAM natively.
 
 ### MLST
 
 MLST software usually takes fasta or fastq files.
 At this point there are a million classic MLST software packages and for some additional information,
 please check out {% cite Page2017 %}.
-For whole genome MLST software tools, I could also not find any packages that natively read bam.
+For whole genome MLST software tools, I could also not find any packages that natively read uBAM.
 Please see [my previous blog post](https://lskatz.github.io/posts/2023/04/09/wgMLST.html) for an in depth view into three of them.
 
 ### Sketches
 
 If you're like me, you want to have a directory of at least some sketches from Mash.
 (see the [mashpit project](https://github.com/tongzhouxu/mashpit) for an exciting project!)
-It appears that Mash natively does not read bam according to the v2.3 usage menu.
-However it is promising that the Sourmash library [_does_ read bam](https://sourmash.readthedocs.io/en/latest/release-notes/sourmash-2.0.html#major-new-features-since-1-0) natively since version 2.
+It appears that Mash natively does not read uBAM according to the v2.3 usage menu.
+However it is promising that the Sourmash library [_does_ read uBAM](https://sourmash.readthedocs.io/en/latest/release-notes/sourmash-2.0.html#major-new-features-since-1-0) natively since version 2.
 
 ### Genotyping
 
@@ -123,16 +124,16 @@ Generally in my experience, people base genotyping on either
 [SRST2](https://github.com/katholt/srst2),
 [SAUTE](https://github.com/ncbi/SKESA),
 or [ARIBA](https://github.com/sanger-pathogens/ariba).
-Looking at each of these software packages, I could not find any documentation that bam is natively read.
+Looking at each of these software packages, I could not find any documentation that uBAM is natively read.
 However, I could find that fasta or fastq were valid inputs.
 There are other software packages in the world for specific pathogens like _Salmonella_
 but for this generalized blog post, I did not investigate further.
 
 ## Other compression methods
 
-This article discusses the bam format, but there have been many attempts over the years to make other compression formats [^2].
+This article discusses the uBAM format, but there have been many attempts over the years to make other compression formats [^2].
 The [cram format](https://samtools.github.io/hts-specs/CRAMv3.pdf) is probably the best example.
-Cram has an even better lossless compression of sequences than bam,
+Cram has an even better lossless compression of sequences than uBAM,
 and I even confirmed it on my own sequence.
 
 ```bash
@@ -158,12 +159,12 @@ That said, given an ideal world, I would encourage the sequencing companies to c
 
 ## Conclusion
 
-The good part is that sequencing platforms output bam format natively, from what I can tell.
-However, we need software to natively read these bam files.
+The good part is that sequencing platforms output uBAM format natively, from what I can tell.
+However, we need software to natively read these uBAM files.
 
 Bioinformatics software developers should be looking ahead
 to future proof their software.
-They need to accept bam natively as input.
+They need to accept uBAM natively as input.
 Although it might seem straightforward, there are several
 links in the genomic epidemiology chain that need to be
 updated.
@@ -172,9 +173,9 @@ secondary analyses.
 I should also say that I am guilty of this.
 For some of my own popular software such as 
 [Mashtree](https://github.com/lskatz/mashtree/tree/master/.github/workflows)
-and [Lyve-SET](https://github.com/lskatz/lyve-SET/), they do not natively read bam files!
+and [Lyve-SET](https://github.com/lskatz/lyve-SET/), they do not natively read uBAM files!
 I wish I could say that I will address this right away, but with all my other responsibilities, it will be further down the road.
-Therefore I can say from my observations and my own personal experience, there is some work up ahead to get us moved over to bam files!
+Therefore I can say from my observations and my own personal experience, there is some work up ahead to get us moved over to uBAM files!
 
 [^1] To maintain focus in this article, I will gloss past interleaved reads.
 [^2] One such example of an organization trying to standardize is here: <https://www.genomeweb.com/informatics/will-bioinformatics-professionals-embrace-mpeg-g-data-compression-standard?utm_source=addthis_shares#.XcwmeiO9qjW.twitter>.

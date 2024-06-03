@@ -63,7 +63,7 @@ but actually unsorted bam may offer a storage space savings over individual fast
 besides reduction in complexity gained by combining forward and reverse reads.
 The above command uses `-M` in `samtools sort`, which sorts by minimizers, thereby saving tons of space.
 In my own anecdote, I transformed a 63M R1 and 55M R2 file into an 81M unmapped sorted bam file.
-This represents huge file storage savings.
+A 31% storage reduction, in this case, can represents huge file storage savings across an entire sequencing data repository.
 
 ## QA/QC
 

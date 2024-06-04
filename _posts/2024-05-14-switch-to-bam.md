@@ -22,7 +22,7 @@ or splitting sequences into multiple lines.
 Additionally, the defline itself is not entirely standardized and is basically free text.
 However, we have had a lot of innovations in sequence formats since then.
 One of those innovations is the [SAM/BAM format](https://samtools.github.io/hts-specs/), the (binary) alignment/mapping format. While this file format is typically used to store information about alignments of sequencing reads, it can also just stored the unaligned sequencing data.
-R1 and R2 are encoded in the same file.
+Crucially, both reads from paired-end sequencing (i.e., R1 and R2) are stored in the same single file.
 
 Fastq files, as a means for storing primary sequencing data before any downstream analysis,  are integral to genomic epidemiology.
 State health labs sequence genomes,
@@ -30,7 +30,7 @@ transfer the fastq files to an internal repository,
 run quality checks (QC), usually through a quality assurance (QA) pipeline.
 
 **So what would it take to change this whole process to bam files instead?**  
-Bam files have many advantages including having one file per sample,
+BAM files have many advantages including having only one file per sample instead of two,
 encoding extra information such as alignment data,
 and being indexed for random access.
 For our purposes here, bam files will be unaligned bam (uBAM)

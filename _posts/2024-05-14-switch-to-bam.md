@@ -24,7 +24,7 @@ However, we have had a lot of innovations in sequence formats since then.
 One of those innovations is the [SAM/BAM format](https://samtools.github.io/hts-specs/), the (binary) alignment/mapping format. While this file format is typically used to store information about alignments of sequencing reads, it can also just stored the unaligned sequencing data.
 R1 and R2 are encoded in the same file.
 
-Fastq files are integral to genomic epidemiology.
+Fastq files, as a means for storing primary sequencing data before any downstream analysis,  are integral to genomic epidemiology.
 State health labs sequence genomes,
 transfer the fastq files to an internal repository,
 run quality checks (QC), usually through a quality assurance (QA) pipeline.

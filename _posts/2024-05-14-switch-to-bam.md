@@ -29,7 +29,7 @@ State health labs sequence genomes,
 transfer the fastq files to an internal repository,
 run quality checks (QC), usually through a quality assurance (QA) pipeline.
 
-**So what would it take to change this whole process to bam files instead?**
+**So what would it take to change this whole process to bam files instead?**  
 Bam files have many advantages including having one file per sample,
 encoding extra information such as alignment data,
 and being indexed for random access.

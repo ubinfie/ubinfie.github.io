@@ -21,7 +21,7 @@ For example, it is possible to have a valid fastq format in either 4-line-per-en
 or splitting sequences into multiple lines.
 Additionally, the defline itself is not entirely standardized and is basically free text.
 However, we have had a lot of innovations in sequence formats since then.
-One of those innovations is the BAM format which is the binary alignment/mapping format.
+One of those innovations is the [SAM/BAM format](https://samtools.github.io/hts-specs/), the (binary) alignment/mapping format. While this file format is typically used to store information about alignments of sequencing reads, it can also just stored the unaligned sequencing data.
 R1 and R2 are encoded in the same file.
 
 Fastq files are integral to genomic epidemiology.

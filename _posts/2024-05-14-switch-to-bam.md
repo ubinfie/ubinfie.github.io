@@ -63,7 +63,7 @@ One might be concerned about taking additional space,
 but actually uBAM files may offer a storage space savings over individual fastq files,
 besides reduction in complexity gained by combining forward and reverse reads.
 The above command uses `-M` in `samtools sort`, which sorts by minimizers, thereby saving tons of space.
-In my own anecdote, I transformed a 63M R1 and 55M R2 file into an 81M unmapped sorted uBAM file.
+In our own anecdote, we transformed a 63M R1 and 55M R2 file into an 81M unmapped sorted uBAM file.
 A 31% storage reduction, in this case, can represent huge file storage savings across an entire sequencing data repository.
 
 ## QA/QC
@@ -107,7 +107,7 @@ However, it does not appear that SKESA can read uBAM natively.
 MLST software usually takes fasta or fastq files.
 At this point there are a million classic MLST software packages and for some additional information,
 please check out {% cite Page2017 %}.
-For whole genome MLST software tools, I could also not find any packages that natively read uBAM.
+For whole genome MLST software tools, we could also not find any packages that natively read uBAM.
 Please see [my previous blog post](https://lskatz.github.io/posts/2023/04/09/wgMLST.html) for an in depth view into three of them.
 
 ### Sketches
@@ -124,24 +124,24 @@ Generally in my experience, people base genotyping on either
 [SRST2](https://github.com/katholt/srst2),
 [SAUTE](https://github.com/ncbi/SKESA),
 or [ARIBA](https://github.com/sanger-pathogens/ariba).
-Looking at each of these software packages, I could not find any documentation that uBAM is natively read.
-However, I could find that fasta or fastq were valid inputs.
+Looking at each of these software packages, we could not find any documentation that uBAM is natively read.
+However, we could find that FASTA and FASTQ were valid inputs.
 There are other software packages in the world for specific pathogens like _Salmonella_
-but for this generalized blog post, I did not investigate further.
+but for this generalized blog post, we did not investigate further.
 
 ## Other compression methods
 
 This article discusses the uBAM format, but there have been many attempts over the years to make other compression formats [^2].
 The [cram format](https://samtools.github.io/hts-specs/CRAMv3.pdf) is probably the best example.
 Cram has an even better lossless compression of sequences than uBAM,
-and I even confirmed it on my own sequence.
+and we even confirmed it on our own sequence.
 
 ```bash
 samtools import -1 1.fastq.gz -2 2.fastq.gz --order ro -O bam,level=0 | \
   samtools sort -O cram --output-fmt-option archive -M - -o archive.cram
 ```
 
-When viewing the same sequences in fastq.gz, bam, or cram, I get an astonishing reduction.
+When viewing the same sequences in fastq.gz, bam, or cram, we get an astonishing reduction.
 
 ```text
 -rw-------. 1 user users 81M May 30 20:03 unmapped.bam
@@ -154,12 +154,12 @@ Cram is seemlessly incorporated into samtools and so you can freely convert betw
 In fact, [EBI stores a ton of cram files already](https://x.com/BonfieldJames/status/1182180199657607168).
 So why wouldn't we recommend cram up front?
 Probably because it is a bigger lift that would involve convincing many sequencing companies to adopt it.
-I can check a box on my nanopore that makes bams; I can't do the same for cram.
-That said, given an ideal world, I would encourage the sequencing companies to consider that check box.
+We can check a box on our nanopore that makes bams; we can't do the same for cram.
+That said, given an ideal world, we would encourage the sequencing companies to consider that check box.
 
 ## Conclusion
 
-The good part is that sequencing platforms output uBAM format natively, from what I can tell.
+The good part is that sequencing platforms output uBAM format natively, from what we can tell.
 However, we need software to natively read these uBAM files.
 
 Bioinformatics software developers should be looking ahead
@@ -170,12 +170,12 @@ links in the genomic epidemiology chain that need to be
 updated.
 These include updating QA/QC pipelines, primary analyses, and
 secondary analyses.
-I should also say that I am guilty of this.
+As for @lskatz, I should also say that I am guilty of this.
 For some of my own popular software such as
 [Mashtree](https://github.com/lskatz/mashtree/tree/master/.github/workflows)
 and [Lyve-SET](https://github.com/lskatz/lyve-SET/), they do not natively read uBAM files!
 I wish I could say that I will address this right away, but with all my other responsibilities, it will be further down the road.
-Therefore I can say from my observations and my own personal experience, there is some work up ahead to get us moved over to uBAM files!
+Therefore we can say from our own observations and personal experience, there is some work up ahead to get us moved over to uBAM files!
 
 [^1] To maintain focus in this article, I will gloss past interleaved reads.
 [^2] One such example of an organization trying to standardize is here: <https://www.genomeweb.com/informatics/will-bioinformatics-professionals-embrace-mpeg-g-data-compression-standard?utm_source=addthis_shares#.XcwmeiO9qjW.twitter>.

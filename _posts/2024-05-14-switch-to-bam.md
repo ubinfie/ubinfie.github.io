@@ -1,39 +1,46 @@
 ---
 layout: post
-title: What does it take to switch over to bam from fastq?
+title: What does it take to switch over to BAM from FASTQ?
 tags:
-  - bam
-  - fastq 
+  - BAM
+  - uBAM
+  - FASTQ
+  - file formats 
 contributors:
   - lskatz
   - SeanSierra-Patev
+  - dbtara
 reviewers:
   - pmenzel
   - hexylena 
 ---
 
-It has been over 14 years since the formalization of the fastq format ({% cite Cock2009 %}),
+It has been over 14 years since the formalization of the FASTQ format ({% cite Cock2009 %}),
 which describes sequences and their quality scores.
 For paired end reads, sequences are encoded in separate files, usually called R1 and R2 [^1].
 Unfortunately despite the publication,
-fastq format is not entirely standardized!
-For example, it is possible to have a valid fastq format in either 4-line-per-entry format,
+FASTQ format is not entirely standardized!
+For example, it is possible to have a valid FASTQ format in either 4-line-per-entry format,
 or splitting sequences into multiple lines.
 Additionally, the defline itself is not entirely standardized and is basically free text.
 However, we have had a lot of innovations in sequence formats since then.
 One of those innovations is the [SAM/BAM format](https://samtools.github.io/hts-specs/), the (binary) alignment/mapping format. While this file format is typically used to store information about alignments of sequencing reads, it can also just stored the unaligned sequencing data.
-Crucially, both reads from paired-end sequencing (i.e., R1 and R2) are stored in the same single file.
+Crucially, both reads from paired-end sequencing (i.e., R1 and R2) are stored in the same single file
+and [it allows for metadata as explained in this GATK post](https://gatk.broadinstitute.org/hc/en-us/articles/360035532132-uBAM-Unmapped-BAM-Format).
+We found at least one other [blog post with this same sentiment from _2011_](https://blastedbio.blogspot.com/2011/10/fastq-must-die-long-live-sambam.html).
+This idea isn't new.
+It is frustratingly old.
 
-Fastq files, as a means for storing primary sequencing data before any downstream analysis,  are integral to genomic epidemiology.
+FASTQ files, as a means for storing primary sequencing data before any downstream analysis, are integral to genomic epidemiology.
 State health labs sequence genomes,
-transfer the fastq files to an internal repository,
+transfer the FASTQ files to an internal repository,
 run quality checks (QC), usually through a quality assurance (QA) pipeline.
 
-**So what would it take to change this whole process to bam files instead?**  
+**So what would it take to change this whole process to BAM files instead?**  
 BAM files have many advantages including having only one file per sample instead of two,
 encoding extra information such as alignment data,
 and being indexed for random access.
-For our purposes here, bam files will be unaligned bam (uBAM)
+For our purposes here, BAM files will be unaligned BAM (uBAM)
 because they are not aligned against anything.
 
 ## Sequencing
@@ -42,7 +49,7 @@ First, the sequencers would have to output uBAM files.
 Can they?
 The Illumina platforms and the Ion Torrent platforms do automatically.
 After calling with at least Dorado, ONT sequencing outputs uBAM files.
-[Need help here: PacBio? ]
+Pacbio does generate BAM as native format (they discontinued HDF5).
 For platforms that do not have this automation,
 we would need an easy conversion.
 
@@ -55,12 +62,12 @@ samtools import -1 R1.fastq.gz -2 R2.fastq.gz --order ro -O bam,level=0 | \
 
 ## Repository
 
-Usually the fastq files end up in some kind of repository, organized by
+Usually the FASTQ files end up in some kind of repository, organized by
 run or by organism.
-Instead of fastq files, it is easy to imagine that now the
+Instead of FASTQ files, it is easy to imagine that now the
 repository consists of the uBAM files alone.
 One might be concerned about taking additional space,
-but actually uBAM files may offer a storage space savings over individual fastq files,
+but actually uBAM files may offer a storage space savings over individual FASTQ files,
 besides reduction in complexity gained by combining forward and reverse reads.
 The above command uses `-M` in `samtools sort`, which sorts by minimizers, thereby saving tons of space.
 In our own anecdote, we transformed a 63M R1 and 55M R2 file into an 81M unmapped sorted uBAM file.
@@ -77,7 +84,7 @@ Some examples of a QA system include
 * [Nullarbor](https://github.com/tseemann/nullarbor)
 
 Which of these pipelines can read a uBAM file?
-To my knowledge, none of them!
+To our knowledge, none of them!
 This is one area where we need to see more adaptation of uBAM files.
 
 ## Primary analysis
@@ -104,11 +111,11 @@ However, it does not appear that SKESA can read uBAM natively.
 
 ### MLST
 
-MLST software usually takes fasta or fastq files.
+MLST software usually takes FASTA or FASTQ files.
 At this point there are a million classic MLST software packages and for some additional information,
 please check out {% cite Page2017 %}.
 For whole genome MLST software tools, we could also not find any packages that natively read uBAM.
-Please see [my previous blog post](https://lskatz.github.io/posts/2023/04/09/wgMLST.html) for an in depth view into three of them.
+Please see [@lskatz's previous blog post](https://lskatz.github.io/posts/2023/04/09/wgMLST.html) for an in depth view into three of them.
 
 ### Sketches
 
@@ -119,7 +126,7 @@ However it is promising that the Sourmash library [_does_ read uBAM](https://sou
 
 ### Genotyping
 
-Generally in my experience, people base genotyping on either
+Generally in our experience, people base genotyping on either
 [KMA](https://bitbucket.org/genomicepidemiology/kma),
 [SRST2](https://github.com/katholt/srst2),
 [SAUTE](https://github.com/ncbi/SKESA),
@@ -141,7 +148,7 @@ samtools import -1 1.fastq.gz -2 2.fastq.gz --order ro -O bam,level=0 | \
   samtools sort -O cram --output-fmt-option archive -M - -o archive.cram
 ```
 
-When viewing the same sequences in fastq.gz, bam, or cram, we get an astonishing reduction.
+When viewing the same sequences in FASTQ, BAM, or CRAM, we get an astonishing reduction.
 
 ```text
 -rw-------. 1 user users 81M May 30 20:03 unmapped.bam
@@ -154,7 +161,7 @@ Cram is seemlessly incorporated into samtools and so you can freely convert betw
 In fact, [EBI stores a ton of cram files already](https://x.com/BonfieldJames/status/1182180199657607168).
 So why wouldn't we recommend cram up front?
 Probably because it is a bigger lift that would involve convincing many sequencing companies to adopt it.
-We can check a box on our nanopore that makes bams; we can't do the same for cram.
+We can check a box on our nanopore that makes BAMs; we can't do the same for CRAM.
 That said, given an ideal world, we would encourage the sequencing companies to consider that check box.
 
 ## Conclusion

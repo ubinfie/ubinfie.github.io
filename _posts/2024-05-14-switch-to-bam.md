@@ -47,7 +47,10 @@ because they are not aligned against anything.
 
 First, the sequencers would have to output uBAM files.
 Can they?
-The Illumina platforms and the Ion Torrent platforms do automatically.
+Illumina will not output uBAM natively, but it does allow
+[Local Run Manager modules](https://customprotocolselector.illumina.com/selectors/LRM-module-selector/Content/Source/FrontPages/LRM-module-selector.htm).
+If one of these modules aligns against a reference, then an Illumina platform would at least produce a BAM.
+The Ion Torrent platforms does produce a uBAM automatically.
 After calling with at least Dorado, ONT sequencing outputs uBAM files.
 Pacbio does generate BAM as native format (they discontinued HDF5).
 For platforms that do not have this automation,
@@ -166,8 +169,9 @@ That said, given an ideal world, we would encourage the sequencing companies to 
 
 ## Conclusion
 
-The good part is that sequencing platforms output uBAM format natively, from what we can tell.
-However, we need software to natively read these uBAM files.
+The good part is that many but not all sequencing platforms output uBAM format natively.
+For those that don't have this capability, we have a way to convert fastq to uBAM.
+However even after aquiring a uBAM, we need software to natively read them.
 
 Bioinformatics software developers should be looking ahead
 to future proof their software.

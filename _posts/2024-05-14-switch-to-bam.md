@@ -121,7 +121,7 @@ Please see [@lskatz's previous blog post](https://lskatz.github.io/posts/2023/04
 
 ### Sketches
 
-If you're like me, you want to have a directory of at least some sketches from Mash.
+If you're like us, you want to have a directory of at least some sketches from Mash.
 (see the [mashpit project](https://github.com/tongzhouxu/mashpit) for an exciting project!)
 It appears that Mash natively does not read uBAM according to the v2.3 usage menu.
 However it is promising that the [Sourmash](https://github.com/sourmash-bio/sourmash) library [_does_ read uBAM](https://sourmash.readthedocs.io/en/latest/release-notes/sourmash-2.0.html#major-new-features-since-1-0) natively since version 2.

@@ -24,7 +24,7 @@ For example, it is possible to have a valid FASTQ format in either 4-line-per-en
 or splitting sequences into multiple lines.
 Additionally, the defline itself is not entirely standardized and is basically free text.
 However, we have had a lot of innovations in sequence formats since then.
-One of those innovations is the [SAM/BAM format](https://samtools.github.io/hts-specs/), the (binary) alignment/mapping format. While this file format is typically used to store information about alignments of sequencing reads, it can also just stored the unaligned sequencing data.
+One of those innovations is the [SAM/BAM format](https://samtools.github.io/hts-specs/), the (binary) alignment/mapping format. While this file format is typically used to store information about alignments of sequencing reads, it can also just store the unaligned sequencing data.
 Crucially, both reads from paired-end sequencing (i.e., R1 and R2) are stored in the same single file
 and [it allows for metadata as explained in this GATK post](https://gatk.broadinstitute.org/hc/en-us/articles/360035532132-uBAM-Unmapped-BAM-Format).
 We found at least one other [blog post with this same sentiment from _2011_](https://blastedbio.blogspot.com/2011/10/fastq-must-die-long-live-sambam.html).

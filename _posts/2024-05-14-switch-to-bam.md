@@ -18,13 +18,12 @@ reviewers:
 It has been over 14 years since the formalization of the FASTQ format ({% cite Cock2009 %}),
 which describes sequences and their quality scores.
 For paired end reads, sequences are encoded in separate files, usually called R1 and R2 [^1].
-Unfortunately despite the publication,
-FASTQ format is not entirely standardized!
-For example, it is possible to have a valid FASTQ format in either 4-line-per-entry format,
-or splitting sequences into multiple lines.
+Unfortunately despite the publication, FASTQ format is not entirely standardized!
+For example, it is possible to have a valid FASTQ format in either 4-line-per-entry format, or splitting sequences into multiple lines.
 Additionally, the defline itself is not entirely standardized and is basically free text.
 However, we have had a lot of innovations in sequence formats since then.
-One of those innovations is the [SAM/BAM format](https://samtools.github.io/hts-specs/), the (binary) alignment/mapping format. While this file format is typically used to store information about alignments of sequencing reads, it can also just store the unaligned sequencing data.
+One of those innovations is the [SAM/BAM format](https://samtools.github.io/hts-specs/), the (binary) alignment/mapping format.
+While this file format is typically used to store information about alignments of sequencing reads, it can also just store the unaligned sequencing data.
 Crucially, both reads from paired-end sequencing (i.e., R1 and R2) are stored in the same single file
 and [it allows for metadata as explained in this GATK post](https://gatk.broadinstitute.org/hc/en-us/articles/360035532132-uBAM-Unmapped-BAM-Format).
 We found at least one other [blog post with this same sentiment from _2011_](https://blastedbio.blogspot.com/2011/10/fastq-must-die-long-live-sambam.html).
@@ -50,7 +49,7 @@ Can they?
 Illumina will not output uBAM natively, but it does allow
 [Local Run Manager modules](https://customprotocolselector.illumina.com/selectors/LRM-module-selector/Content/Source/FrontPages/LRM-module-selector.htm).
 If one of these modules aligns against a reference, then an Illumina platform would at least produce a BAM.
-The Ion Torrent platforms does produce a uBAM automatically.
+The Ion Torrent platforms do produce a uBAM automatically.
 After calling with at least Dorado, ONT sequencing outputs uBAM files.
 Pacbio does generate BAM as native format (they discontinued HDF5).
 For platforms that do not have this automation,
@@ -102,13 +101,13 @@ and so certain tools can create those sketches.
 Finally, there might be individual genotyping operations
 such as Salmonella serotyping or virulence factors detection.
 
-### assembly
+### Assembly
 
-For genome assembly, many labs are using Shovill.
+For genome assembly, many labs use [Shovill](https://github.com/tseemann/shovill).
 However, Shovill does not natively read uBAM files.
 Therefore, this workflow breaks slightly unless there is some conversion step.
 
-Other assemblers that people commonly use for bacterial genomes are SPAdes and SKESA.
+Other assemblers that people commonly use for bacterial genomes are [SPAdes](https://github.com/ablab/spades) and [SKESA](https://github.com/ncbi/SKESA).
 SPAdes does read uBAM natively and so that is good.
 However, it does not appear that SKESA can read uBAM natively.
 
@@ -125,7 +124,7 @@ Please see [@lskatz's previous blog post](https://lskatz.github.io/posts/2023/04
 If you're like me, you want to have a directory of at least some sketches from Mash.
 (see the [mashpit project](https://github.com/tongzhouxu/mashpit) for an exciting project!)
 It appears that Mash natively does not read uBAM according to the v2.3 usage menu.
-However it is promising that the Sourmash library [_does_ read uBAM](https://sourmash.readthedocs.io/en/latest/release-notes/sourmash-2.0.html#major-new-features-since-1-0) natively since version 2.
+However it is promising that the [Sourmash](https://github.com/sourmash-bio/sourmash) library [_does_ read uBAM](https://sourmash.readthedocs.io/en/latest/release-notes/sourmash-2.0.html#major-new-features-since-1-0) natively since version 2.
 
 ### Genotyping
 
@@ -142,8 +141,8 @@ but for this generalized blog post, we did not investigate further.
 ## Other compression methods
 
 This article discusses the uBAM format, but there have been many attempts over the years to make other compression formats [^2].
-The [cram format](https://samtools.github.io/hts-specs/CRAMv3.pdf) is probably the best example.
-Cram has an even better lossless compression of sequences than uBAM,
+The [CRAM format](https://samtools.github.io/hts-specs/CRAMv3.pdf) is probably the best example.
+CRAM has an even better lossless compression of sequences than uBAM,
 and we even confirmed it on our own sequence.
 
 ```bash
@@ -170,7 +169,7 @@ That said, given an ideal world, we would encourage the sequencing companies to 
 ## Conclusion
 
 The good part is that many but not all sequencing platforms output uBAM format natively.
-For those that don't have this capability, we have a way to convert fastq to uBAM.
+For those that don't have this capability, we have a way to convert FASTQ to uBAM.
 However even after aquiring a uBAM, we need software to natively read them.
 
 Bioinformatics software developers should be looking ahead

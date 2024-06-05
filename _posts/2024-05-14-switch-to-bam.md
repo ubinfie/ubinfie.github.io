@@ -70,7 +70,7 @@ One might be concerned about taking additional space,
 but actually uBAM files may offer a storage space savings over individual FASTQ files,
 besides reduction in complexity gained by combining forward and reverse reads.
 The above command uses `-M` in `samtools sort`, which sorts by minimizers, thereby saving tons of space.
-In our own anecdote, we transformed a 63M R1 and 55M R2 file into an 81M unmapped sorted uBAM file.
+In our example dataset, we transformed a 63M R1 and 55M R2 file into an 81M unmapped sorted uBAM file.
 A 31% storage reduction, in this case, can represent huge file storage savings across an entire sequencing data repository.
 
 ## QA/QC

@@ -159,7 +159,7 @@ When viewing the same sequences in FASTQ, BAM, or CRAM, we get an astonishing re
 
 Cram is seemlessly incorporated into samtools and so you can freely convert between formats.
 In fact, [EBI stores a ton of cram files already](https://x.com/BonfieldJames/status/1182180199657607168).
-So why wouldn't we recommend cram up front?
+So why wouldn't we recommend CRAM upfront?
 Probably because it is a bigger lift that would involve convincing many sequencing companies to adopt it.
 We can check a box on our nanopore that makes BAMs; we can't do the same for CRAM.
 That said, given an ideal world, we would encourage the sequencing companies to consider that check box.

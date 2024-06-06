@@ -194,4 +194,4 @@ Therefore we can say from our own observations and personal experience, there is
 ### Footnotes
 
 [^1]: To maintain focus in this article, I will gloss past interleaved reads.
-[^2]: One such example of an organization trying to standardize is [here](https://www.genomeweb.com/informatics/will-bioinformatics-professionals-embrace-mpeg-g-data-compression-standard?utm_source=addthis_shares#.XcwmeiO9qjW.twitter).
+[^2]: One such example of an organization trying to standardize is [here](https://www.genomeweb.com/informatics/will-bioinformatics-professionals-embrace-mpeg-g-data-compression-standard).

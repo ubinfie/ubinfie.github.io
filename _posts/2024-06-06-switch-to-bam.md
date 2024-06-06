@@ -14,6 +14,7 @@ contributors:
 reviewers:
   - pmenzel
   - hexylena
+last_modified_at: 2024-06-07
 ---
 
 uBAM is a strictly better storage format for your sequencing data, and you should switch to it today.

@@ -8,11 +8,11 @@ layout: default
 		<div class="post-meta">
 			<div style="display: flex; justify-content: space-between">
 			<time class="dt-published" datetime="{{ page.published | date_to_xmlschema }}" itemprop="datePublished">
-			Published: {{ page.published | date: "%b %-d, %Y" }}
+			Published: {{ page.published | date: "%Y %b %d %H:%M" }}
 			</time>
 			{% if page.modified != page.published %}
 			<time class="dt-published" datetime="{{ page.modified | date_to_xmlschema }}" itemprop="dateUpdated">
-			Updated: {{ page.modified }}
+			Updated: {{ page.modified | date: "%Y %b %d %H:%M" }}
 			</time>
 			{% endif %}
 			<span>

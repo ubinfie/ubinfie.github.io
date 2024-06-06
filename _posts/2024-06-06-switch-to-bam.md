@@ -15,6 +15,10 @@ reviewers:
   - hexylena 
 ---
 
+uBAM is a strictly better storage format for your sequencing data, and you should switch to it today.
+
+## Background
+
 It has been over 14 years since the formalization of the FASTQ format ({% cite Cock2009 %}),
 which describes sequences and their quality scores.
 For paired end reads, sequences are encoded in separate files, usually called R1 and R2 [^1].

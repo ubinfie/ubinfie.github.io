@@ -3,19 +3,19 @@ layout: default
 ---
 <article class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title | escape }}</h1>
-  </header>
+  <h1 class="post-title">{{ page.title | escape }}</h1>
 
   <div class="post-content">
     {{ content }}
   </div>
 
+  <div id="endmatter">
   {% if page.cited %}
   <div class="citations">
 	<h2 id="references">References</h2>
 	{% bibliography --cited %}
   </div>
   {% endif %}
+  </div>
 
 </article>

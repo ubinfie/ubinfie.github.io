@@ -5,29 +5,37 @@ layout: default
 	<h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
 	<header class="post-header">
 		<div class="post-meta">
-			<div style="display: flex; justify-content: space-between">
+			<div class="meta-title">Published</div>
 			<time class="dt-published" datetime="{{ page.published | date_to_xmlschema }}" itemprop="datePublished">
-			Published: {{ page.published | date: "%Y %b %d %H:%M" }}
+			{{ page.published | date: "%Y %b %d %H:%M" }}
 			</time>
 			{% if page.modified != page.published %}
+			<div class="meta-title">Updated</div>
 			<time class="dt-published" datetime="{{ page.modified | date_to_xmlschema }}" itemprop="dateUpdated">
-			Updated: {{ page.modified | date: "%Y %b %d %H:%M" }}
+			{{ page.modified | date: "%Y %b %d %H:%M" }}
 			</time>
 			{% endif %}
+
+			<div class="meta-title">Revision</div>
 			<span>
-			Revision {{ page.revision }}
+			{{ page.revision }}
 			</span>
 
-			<div id="post-tags">
+			<div class="meta-title">Reviewers</div>
+			<ul style="list-style: none; margin-left: 0; margin-bottom: 0">
+				{% for reviewer in page.reviewers %}
+				<li>{% include contributor-badge-inline.html id=reviewer clean=true %}</li>
+				{% endfor %}
+			</ul>
+
+			<div id="post-tags" class="meta-title">
+				Tagged
+			</div>
 			{% if page.tags %}
-			<span class="text-muted">Tagged:</span>
 			{% for tag in page.tags %}
 			<a href="{{ site.baseurl }}/tag/{{ tag | slugify }}" class="tag">{{ tag }}</a>
-			{%- if forloop.last == false %}, {% endif %}
 			{% endfor %}
 			{% endif %}
-			</div>
-			</div>
 		</div>
 	</header>
 	

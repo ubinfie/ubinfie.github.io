@@ -125,6 +125,17 @@ article {
 	.post-content { grid-area: Main; }
 	.post-author { grid-area: Author; }
 	#endmatter  { grid-area: Endmatter; }
+	.post-meta {
+		display: flex;
+		flex-direction: column;
+
+		div.meta-title:not(:first-child) {
+			margin-top: 0.5em;
+		}
+		div.meta-title{
+			font-size: 1.2em;
+		}
+	}
 
 	.post-author { display: flex; flex-direction: row; align-items: center; }
 	#post-contributions {

@@ -191,5 +191,7 @@ and [Lyve-SET](https://github.com/lskatz/lyve-SET/), they do not natively read u
 I wish I could say that I will address this right away, but with all my other responsibilities, it will be further down the road.
 Therefore we can say from our own observations and personal experience, there is some work up ahead to get us moved over to uBAM files!
 
-[^1] To maintain focus in this article, I will gloss past interleaved reads.
-[^2] One such example of an organization trying to standardize is [here](https://www.genomeweb.com/informatics/will-bioinformatics-professionals-embrace-mpeg-g-data-compression-standard?utm_source=addthis_shares#.XcwmeiO9qjW.twitter).
+### Footnotes
+
+[^1]: To maintain focus in this article, I will gloss past interleaved reads.
+[^2]: One such example of an organization trying to standardize is [here](https://www.genomeweb.com/informatics/will-bioinformatics-professionals-embrace-mpeg-g-data-compression-standard?utm_source=addthis_shares#.XcwmeiO9qjW.twitter).

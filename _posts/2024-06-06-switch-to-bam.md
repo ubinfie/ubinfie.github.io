@@ -5,15 +5,19 @@ tags:
   - BAM
   - uBAM
   - FASTQ
-  - file formats 
+  - file formats
 contributors:
   - lskatz
   - SeanSierra-Patev
   - dbtara
 reviewers:
   - pmenzel
-  - hexylena 
+  - hexylena
 ---
+
+uBAM is a strictly better storage format for your sequencing data, and you should switch to it today.
+
+## Background
 
 It has been over 14 years since the formalization of the FASTQ format ({% cite Cock2009 %}),
 which describes sequences and their quality scores.
@@ -187,5 +191,7 @@ and [Lyve-SET](https://github.com/lskatz/lyve-SET/), they do not natively read u
 I wish I could say that I will address this right away, but with all my other responsibilities, it will be further down the road.
 Therefore we can say from our own observations and personal experience, there is some work up ahead to get us moved over to uBAM files!
 
-[^1] To maintain focus in this article, I will gloss past interleaved reads.
-[^2] One such example of an organization trying to standardize is [here](https://www.genomeweb.com/informatics/will-bioinformatics-professionals-embrace-mpeg-g-data-compression-standard?utm_source=addthis_shares#.XcwmeiO9qjW.twitter).
+### Footnotes
+
+[^1]: To maintain focus in this article, I will gloss past interleaved reads.
+[^2]: One such example of an organization trying to standardize is [here](https://www.genomeweb.com/informatics/will-bioinformatics-professionals-embrace-mpeg-g-data-compression-standard).

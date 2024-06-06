@@ -5,6 +5,7 @@ contributors:
 - ammaraziz
 reviewers:
 - hexylena
+- happykhan
 ---
 
 This blog was inspired by a question on gamification of bioinformatics. So buckle up as we look at a wide range of very cool educational tools and projects!
@@ -25,8 +26,10 @@ Resource | About
 Leaving the terminal and moving to bioinformatics itself, there are other interactive resources that can make learning a bit more fun such as:
 
 - [TeachEnG - Illinois Unversity](https://teacheng.illinois.edu/), which provides a collection of interactive web-based games for learning sequence alignment, dot plots and phylogenetic trees.
-- [The Great Clade Race - Zombie Island Edition](https://serc.carleton.edu/teachearth/activities/238347.html),
-learn cladistics theory through a fun game zombie game. This is particularly interesting as it's more DnD-like.
+- [The Great Clade Race - Zombie Island Edition](https://serc.carleton.edu/teachearth/activities/238347.html), learn cladistics theory through a fun game zombie game. This is particularly interesting as it's more DnD-like.
+- [SQL Murder Mystery](https://github.com/NUKnightLab/sql-mysteries), inspired by a [CLI version of the same](https://github.com/veltman/clmystery) allows students to explore a hypothetical police database with information like location checkins and license plate data to eliminate suspects and identify the murderer. (available as a third party [jupyter notebook](https://training.galaxyproject.org/training-material/topics/data-science/tutorials/sql-game/data-science-sql-game.ipynb))
+
+
 
 ## Bioinformatics in the Browser
 

@@ -5,14 +5,14 @@ tags:
   - BAM
   - uBAM
   - FASTQ
-  - file formats 
+  - file formats
 contributors:
   - lskatz
   - SeanSierra-Patev
   - dbtara
 reviewers:
   - pmenzel
-  - hexylena 
+  - hexylena
 ---
 
 uBAM is a strictly better storage format for your sequencing data, and you should switch to it today.

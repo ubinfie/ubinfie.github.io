@@ -1,6 +1,7 @@
 ---
 layout: post
 title: What does it take to switch over to BAM from FASTQ?
+image: /assets/images/ubam-gather-round.png
 tags:
   - BAM
   - uBAM
@@ -16,6 +17,8 @@ reviewers:
 ---
 
 uBAM is a strictly better storage format for your sequencing data, and you should switch to it today.
+
+{% link assets/images/switch-to-bam_gather-round.png %}
 
 ## Background
 
@@ -190,6 +193,8 @@ For some of my own popular software such as
 and [Lyve-SET](https://github.com/lskatz/lyve-SET/), they do not natively read uBAM files!
 I wish I could say that I will address this right away, but with all my other responsibilities, it will be further down the road.
 Therefore we can say from our own observations and personal experience, there is some work up ahead to get us moved over to uBAM files!
+
+{% link assets/images/switch-to-bam_scroll-of-truth.jpg %}
 
 ### Footnotes
 

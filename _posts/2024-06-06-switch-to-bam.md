@@ -18,7 +18,7 @@ reviewers:
 
 uBAM is a strictly better storage format for your sequencing data, and you should switch to it today.
 
-{% link assets/images/switch-to-bam_gather-round.png %}
+![claymation style people sit on the grass around a large computer with ai generated text displayed. UBAM is visible in the text.]({% link assets/images/switch-to-bam_gather-round.png %})
 
 ## Background
 
@@ -194,7 +194,7 @@ and [Lyve-SET](https://github.com/lskatz/lyve-SET/), they do not natively read u
 I wish I could say that I will address this right away, but with all my other responsibilities, it will be further down the road.
 Therefore we can say from our own observations and personal experience, there is some work up ahead to get us moved over to uBAM files!
 
-{% link assets/images/switch-to-bam_scroll-of-truth.jpg %}
+![scroll of truth meme, the adventurer has finally found it after 15 years, the scroll of truth, uBAM is written on the scroll. he throws it away in disgust. Nyehh!]({% link assets/images/switch-to-bam_scroll-of-truth.jpg %})
 
 ### Footnotes
 

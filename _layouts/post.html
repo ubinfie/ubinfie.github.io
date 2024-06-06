@@ -7,10 +7,18 @@ layout: default
 		<h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
 		<div class="post-meta">
 			<div style="display: flex; justify-content: space-between">
-			<time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-			{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-			{{ page.date | date: date_format }}
+			<time class="dt-published" datetime="{{ page.published | date_to_xmlschema }}" itemprop="datePublished">
+			Published: {{ page.published | date: "%b %-d, %Y" }}
 			</time>
+			{% if page.modified != page.published %}
+			<time class="dt-published" datetime="{{ page.modified | date_to_xmlschema }}" itemprop="dateUpdated">
+			Updated: {{ page.modified }}
+			</time>
+			{% endif %}
+			<span>
+			Revision {{ page.revision }}
+			</span>
+
 			<div id="post-tags">
 			{% if page.tags %}
 			<span class="text-muted">Tagged:</span>

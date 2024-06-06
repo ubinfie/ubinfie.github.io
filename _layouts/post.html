@@ -2,32 +2,52 @@
 layout: default
 ---
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-
+	<h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
 	<header class="post-header">
-		<h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
 		<div class="post-meta">
-			<div style="display: flex; justify-content: space-between">
-			<time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-			{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-			{{ page.date | date: date_format }}
+			<div class="meta-title">Published</div>
+			<time class="dt-published" datetime="{{ page.published | date_to_xmlschema }}" itemprop="datePublished">
+			{{ page.published | date: "%Y %b %d %H:%M" }}
 			</time>
-			<div id="post-tags">
+			{% if page.modified != page.published %}
+			<div class="meta-title">Updated</div>
+			<time class="dt-published" datetime="{{ page.modified | date_to_xmlschema }}" itemprop="dateUpdated">
+			{{ page.modified | date: "%Y %b %d %H:%M" }}
+			</time>
+			{% endif %}
+
+			<div class="meta-title">Revision</div>
+			<span>
+			{{ page.revision }}
+			</span>
+
+			<div class="meta-title">Reviewers</div>
+			<ul style="list-style: none; margin-left: 0; margin-bottom: 0">
+				{% for reviewer in page.reviewers %}
+				<li>{% include contributor-badge-inline.html id=reviewer clean=true %}</li>
+				{% endfor %}
+			</ul>
+
+			<div id="post-tags" class="meta-title">
+				Tagged
+			</div>
 			{% if page.tags %}
-			<span class="text-muted">Tagged:</span>
 			{% for tag in page.tags %}
 			<a href="{{ site.baseurl }}/tag/{{ tag | slugify }}" class="tag">{{ tag }}</a>
-			{%- if forloop.last == false %}, {% endif %}
 			{% endfor %}
-			{% endif %}
-			</div>
-			</div>
-			{% if page.contributors %}
-			<span id="post-contributions">
-			{% include contributors-list.html contributors=page.contributors badge=true %}
-			</span >
 			{% endif %}
 		</div>
 	</header>
+	
+	<!-- authors -->
+	<div class="post-author">
+		{% if page.contributors %}
+		<span class="text-muted">By:</span>
+		<span id="post-contributions">
+		{% include contributors-list.html contributors=page.contributors badge=true %}
+		</span >
+		{% endif %}
+	</div>
 
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
@@ -38,6 +58,7 @@ layout: default
     {% endif %}
   </div>
 
+  <div id="endmatter">
   {% if page.cited %}
   <div class="citations">
 	<h2 id="references">References</h2>
@@ -81,6 +102,7 @@ layout: default
         async>
     </script>
   </div>
+  </div>
 </article>
 
 
@@ -88,5 +110,4 @@ layout: default
 // update the date on load, or leave fallback of 'today'
 const citationTodaysDate = new Date();
 document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>

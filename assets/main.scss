@@ -4,12 +4,11 @@
 @import "minima";
 @import "./rouge";
 
+.wrapper {
+	max-width: calc(1100px - 30px * 2);
+}
 code, .highlighter-rouge .highlight {
 	background: #fdf6e3; color: #657b83;
-}
-
-header {
-	border-bottom: 1px solid grey;
 }
 
 ul.text-list, ol.text-list {
@@ -98,4 +97,39 @@ a.external::after {
 
 details {
 	margin-bottom:1em;
+}
+
+article {
+	display: grid;
+	grid-template-rows: 3fr;
+	gap: 1em 1em;
+	grid-template-columns: repeat(6, 1fr);
+	grid-template-areas:
+	     ".   Title      Title      Title       Title       Title"
+	     ".   Author     Author     Author      Author      Meta"
+	     ".   Main       Main       Main        Main        Meta"
+	     ".   Endmatter  Endmatter  Endmatter   Endmatter   .";
+
+	@media (max-width: 768px) {
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-areas:
+		  "Title"
+		  "Author"
+		  "Main"
+		  "Meta"
+		  "Endmatter";
+	}
+
+	.post-title { grid-area: Title; }
+	.post-header { grid-area: Meta; }
+	.post-content { grid-area: Main; }
+	.post-author { grid-area: Author; }
+	#endmatter  { grid-area: Endmatter; }
+
+	.post-author { display: flex; flex-direction: row; align-items: center; }
+	#post-contributions {
+		ul.text-list {
+			margin-bottom: 0;
+		}
+	}
 }

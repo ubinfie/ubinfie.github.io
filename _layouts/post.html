@@ -2,9 +2,8 @@
 layout: default
 ---
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-
+	<h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
 	<header class="post-header">
-		<h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
 		<div class="post-meta">
 			<div style="display: flex; justify-content: space-between">
 			<time class="dt-published" datetime="{{ page.published | date_to_xmlschema }}" itemprop="datePublished">
@@ -29,13 +28,18 @@ layout: default
 			{% endif %}
 			</div>
 			</div>
-			{% if page.contributors %}
-			<span id="post-contributions">
-			{% include contributors-list.html contributors=page.contributors badge=true %}
-			</span >
-			{% endif %}
 		</div>
 	</header>
+	
+	<!-- authors -->
+	<div class="post-author">
+		{% if page.contributors %}
+		<span class="text-muted">By:</span>
+		<span id="post-contributions">
+		{% include contributors-list.html contributors=page.contributors badge=true %}
+		</span >
+		{% endif %}
+	</div>
 
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
@@ -46,6 +50,7 @@ layout: default
     {% endif %}
   </div>
 
+  <div id="endmatter">
   {% if page.cited %}
   <div class="citations">
 	<h2 id="references">References</h2>
@@ -89,6 +94,7 @@ layout: default
         async>
     </script>
   </div>
+  </div>
 </article>
 
 
@@ -96,5 +102,4 @@ layout: default
 // update the date on load, or leave fallback of 'today'
 const citationTodaysDate = new Date();
 document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>

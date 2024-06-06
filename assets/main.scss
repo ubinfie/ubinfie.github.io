@@ -4,6 +4,25 @@
 @import "minima";
 @import "./rouge";
 
+* {
+	font-family: "Recursive", sans-serif;
+	font-weight: 370;
+}
+h1 {
+	font-variation-settings: "CASL" 0.200, "CRSV" 0;
+	font-weight: 500;
+}
+h2 {
+	font-variation-settings: "CASL" 0.400, "CRSV" 0.2;
+	font-weight: 450;
+}
+h3 {
+	font-variation-settings: "CASL" 0.600, "CRSV" 0.4;
+	font-weight: 400;
+}
+pre, code, kbd {
+	font-variation-settings: "MONO" 1, "CASL" 1, "CRSV" 0;
+}
 .wrapper {
 	max-width: calc(1100px - 30px * 2);
 }

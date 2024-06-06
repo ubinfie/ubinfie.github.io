@@ -121,7 +121,7 @@ MLST software usually takes FASTA or FASTQ files.
 At this point there are a million classic MLST software packages and for some additional information,
 please check out {% cite Page2017 %}.
 For whole genome MLST software tools, we could also not find any packages that natively read uBAM.
-Please see [@lskatz's previous blog post](https://lskatz.github.io/posts/2023/04/09/wgMLST.html) for an in depth view into three of them.
+Please see [lskatz's previous blog post](https://lskatz.github.io/posts/2023/04/09/wgMLST.html) for an in depth view into three of them.
 
 ### Sketches
 

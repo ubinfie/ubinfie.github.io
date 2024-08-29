@@ -206,8 +206,65 @@ This is often sufficient for PyPi Python and many R packages (respectively).
      - other metadata information such as the DOI identifier of any associated publication the software may have.
      - Other identifiers of the software.
 
-   ![A relatively simple example conda recipe example for Centrifuge, based on the descriptions above]({% link assets/images/2024-08-14-bioconda-guide/bioconda-guide-centrifugemeta.png %})
-   _A relatively simple example conda recipe example for Centrifuge, based on the descriptions above._
+   An example of a `meta.yaml` is as follows:
+
+   {% raw %}
+
+   ```yaml
+   {% set name = "centrifuge" %}
+   {% set version = "1.0.4.1" %}
+
+   package:
+   name: {{ name|lower }}
+   version: {{ version }}
+
+   build:
+   number: 2
+   skip: true # [osx]
+   run_exports:
+      - {{ pin_subpackage("centrifuge", max_pin="x.x") }}
+
+   source:
+   url: https://github.com/DaehwanKimLab/centrifuge/archive/refs/tags/v{{ version }}.tar.gz
+   sha256: 638cc6701688bfdf81173d65fa95332139e11b215b2d25c030f8ae873c34e5cc
+   patches:
+      - centrifuge-linux-aarch64.patch # [linux and aarch64]
+
+   requirements:
+   build:
+      - make
+      - {{ compiler('cxx') }}
+   host:
+      - zlib
+   run:
+      - zlib
+      - perl
+      - wget
+      - tar
+      - python
+
+   test:
+   commands:
+      - centrifuge --help
+
+   about:
+   home: https://github.com/DaehwanKimLab/centrifuge
+   license: GPL-3.0-only
+   license_file: LICENSE
+   license_family: GPL3
+   summary: 'Classifier for metagenomic sequences. Supports classifier scripts'
+
+   extra:
+   additional-platforms:
+      - linux-aarch64
+   identifiers:
+      - biotools:Centrifuge
+      - doi:10.1101/gr.210641.116
+   ```
+
+   {% endraw %}
+
+   _A relatively simple example [conda recipe example for Centrifuge](https://github.com/bioconda/bioconda-recipes/blob/b95f209b980339300b2fd84514a4912f6ad495e9/recipes/centrifuge/meta.yaml), based on the descriptions above._
 
 4. Lint our `meta.yaml` for any errors pertaining to Bioconda [linting guidelines](https://bioconda.github.io/contributor/linting.html) (make sure we're in the root of the repository!).
 
@@ -217,7 +274,7 @@ This is often sufficient for PyPi Python and many R packages (respectively).
 
    If there are any errors, I recommend fixing them before proceeding, as getting the same errors during the Bioconda GitHub CI takes a long time (as we'll see later).
    In particular, the `missing_run_exports` is a new linting check that has been added recently, that many people are not aware of.
-   To solve this one, look at recently merged recipes, as the PR template describes how to set this under 'Instructions for avoiding API, ABI, and CLI breakage issues', such as on this [][`pango-collapse` PR](https://github.com/bioconda/bioconda-recipes/pull/50377).
+   To solve this one, look at recently merged recipes, as the PR template describes how to set this under 'Instructions for avoiding API, ABI, and CLI breakage issues', such as on this [`pango-collapse` PR](https://github.com/bioconda/bioconda-recipes/pull/50377).
 
 ### Writing a build script (optional)
 
@@ -238,9 +295,35 @@ The purpose of this script varies, so I can't give a precise definition or expli
 
 - Tools that may require other files to be copied to other directories in the conda environment (e.g. databases).
 
-![A relatively simple example build.sh script example for Centrifuge, based on the descriptions above. Here it includes both `make install` compilation examples with Bioconda C++ environment variables and copying of the additional auxiliary scripts to the `bin/` directory.]({% link assets/images/2024-08-14-bioconda-guide/bioconda-guide-centrifugebuild.png %})
+You can see an example of a `build.sh` script below:
 
-_A relatively simple example `build.sh` script example for Centrifuge, based on the descriptions above. Here it includes both `make install` compilation examples with Bioconda C++ environment variables and copying of the additional auxiliary scripts to the `bin/` directory._
+```bash
+#!/bin/bash
+
+set -xe
+
+export LDFLAGS="-L$PREFIX/lib"
+export CPATH=${PREFIX}/include
+
+mkdir -p $PREFIX/bin
+
+case $(uname -m) in
+    aarch64)
+        CXXFLAGS="${CXXFLAGS} -fsigned-char"
+        ARCH_OPTS="SSE_FLAG= POPCNT_CAPABILITY=0"
+        ;;
+    *)
+        ARCH_OPTS=""
+        ;;
+esac
+
+make -j ${CPU_COUNT} CXX=$CXX RELEASE_FLAGS="$CXXFLAGS" ${ARCH_OPTS}
+make install prefix=$PREFIX
+
+cp evaluation/{centrifuge_evaluate.py,centrifuge_simulate_reads.py} $PREFIX/bin
+```
+
+_A relatively simple example [`build.sh` script for Centrifuge](https://github.com/bioconda/bioconda-recipes/blob/b95f209b980339300b2fd84514a4912f6ad495e9/recipes/centrifuge/build.sh), based on the descriptions above. Here it includes both `make install` compilation examples with Bioconda C++ environment variables and copying of the additional auxiliary scripts to the `bin/` directory._
 
 However, as always, check other tools/packages for examples.
 

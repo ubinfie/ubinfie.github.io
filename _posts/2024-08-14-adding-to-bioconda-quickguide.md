@@ -216,6 +216,8 @@ This is often sufficient for PyPi Python and many R packages (respectively).
    ```
 
    If there are any errors, I recommend fixing them before proceeding, as getting the same errors during the Bioconda GitHub CI takes a long time (as we'll see later).
+   In particular, the `missing_run_exports` is a new linting check that has been added recently, that many people are not aware of.
+   To solve this one, look at recently merged recipes, as the PR template describes how to set this under 'Instructions for avoiding API, ABI, and CLI breakage issues', such as on this [][`pango-collapse` PR](https://github.com/bioconda/bioconda-recipes/pull/50377).
 
 ### Writing a build script (optional)
 

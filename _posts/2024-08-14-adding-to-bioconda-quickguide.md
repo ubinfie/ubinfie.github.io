@@ -49,7 +49,7 @@ _I would like to thank George Bouras (@gbouras13) for prompting the formalisatio
 conda create -n bioconda-build -c conda-forge -c bioconda conda-build bioconda-utils greyskull
 conda activate bioconda-build
 
-## Clone repo and make branch
+## Clone repo of your fork of https://github.com/bioconda/bioconda-recipes and make branch
 git clone <your-forked-bioconda-recipes-repo-address>
 git switch -c add-<toolname>
 
@@ -90,12 +90,12 @@ docker run -it <image_id_from_docker_images_command>
 
 ## Prerequisites
 
-1. Make a fork of the [bioconda-recipes](https://github.com/bioconda/bioconda-recipes/) GitHub repository, and clone this to our local machine.
+1. Make a fork of the [bioconda-recipes](https://github.com/bioconda/bioconda-recipes/) GitHub repository, and clone this to our local machine [^3].
 
 2. Install on our local machine the following software:
 
    - `conda` itself
-     - I used to use [miniconda](https://docs.anaconda.com/miniconda/miniconda-other-installer-links/), but now switching to [miniforge](https://conda-forge.org/miniforge/) due to licensing issues [^3]
+     - I used to use [miniconda](https://docs.anaconda.com/miniconda/miniconda-other-installer-links/), but now switching to [miniforge](https://conda-forge.org/miniforge/) due to licensing issues [^4]
    - Bioconda configured as a source channel (see [bioconda documentation](https://bioconda.github.io/#usage))
    - The following conda packages:
 
@@ -125,7 +125,7 @@ docker run -it <image_id_from_docker_images_command>
 
    - Bioconda is for bioinformatics software.
    - If the tool is a more generic tool or for a different domain, we may want to consider adding it to conda-forge [^2].
-   - One common caveat to this is R packages - if our biology-related package is on CRAN ([https://cran.r-project.org/](https://cran.r-project.org/)), it should go on conda-forge, if it's on bioconductor ([https://www.bioconductor.org/](https://www.bioconductor.org/)) it should go on bioconductor (if it's not already there).
+   - One common caveat to this is R packages - if our biology-related package is on CRAN ([https://cran.r-project.org/](https://cran.r-project.org/)), it should go on conda-forge, if it's on Bioconductor ([https://www.bioconductor.org/](https://www.bioconductor.org/)) it should go on Bioconda (if it's not already there).
 
 2. Check: _Does the software have a compatible license?_ (i.e., allows redistribution)
 
@@ -155,7 +155,7 @@ This is often sufficient for PyPi Python and many R packages (respectively).
 
       ```bash
       cd recipes/
-      greyskull <pypi/cran> > <toolname>/meta.yaml
+      greyskull <pypi/cran> <toolname>
       ```
 
    2. In all other cases, make a new directory in the `recipes/` directory, named after the software we wish to add.
@@ -199,7 +199,7 @@ This is often sufficient for PyPi Python and many R packages (respectively).
      - If `--help` ends with a non-`0` code, we can try `grep`ing for a string in the help message.
    - `about:`
      - URL of such as source code repository or documentation home page.
-     - License type [^4].
+     - License type [^5].
      - Corresponding license file name as in the tarball.
      - A short one-sentence summary and/or long-form description of the software.
    - `extras:`
@@ -212,14 +212,14 @@ This is often sufficient for PyPi Python and many R packages (respectively).
 4. Lint our `meta.yaml` for any errors pertaining to Bioconda [linting guidelines](https://bioconda.github.io/contributor/linting.html) (make sure we're in the root of the repository!).
 
    ```bash
-   bioconda-utils lint recipes/ --packages pathphynder
+   bioconda-utils lint recipes/ --packages <toolname>
    ```
 
    If there are any errors, I recommend fixing them before proceeding, as getting the same errors during the Bioconda GitHub CI takes a long time (as we'll see later).
 
 ### Writing a build script (optional)
 
-For some tools, we may also need to create a `build.sh` script [^5] in the same directory alongside the `meta.yaml` file.
+For some tools, we may also need to create a `build.sh` script [^6] in the same directory alongside the `meta.yaml` file.
 
 This is simply a shell script that is run during the build process after cloning of the source code.
 The commands executed in this script are run in a specific build environment.
@@ -256,10 +256,10 @@ The `$PREFIX` variable corresponds to the the root of the conda environment that
 You can explore our own conda environments to see what the `$PREFIX` looks like by running `conda env list` to see all of our own conda environments, and changing into the one of the directory listed in there.
 They often will look very similar to Unix root directories, with folders such as `etc/`, `bin/`, `lib/`, `share/`, etc.
 for example, if we have an executable or scripts that need to go into `bin/`, we must copy this into `$PREFIX/bin`.
-For some tools we may have to copy other files into other directories, such as databases [^6], but this is less common.
+For some tools we may have to copy other files into other directories, such as databases [^7], but this is less common.
 
 Another tricky thing is compiling of C++ code, which can be a bit of a pain.
-For reasons [^7], we need to use specific variables that point to the non-standard (it seems) places that conda stores its libraries and headers.
+For reasons [^8], we need to use specific variables that point to the non-standard (it seems) places that conda stores its libraries and headers.
 These are described [here](https://bioconda.github.io/contributor/guidelines.html#c-c), and in particular for [zlib](https://bioconda.github.io/contributor/troubleshooting.html#zlib-errors).
 You often will need to patch the `make` files and other compilation related scripts to use these variables, and also to use the `--prefix=$PREFIX` flag when running `make install`.
 
@@ -365,16 +365,17 @@ If none of this solves your issue, we can ask for help from the Bioconda communi
 
 ### Opening the Pull Request
 
-Once we're happy with our recipe, we can open a pull request on the main `bioconda-recipes` repository on GitHub
+Once we're happy with our recipe, we can open a pull request on the main `bioconda-recipes` repository on GitHub.
 
 We can do this (if you're not too familiar with GitHub), by:
 
-1. Going to the main `bioconda-recipes` repository on GitHub.
-2. Switch to the Pull Requests tab.
-3. Press the green 'New Pull Request' button.
-4. In the top bar use the dropdowns to select our fork and branch (which should then be going _into_ `bioconda/bioconda-recipes` and the `master` branch).
-5. Make sure the title of the pull request is follows the recommendations, typically just `Add <tool/package>` or `Update <tool/package>`.
-6. Once we open the pull request, the Bioconda CI will run.
+1. On your local repo, `git add`ing the files you've added, commit, and push.
+2. Go to the main `bioconda-recipes` repository on GitHub.
+3. Switch to the Pull Requests tab.
+4. Press the green 'New Pull Request' button.
+5. In the top bar use the dropdowns to select our fork and branch (which should then be going _into_ `bioconda/bioconda-recipes` and the `master` branch).
+6. Make sure the title of the pull request is follows the recommendations, typically just `Add <tool/package>` or `Update <tool/package>`.
+7. Once we open the pull request, the Bioconda CI will run.
 
 We can see the overall status of the checks near the bottom of the page below the 'Review required' message.
 For most builds this currently happens away from GitHub on Microsoft Azure, and can take a while (sometimes up to 1 hour!) to complete (so be patient).
@@ -461,8 +462,9 @@ Worst comes to worst, you can always ask the very friendly Bioconda team on the 
 ## Footnotes
 
 [^2]: Note that conda-forge has a different system for adding packages!
-[^3]: Various Bioconda documentation pages say we should use `mamba`, but recent versions of conda include `lib-mamba` by default, so generally we can use standard `conda`.
-[^4]: Possibly from a fixed list, and how to format these, I don't know... I just copy and paste from other recipes.
-[^5]: I've noticed in a few more recent recipes that these commands can go within the `meta.yaml` itself [in an entry](https://docs.conda.io/projects/conda-build/en/stable/resources/define-metadata.html#script) called `script:` under `build:`, but I guess this only works for very simple commands...
-[^6]: Even though I absolutely HATE this, as often it leads to gigantic multi-gigabyte conda environments which we can't use on small CI runners. Give me the choice where to store my databases already! Don't force me to place them in a specific place /rant.
-[^7]: That I've never found a good explanation or documentation for.
+[^3]: You can do a shallow clone `git clone --depth 1`, to make the size of the cloned repo smaller on your machine. Thanks to @Wytamma for the tip!
+[^4]: Various Bioconda documentation pages say we should use `mamba`, but recent versions of conda include `lib-mamba` by default, so generally we can use standard `conda`. But if you're having problems with things being very slow, try switching to `mamba`.
+[^5]: Possibly from a fixed list, and how to format these, I don't know... I just copy and paste from other recipes.
+[^6]: I've noticed in a few more recent recipes that these commands can go within the `meta.yaml` itself [in an entry](https://docs.conda.io/projects/conda-build/en/stable/resources/define-metadata.html#script) called `script:` under `build:`, but I guess this only works for very simple commands...
+[^7]: Even though I absolutely HATE this, as often it leads to gigantic multi-gigabyte conda environments which we can't use on small CI runners. Give me the choice where to store my databases already! Don't force me to place them in a specific place /rant.
+[^8]: That I've never found a good explanation or documentation for.

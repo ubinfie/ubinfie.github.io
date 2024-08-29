@@ -13,13 +13,13 @@ contributors:
 
 This post aims to provide an (opinionated) guide to adding a tool to Bioconda, and how to debug Bioconda and the associated Biocontainer builds.
 
-The [conda package manager](https://docs.conda.io/en/latest/) combined the [Bioconda](https://bioconda.github.io/) repository has become a _de facto_ gold-standard way for distribute bioinformatics software ({% cite Gruening2018 %}).
+The [conda package manager](https://docs.conda.io/en/latest/) combined with the [Bioconda](https://bioconda.github.io/) repository has become a _de facto_ gold-standard way for distributing bioinformatics software ({% cite Gruening2018 %}).
 The associated [Biocontainer](https://biocontainers.pro/) project serves to provide complementary Docker and Singularity containers from the same conda ({% cite Da_Veiga_Leprevost2017 %}).
 
-While the Bioconda team has made a huge amount of impressive infrastructure to make adding our bioinformatic tools and packages to the repository as easy as possible, the documentation is lacking at points.
+While the Bioconda team has provided a huge amount of impressive infrastructure to make adding our bioinformatic tools and packages to the repository as easy as possible, the documentation is lacking at points.
 In particular, while the [Bioconda documentation](https://bioconda.github.io/contributor/index.html) explains nicely how to contribute to the repository, I personally found that it misses out on the important part of how to make what we _actually_ will add i.e, how to _make_ the [conda recipe](https://docs.conda.io/projects/conda-build/en/latest/concepts/recipe.html) specifically for Bioconda [^1]. Another thing I found particularly tricky is how to debug the build process if things go wrong.
 
-I hope to here to provide guidance, based on my personal experience, to people who are interested to adding their software to Bioconda but maybe felt it too overwhelming to start.
+I hope to here provide guidance, based on my personal experience, to people who are interested in adding their software to Bioconda but maybe felt it too overwhelming to start.
 Hopefully it will provide sufficient 'hand-holding' to get us through the process, after which it's just 'rinse and repeat'!
 
 The main sections of this post are:
@@ -164,7 +164,7 @@ This is often sufficient for PyPi Python and many R packages (respectively).
       mkdir recipes/<toolname>
       ```
 
-      The name of the software must formatted in all lower case, and with only letters, numbers, and hyphens.
+      The name of the software must be formatted in all lower case, and with only letters, numbers, and hyphens.
 
       If our package is an R package, we should prefix the name with `r-`.
 
@@ -199,7 +199,7 @@ This is often sufficient for PyPi Python and many R packages (respectively).
      - If `--help` ends with a non-`0` code, we can try `grep`ing for a string in the help message.
    - `about:`
      - URL of such as source code repository or documentation home page.
-     - License type (possibly from a fixed list?) [^4].
+     - License type [^4].
      - Corresponding license file name as in the tarball.
      - A short one-sentence summary and/or long-form description of the software.
    - `extras:`
@@ -228,7 +228,7 @@ The purpose of this script varies, so I can't give a precise definition or expli
 
 - Tools that need to be compiled from source code (e.g. C++ tools and `make install`).
 - Tools that are simply just an executable binary that needs to be linked or copied to the `bin/` of the eventual conda environment (e.g. Java `.jar` files).
-- Tools that have additional 'auxiliary' or 'helper' scripts outside of (and in addition to) the main tool that also need to also copied to the `bin/` of the eventual conda environment.
+- Tools that have additional 'auxiliary' or 'helper' scripts outside of (and in addition to) the main tool that also need to be copied to the `bin/` of the eventual conda environment.
 - Patching files to allow them to run (often for simple patching with e.g. `sed`, more complex patching can use a git style `patch` file specified in the `meta.yaml`).
 
   - Patching can be stuff like adding a `shebang` at the top of a file
@@ -271,12 +271,12 @@ Once we think we've got our `meta.yaml` and `build.sh` (if needed) files ready, 
 
 We have two options here, either:
 
-- Open the pull request onto the main `bioconda-recipes` repository and see if it passes the tests there (slow).
 - Test it locally (less slow, but may not perfectly replicate the build).
+- Open the pull request onto the main `bioconda-recipes` repository and see if it passes the tests there (slow).
 
 If we want to just let the Bioconda CI do the testing, skip to the [next section](#opening-the-pull-request).
 
-Otherwise, in our Bioconda-build conda environment, we can run of two options (in both cases from the root directory of our `bioconda-recipes fork):
+Otherwise, in our Bioconda-build conda environment, we can run one of two options (in both cases from the root directory of our `bioconda-recipes fork):
 
 - The standard `conda build` command:
 
@@ -376,7 +376,7 @@ We can do this (if you're not too familiar with GitHub), by:
 5. Make sure the title of the pull request is follows the recommendations, typically just `Add <tool/package>` or `Update <tool/package>`.
 6. Once we open the pull request, the Bioconda CI will run.
 
-We can see the overall status of the checks near the bottom of the page below the 'Review required' message
+We can see the overall status of the checks near the bottom of the page below the 'Review required' message.
 For most builds this currently happens away from GitHub on Microsoft Azure, and can take a while (sometimes up to 1 hour!) to complete (so be patient).
 
 To get more information on the status of the CI test, and also logs, press 'details' next to one of the checks (it generally doesn't matter which one), then press the 'View more details on Azure Pipelines' link on the resulting page.
@@ -432,7 +432,7 @@ If we're updating or fixing an existing recipe, the process is similar to adding
 Note that if we use GitHub releases for our tool/package, Bioconda tries to _automatically_ update Bioconda recipes for us, so we may not need to do this manually.
 Of course, this works if there are no changes to the dependencies or tests that can cause the tests and thus the recipe building to fail.
 
-Otherwise, to manually updating or fixing a recipe:
+Otherwise, to manually update or fix a recipe:
 
 1. Make sure our `bioconda-recipes` fork is up to date with the main.
 2. Make a new branch for the update.
@@ -450,11 +450,11 @@ This guide hopefully has given you enough pointers on the steps required to make
 As with all bioinformatics and software development in general, things rarely just 'work' straight out of the box.
 My three biggest points of advice:
 
-- Always copy and paste from other simile tools or packages on the Bioconda recipes repository.
+- Always copy and paste from other similar tools or packages on the Bioconda recipes repository.
 - Take the time to read through the whole log messages (sometimes you can find critical clues hidden amongst the verbose information).
 - Take the time to go step by step trying to follow exactly what Bioconda does during it's own building on Azure with local building.
 
-I found by taking the time, I learnt very quickly common issues and how to solve them.
+I found by taking the time, I very quickly learnt common issues and how to solve them.
 
 Worst comes to worst, you can always ask the very friendly Bioconda team on the [Bioconda gitter/matrix channel](https://gitter.im/bioconda/Lobby).
 
@@ -462,7 +462,7 @@ Worst comes to worst, you can always ask the very friendly Bioconda team on the 
 
 [^2]: Note that conda-forge has a different system for adding packages!
 [^3]: Various Bioconda documentation pages say we should use `mamba`, but recent versions of conda include `lib-mamba` by default, so generally we can use standard `conda`.
-[^4]: How to format these, I don't know... I just copy and paste from other recipes.
+[^4]: Possibly from a fixed list, and how to format these, I don't know... I just copy and paste from other recipes.
 [^5]: I've noticed in a few more recent recipes that these commands can go within the `meta.yaml` itself [in an entry](https://docs.conda.io/projects/conda-build/en/stable/resources/define-metadata.html#script) called `script:` under `build:`, but I guess this only works for very simple commands...
 [^6]: Even though I absolutely HATE this, as often it leads to gigantic multi-gigabyte conda environments which we can't use on small CI runners. Give me the choice where to store my databases already! Don't force me to place them in a specific place /rant.
 [^7]: That I've never found a good explanation or documentation for.

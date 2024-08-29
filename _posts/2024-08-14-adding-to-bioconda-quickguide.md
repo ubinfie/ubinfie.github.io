@@ -40,7 +40,7 @@ _I would like to thank George Bouras (@gbouras13) for prompting the formalisatio
 
 ### Overview
 
-![Overview diagram of the steps of the steps described in this post.]({% link assets/images/2024-08-14-bioconda-guide/bioconda-guide-workflowdiagram_short.svg %})
+![Overview diagram of the steps of the steps described in this post.]({% link assets/images/2024-08-14-bioconda-guide/bioconda-guide-workflowdiagram_short_transparent.png %})
 
 ### Relevant Commands
 

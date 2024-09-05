@@ -546,6 +546,7 @@ Worst comes to worst, you can always ask the very friendly Bioconda team on the 
 
 ## Footnotes
 
+[^1]: `conda-forge` is another very useful and popular conda channel, but it is more general and not specifically for bioinformatics software, and has a different process for adding tools
 [^2]: Note that conda-forge has a different system for adding packages!
 [^3]: You can do a shallow clone `git clone --depth 1`, to make the size of the cloned repo smaller on your machine. Thanks to @Wytamma for the tip!
 [^4]: Various Bioconda documentation pages say we should use `mamba`, but recent versions of conda include `lib-mamba` by default, so generally we can use standard `conda`. But if you're having problems with things being very slow, try switching to `mamba`.

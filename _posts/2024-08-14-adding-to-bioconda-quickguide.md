@@ -11,7 +11,10 @@ contributors:
   - jfy133
 ---
 
-This post aims to provide an (opinionated) guide to adding a tool to Bioconda, and how to debug Bioconda and the associated Biocontainer builds.
+In this first part of a three part guide, this post aims to provide an (opinionated) guide to adding a tool or package to Bioconda.
+
+- _For part two of this guide, see [updating bioinformatic software on Bioconda](updating-bioconda-recipe-quickguide)_
+- _For part three of this guide, see [debugging a Bioconda build](debugging-bioconda-build-quickguide)._
 
 The [conda package manager](https://docs.conda.io/en/latest/) combined with the [Bioconda](https://bioconda.github.io/) repository has become a _de facto_ gold-standard way for distributing bioinformatics software ({% cite Gruening2018 %}).
 The associated [Biocontainer](https://biocontainers.pro/) project serves to provide complementary Docker and Singularity containers from the same conda ({% cite Da_Veiga_Leprevost2017 %}).
@@ -375,78 +378,12 @@ Otherwise, in our Bioconda-build conda environment, we can run one of two option
   bioconda-utils build --docker --mulled-test --packages <toolname>
   ```
 
-In both cases, these commands will dump a huge amount of output to the terminal, and if it fails, we'll have to trawl through it to debug it.
+Hopefully, if everything worked correctly the first time, we should have a successful build and we can proceed with submitting to bioconda.
+If something goes wrong, see [part 3 of this guide](debugging-bioconda-build-quickguide) on debugging the Bioconda builds.
+
+Regardless, in both local build approaches, these commands will dump a huge amount of output to the terminal, and if it fails, we'll have to trawl through it to debug it.
 
 I generally find the `bioconda-utils` method is slightly easier to debug because of the use of colours in the logging, with added benefit of making it easier to check the Biocontainer Docker image that gets created, but which method is up to personal preference.
-
-### Debugging recipe building
-
-If we have issues with the build process, we can try to debug it in the following ways.
-
-1. Read carefully the very long log that gets generated from bottom to top.
-   While tedious, often we can find the issue there, such as if the `test` command didn't work correctly.
-
-2. Inspect the resulting environment itself.
-
-   We can do this by changing into the `conda-bld/` directory of our Bioconda build conda environment (called here `bioconda-bld/`).
-
-   Then we can try installing the environment but specifying that the conda _channel_ to take the software from is the directory we're in with `-c ./` (if we miss this, we'll install existing versions of the tool if they exist, or have an error that conda can't find the tool):
-
-   ```bash
-   cd /<path>/<to>/<conda-install>/envs/<toolname>/conda-bld/linux-64
-   conda create -n <debugging-env-name> -c ./ <toolname_as_in_recipe>
-   ```
-
-3. Run the build process again but keeping all work directories, and investigate these (if the error message refers to one of those directories):
-
-   ```bash
-   conda build recipes/<toolname> --keep-old-work
-   ```
-
-4. If build with the `bioconda-utils` command, and this fails (and we've used the `--docker` command), and the error isn't obvious, we can deep dive into the Docker container that was created by the build process (i.e. recreating the 'exact' environment Bioconda itself will use), and follow the _exact_ steps the build process goes through:
-
-   1. The error will produce a `COMMAND FAILED` message with a Docker command.
-      It will look something like:
-
-      ```bash
-      docker run -t --net host --rm -v /tmp/tmp<randomletters>/build_script.bash:/opt/build_script.bash -v /<path>/<to>/<conda-install>/envs/<toolname>/conda-bld/:/opt/host-conda-bld -v /<path>/<to>/<recipes_local_clone>/recipes/<tool_name>:/opt/recipe -e LC_ADDRESS=en_GB.UTF-8 -e LC_NAME=en_GB.UTF-8 -e LC_MONETARY=en_GB.UTF-8 -e LC_PAPER=en_GB.UTF-8 -e LANG=en_GB.UTF-8 -e LC_IDENTIFICATION=en_GB.UTF-8 -e LC_TELEPHONE=en_GB.UTF-8 -e LC_MEASUREMENT=en_GB.UTF-8 -e LC_TIME=en_GB.UTF-8 -e LC_NUMERIC=en_GB.UTF-8 -e HOST_USER_ID=1000 quay.io/bioconda/bioconda-utils-build-env-cos7:2.11.1 bash
-      ```
-
-   2. Copy and paste that command, but replace `docker run -t` to `docker run -it`.
-      This will open an 'interactive' session so we can play around within the container.
-
-      ⚠ Basic tools such as `vim` are not in there! So depending on our preference, we will have to exit the Docker container to edit our `meta.yaml` or `build.sh` file each time, and re-run the command/ 3. Once in, there are two main locations of interest:
-
-      - `/opt/recipe`: contains our entire recipe directory (e.g. with `meta.yaml` and `build.sh`).
-      - `/opt/build_script.sh`: the commands that Bioconda actually run during the build process.
-
-   3. To carry out the manual debugging, `cat build_script.sh` and run one-by-one each command in that file.
-      Alternatively, copy and paste the entire contents, but DO NOT run the `set -eo pipefile` command at the top (this will exit the Docker container if something goes wrong).
-   4. The first command I found commonly resulted in errors is:
-
-      ```bash
-      conda mambabuild -c file:///opt/host-conda-bld --override-channels --no-anaconda-upload -c conda-forge -c bioconda -c defaults -e /opt/host-conda-bld/conda_build_config_0_-e_conda_build_config.yaml -e /opt/host-conda-bld/conda_build_config_1_-e_bioconda_utils-conda_build_config.yaml /opt/recipe/meta.yaml 2>&1
-      ```
-
-      This is the primary command that runs the entire building of the recipe.
-
-   5. If step 6 fails during the `build.sh` steps (as indicated by the console log), we will want to manually execute the `build.sh` script.
-      Before we do this, we must make sure to activate the build environment (the one within which we would e.g. compile a `c++` tool):
-
-      ```bash
-      conda activate /opt/conda/conda-bld/<packagename_hash>/_build_env
-      ```
-
-      When running the commands in the `build.sh`, we may also need to manually `export` the `PREFIX` bash environment variable when dealing with `build.sh`.
-      To find this, look for the long horrible `_test_env_placehold_placehold_placehold_placehold_p<...>` directory that gets reported in the log during our initial building run.
-
-   6. To check the actual build output files, i.e., the working directory that `build.sh` is executed in:
-
-      ```bash
-      /opt/conda/conda-bld/<tool/package-name>_<random-numbers>/work
-      ```
-
-If none of this solves your issue, we can ask for help from the Bioconda community by opening a Pull Request and leaving a comment pinging @bioconda/\<team\> (replacing '\<team\>' with the respective one from the list that should come up).
 
 ### Opening the Pull Request
 
@@ -474,7 +411,7 @@ On the Azure website we should see a series of 'stages', that run in order. The 
 3. `test_osx`: that the recipe builds on a macOS system (i.e., doesn't error and the test command completes).
 
 A given stage has a completed (green tick), running (blue spinny icon), or failed (red cross) status.
-If we click on any of the stages, we should see log files that similar or identical what we would do if we were [building locally](#debugging-recipe-building) (see that section for debugging advice, if we skipped local building).
+If we click on any of the stages, we should see log files that similar or identical what we would do if we were [building locally](debugging-bioconda-build-quickguide) (see that section for debugging advice, if we skipped local building).
 
 ![Screenshot of bottom of a GitHub PR with the checks list displayed with blue 'Details' links next to each test.]({% link assets/images/2024-08-14-bioconda-guide/bioconda-guide-githubchecks.png %})
 
@@ -484,18 +421,11 @@ _Screenshot of bottom of a GitHub PR with the checks list displayed with blue 'D
 
 _Screenshot of the Microsoft Azure interface with the three (successful) Bioconda CI stages._
 
-If the CI passes, then back on GitHub we can leave a comment in our PR saying '@BiocondaBot please add label'.
-This will add a label to our PR indicating a Bioconda team member can review our recipe to ensure it matches the guidelines.
-If they give an approval, they or we can merge our PR into the main `bioconda-recipes` repository!
-We're now officially a Bioconda recipe maintainer 🎉.
+If you get errors or something goes wrong, see [part 3 of this guide](debugging-bioconda-build-quickguide) on how to locally debug the Bioconda build.
 
-Once the recipe is merged in, we can normally install the official version of our tool/package with conda within a few minutes.
-At the same time, on merging, the auto-generated Docker Biocontainer gets uploaded to the Biocontainers `quay.io` repository.
-For the Singularity version of the Docker container, this can take up to 24h before it's visible on the [Galaxy project's 'depot'](https://depot.galaxyproject.org/singularity/).
+### Test driving the docker Biocontainer (optional)
 
-### Test driving the docker Biocontainer
-
-If we used the `bioconda-utils` command to build our recipe, we can also test the Biocontainer Docker image that was generated from the conda environment that was built.
+If we used the `bioconda-utils` command to build our recipe, we can also optionally test the Biocontainer Docker image that was generated from the conda environment that was built.
 
 If we did a local build, the Docker image is already on our own machine.
 
@@ -511,27 +441,26 @@ docker run -it <image_id_from_docker_images_command>
 
 This should dump us within a shell in the container so we can test commands etc. as we would with any other Docker container.
 
-## Updating an existing tool or package recipe on Bioconda
+If something goes wrong here and you encounter issues with the build within the container, you can see [part 3 of this guide](debugging-bioconda-build-quickguide) to get tips and tricks how to manually re-build the recipe step-by-step.
+Otherwise, if you're happy you can continue to finalise the PR in the next section.
 
-If we're updating or fixing an existing recipe, the process is similar to adding a new tool, but with a few differences.
+### Finalising the PR
 
-Note that if we use GitHub releases for our tool/package, Bioconda tries to _automatically_ update Bioconda recipes for us, so we may not need to do this manually.
-Of course, this works if there are no changes to the dependencies or tests that can cause the tests and thus the recipe building to fail.
+If the CI on Microsoft Azure passes, then back on GitHub we can leave a comment in our PR saying '@BiocondaBot please add label'.
+This will add a label to our PR indicating a Bioconda team member can review our recipe to ensure it matches the guidelines.
+If they give an approval, they or we can merge our PR into the main `bioconda-recipes` repository!
+We're now officially a Bioconda recipe maintainer 🎉.
 
-Otherwise, to manually update or fix a recipe:
-
-1. Make sure our `bioconda-recipes` fork is up to date with the main.
-2. Make a new branch for the update.
-3. Edit the `meta.yaml`, `build.sh` files of the recipe with our changes.
-4. Update the build number:
-   - If it is simply _fixing_ a recipe with no version change of the tool, bump the `build_number` by `+1`.
-   - If this is a new version of the tool, set the `build_number` to `0`.
-5. Add all files, commit and push to our fork.
-6. Open the PR on `bioconda-recipes`, wait for the CI to to complete successfully, and tag for review with '@BiocondaBot please add label' as above.
+Once the recipe is merged in, we can normally install the official version of our tool/package with conda within a few minutes.
+At the same time, on merging, the auto-generated Docker Biocontainer gets uploaded to the Biocontainers `quay.io` repository.
+For the Singularity version of the Docker container, this can take up to 24h before it's visible on the [Galaxy project's 'depot'](https://depot.galaxyproject.org/singularity/).
 
 ## Conclusion
 
-This guide hopefully has given you enough pointers on the steps required to make a recipe and submit your tool/package to Bioconda, and also where to look for the most important places for debugging build failures when they occur.
+This part one of this guide hopefully has given you enough pointers on the steps required to _make_ a recipe and submit your tool/package to Bioconda.
+
+In the [second part](updating-bioconda-recipe-quickguide) of this guide, we will go through how to update an existing recipe.
+In the [third part](debugging-bioconda-build-quickguide), we will go through how to manually debug the build process if things go wrong.
 
 As with all bioinformatics and software development in general, things rarely just 'work' straight out of the box.
 My three biggest points of advice:
@@ -541,8 +470,7 @@ My three biggest points of advice:
 - Take the time to go step by step trying to follow exactly what Bioconda does during it's own building on Azure with local building.
 
 I found by taking the time, I very quickly learnt common issues and how to solve them.
-
-Worst comes to worst, you can always ask the very friendly Bioconda team on the [Bioconda gitter/matrix channel](https://gitter.im/bioconda/Lobby).
+However, if you're really stuck (even after reading the third part of this guide), you can always ask the very friendly volunteer Bioconda team on the [Bioconda gitter/matrix channel](https://gitter.im/bioconda/Lobby).
 
 ## Footnotes
 

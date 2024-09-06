@@ -68,18 +68,18 @@ Otherwise, to manually update or fix a recipe:
    {% endraw %}
 
 5. Add all files, commit and push to our fork.
-6. Open the PR on `bioconda-recipes`, wait for the CI to to complete successfully, and tag for review with '@BiocondaBot please add label' as above.
+6. Open the PR on `bioconda-recipes`, wait for the CI to to complete successfully, and tag for review with '@BiocondaBot please add label' as above. For more details see [part one of this guide](adding-to-bioconda-quickguide#opening-the-pull-request).
    - If something goes wrong and something does not complete successfully, check the hash and build numbers are correct
    - If linting goes wrong, this is typically related to a missing `run_exports` section, see the opening instructions on the [`pango-collapse` PR](https://github.com/bioconda/bioconda-recipes/pull/50377).
 
 In case something goes wrong during step 6 above, see [part three of this guide](debugging-bioconda-build-quickguide) on how to debug a Bioconda build in case something goes wrong.
+
 If the tool needs a new build procedure, see [part one of this guide](adding-to-bioconda-quickguide) for more information on how to write `build.sh` scripts.
 
 ## Conclusion
 
 This part three of this guide, we given you enough pointers for anyone to be able to update an existing Bioconda recipe.
 
-In the [second part](updating-bioconda-recipe-quickguide) of this guide, we will go through how to update an existing recipe.
 In the [third part](debugging-bioconda-build-quickguide), we will go through how to manually debug the build process if things go wrong.
 
 As with all bioinformatics and software development in general, things rarely just 'work' straight out of the box.

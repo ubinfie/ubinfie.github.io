@@ -19,7 +19,8 @@ In the third part of this three part guide, we will go through an (opinionated) 
 The [conda package manager](https://docs.conda.io/en/latest/) combined with the [Bioconda](https://bioconda.github.io/) repository has become a _de facto_ gold-standard way for distributing bioinformatics software ({% cite Gruening2018 %}).
 The associated [Biocontainer](https://biocontainers.pro/) project serves to provide complementary Docker and Singularity containers from the same conda ({% cite Da_Veiga_Leprevost2017 %}).
 
-However, during the recipe creation (see [part one](adding-to-bioconda-quickguide)) or updating process (see [part two](updating-bioconda-recipe-quickguide)), we may encounter problems or issues.
+During the recipe creation (see [part one](adding-to-bioconda-quickguide)) or updating process (see [part two](updating-bioconda-recipe-quickguide)), we may encounter problems or issues.
+
 This guide provides steps how to test both a standard `conda-build` build, but also a `bioconda-utils` process that occurs within a Docker container.
 
 ## Debugging the build with conda-build
@@ -91,4 +92,23 @@ If build with the `bioconda-utils` command, and this fails (and we've used the `
    /opt/conda/conda-bld/<tool/package-name>_<random-numbers>/work
    ```
 
+## It's still not working!
+
 If none of this solves your issue, we can ask for help from the Bioconda community by opening a Pull Request and leaving a comment pinging @bioconda/\<team\> (replacing '\<team\>' with the respective one from the list that should come up).
+
+Once everything is solved, you can proceed with the last three sections in the [part one of this guide](adding-to-bioconda-quickguide#opening-the-pull-request), to open the Pull Request and get a review.
+
+## Conclusion
+
+In this third and final part of this guide, we given you enough pointers on how debug a Bioconda recipe build both using `conda-build` and `bioconda-utils` approaches.
+
+As with all bioinformatics and software development in general, things rarely just 'work' straight out of the box.
+My three biggest points of advice:
+
+- Always copy and paste from other similar tools or packages on the Bioconda recipes repository.
+- Take the time to read through the whole log messages (sometimes you can find critical clues hidden amongst the verbose information).
+- Take the time to go step by step trying to follow exactly what Bioconda is doing within `bioconda-utils`.
+
+I found by taking the time, I very quickly learnt common issues and how to solve them.
+
+Worst comes to worst, you can always ask the very friendly Bioconda team on the [Bioconda gitter/matrix channel](https://gitter.im/bioconda/Lobby).

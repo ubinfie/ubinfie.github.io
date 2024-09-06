@@ -13,7 +13,7 @@ contributors:
 
 In this first part of a three part guide, this post aims to provide an (opinionated) guide to adding a tool or package to Bioconda.
 
-- _For part two of this guide, see [updating bioinformatic software on Bioconda](updating-bioconda-recipe-quickguide)_
+- _For part two of this guide, see [update a new tool or package to Bioconda](updating-bioconda-recipe-quickguide)._
 - _For part three of this guide, see [debugging a Bioconda build](debugging-bioconda-build-quickguide)._
 
 The [conda package manager](https://docs.conda.io/en/latest/) combined with the [Bioconda](https://bioconda.github.io/) repository has become a _de facto_ gold-standard way for distributing bioinformatics software ({% cite Gruening2018 %}).
@@ -411,7 +411,7 @@ On the Azure website we should see a series of 'stages', that run in order. The 
 3. `test_osx`: that the recipe builds on a macOS system (i.e., doesn't error and the test command completes).
 
 A given stage has a completed (green tick), running (blue spinny icon), or failed (red cross) status.
-If we click on any of the stages, we should see log files that similar or identical what we would do if we were [building locally](debugging-bioconda-build-quickguide) (see that section for debugging advice, if we skipped local building).
+If we click on any of the stages, we should see log files that similar or identical what we would do if we were [building locally](#debugging-recipe-building) (see that section for debugging advice, if we skipped local building).
 
 ![Screenshot of bottom of a GitHub PR with the checks list displayed with blue 'Details' links next to each test.]({% link assets/images/2024-08-14-bioconda-guide/bioconda-guide-githubchecks.png %})
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Debugging a Bioconda build - a reference guide
+date: 2024-08-16 12:00:00
 author: "James A. Fellows Yates"
 tags:
   - development
@@ -9,6 +10,10 @@ tags:
   - software
 contributors:
   - jfy133
+reviewers:
+  - samuell
+  - wytamma
+  - pmenzel
 ---
 
 In the third part of this three part guide, we will go through an (opinionated) approach to debug a Bioconda recipe or build.

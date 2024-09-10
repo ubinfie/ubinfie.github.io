@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Adding bioinformatic software to Bioconda - a reference guide
+date: 2024-08-16 10:00:00
 author: "James A. Fellows Yates"
 tags:
   - development
@@ -9,6 +10,10 @@ tags:
   - software
 contributors:
   - jfy133
+reviewers:
+  - samuell
+  - wytamma
+  - pmenzel
 ---
 
 In this first part of a three part guide, this post aims to provide an (opinionated) guide to adding a tool or package to Bioconda.

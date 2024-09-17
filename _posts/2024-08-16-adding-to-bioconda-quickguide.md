@@ -18,8 +18,8 @@ reviewers:
 
 In this first part of a three part guide, this post aims to provide an (opinionated) guide to adding a tool or package to Bioconda.
 
-- _For part two of this guide, see [update a new tool or package to Bioconda](updating-bioconda-recipe-quickguide)._
-- _For part three of this guide, see [debugging a Bioconda build](debugging-bioconda-build-quickguide)._
+- _For part two of this guide, see [updating a package on Bioconda]({% post_url 2024-08-16-updating-bioconda-recipe-quickguide %})._
+- _For part three of this guide, see [debugging a Bioconda build]({% post_url 2024-08-16-debugging-bioconda-build-quickguide %})._
 
 The [conda package manager](https://docs.conda.io/en/latest/) combined with the [Bioconda](https://bioconda.github.io/) repository has become a _de facto_ gold-standard way for distributing bioinformatics software ({% cite Gruening2018 %}).
 The associated [Biocontainer](https://biocontainers.pro/) project serves to provide complementary Docker and Singularity containers from the same conda ({% cite Da_Veiga_Leprevost2017 %}).
@@ -464,8 +464,8 @@ For the Singularity version of the Docker container, this can take up to 24h bef
 
 This part one of this guide hopefully has given you enough pointers on the steps required to _make_ a recipe and submit your tool/package to Bioconda.
 
-In the [second part](updating-bioconda-recipe-quickguide) of this guide, we will go through how to update an existing recipe.
-In the [third part](debugging-bioconda-build-quickguide), we will go through how to manually debug the build process if things go wrong.
+In the [second part]({% post_url 2024-08-16-updating-bioconda-recipe-quickguide %}) of this guide, we will go through how to update an existing recipe.
+In the [third part]({% post_url 2024-08-16-debugging-bioconda-build-quickguide %}), we will go through how to manually debug the build process if things go wrong.
 
 As with all bioinformatics and software development in general, things rarely just 'work' straight out of the box.
 My three biggest points of advice:

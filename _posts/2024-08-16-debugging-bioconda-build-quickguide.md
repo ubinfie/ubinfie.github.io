@@ -18,13 +18,13 @@ reviewers:
 
 In the third part of this three part guide, we will go through an (opinionated) approach to debug a Bioconda recipe or build.
 
-- _For part one of this guide, see [adding a new tool or package to Bioconda](adding-to-bioconda-quickguide)._
-- _For part two of this guide, see [updating bioinformatic software on Bioconda](updating-bioconda-recipe-quickguide)_
+- _For part one of this guide, see [adding a new tool or package to Bioconda]({% post_url 2024-08-16-adding-to-bioconda-quickguide %})._
+- _For part two of this guide, see [updating a package on Bioconda]({% post_url 2024-08-16-updating-bioconda-recipe-quickguide %})._
 
 The [conda package manager](https://docs.conda.io/en/latest/) combined with the [Bioconda](https://bioconda.github.io/) repository has become a _de facto_ gold-standard way for distributing bioinformatics software ({% cite Gruening2018 %}).
 The associated [Biocontainer](https://biocontainers.pro/) project serves to provide complementary Docker and Singularity containers from the same conda ({% cite Da_Veiga_Leprevost2017 %}).
 
-During the recipe creation (see [part one](adding-to-bioconda-quickguide)) or updating process (see [part two](updating-bioconda-recipe-quickguide)), we may encounter problems or issues.
+During the recipe creation (see [part one]({% post_url 2024-08-16-adding-to-bioconda-quickguide %})) or updating process (see [part two]({% post_url 2024-08-16-updating-bioconda-recipe-quickguide %})), we may encounter problems or issues.
 
 This guide provides steps how to test both a standard `conda-build` build, but also a `bioconda-utils` process that occurs within a Docker container.
 
@@ -101,7 +101,7 @@ If build with the `bioconda-utils` command, and this fails (and we've used the `
 
 If none of this solves your issue, we can ask for help from the Bioconda community by opening a Pull Request and leaving a comment pinging @bioconda/\<team\> (replacing '\<team\>' with the respective one from the list that should come up).
 
-Once everything is solved, you can proceed with the last three sections in the [part one of this guide](adding-to-bioconda-quickguide#opening-the-pull-request), to open the Pull Request and get a review.
+Once everything is solved, you can proceed with the last three sections in the [part one of this guide]({% post_url 2024-08-16-adding-to-bioconda-quickguide %}#opening-the-pull-request), to open the Pull Request and get a review.
 
 ## Conclusion
 

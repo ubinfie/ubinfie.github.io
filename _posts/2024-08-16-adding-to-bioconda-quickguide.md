@@ -384,7 +384,7 @@ Otherwise, in our Bioconda-build conda environment, we can run one of two option
   ```
 
 Hopefully, if everything worked correctly the first time, we should have a successful build and we can proceed with submitting to bioconda.
-If something goes wrong, see [part 3 of this guide](debugging-bioconda-build-quickguide) on debugging the Bioconda builds.
+If something goes wrong, see [part 3 of this guide]({% post_url 2024-08-16-debugging-bioconda-build-quickguide %}) on debugging the Bioconda builds.
 
 Regardless, in both local build approaches, these commands will dump a huge amount of output to the terminal, and if it fails, we'll have to trawl through it to debug it.
 
@@ -426,7 +426,7 @@ _Screenshot of bottom of a GitHub PR with the checks list displayed with blue 'D
 
 _Screenshot of the Microsoft Azure interface with the three (successful) Bioconda CI stages._
 
-If you get errors or something goes wrong, see [part 3 of this guide](debugging-bioconda-build-quickguide) on how to locally debug the Bioconda build.
+If you get errors or something goes wrong, see [part 3 of this guide]({% post_url 2024-08-16-debugging-bioconda-build-quickguide %}) on how to locally debug the Bioconda build.
 
 ### Test driving the docker Biocontainer (optional)
 
@@ -446,7 +446,7 @@ docker run -it <image_id_from_docker_images_command>
 
 This should dump us within a shell in the container so we can test commands etc. as we would with any other Docker container.
 
-If something goes wrong here and you encounter issues with the build within the container, you can see [part 3 of this guide](debugging-bioconda-build-quickguide) to get tips and tricks how to manually re-build the recipe step-by-step.
+If something goes wrong here and you encounter issues with the build within the container, you can see [part 3 of this guide]({% post_url 2024-08-16-debugging-bioconda-build-quickguide %}) to get tips and tricks how to manually re-build the recipe step-by-step.
 Otherwise, if you're happy you can continue to finalise the PR in the next section.
 
 ### Finalising the PR

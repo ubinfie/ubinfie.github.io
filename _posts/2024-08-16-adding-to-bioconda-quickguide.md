@@ -18,8 +18,8 @@ reviewers:
 
 In this first part of a three part guide, this post aims to provide an (opinionated) guide to adding a tool or package to Bioconda.
 
-- _For part two of this guide, see [update a new tool or package to Bioconda](updating-bioconda-recipe-quickguide)._
-- _For part three of this guide, see [debugging a Bioconda build](debugging-bioconda-build-quickguide)._
+- _For part two of this guide, see [updating a package on Bioconda]({% post_url 2024-08-16-updating-bioconda-recipe-quickguide %})._
+- _For part three of this guide, see [debugging a Bioconda build]({% post_url 2024-08-16-debugging-bioconda-build-quickguide %})._
 
 The [conda package manager](https://docs.conda.io/en/latest/) combined with the [Bioconda](https://bioconda.github.io/) repository has become a _de facto_ gold-standard way for distributing bioinformatics software ({% cite Gruening2018 %}).
 The associated [Biocontainer](https://biocontainers.pro/) project serves to provide complementary Docker and Singularity containers from the same conda ({% cite Da_Veiga_Leprevost2017 %}).
@@ -384,7 +384,7 @@ Otherwise, in our Bioconda-build conda environment, we can run one of two option
   ```
 
 Hopefully, if everything worked correctly the first time, we should have a successful build and we can proceed with submitting to bioconda.
-If something goes wrong, see [part 3 of this guide](debugging-bioconda-build-quickguide) on debugging the Bioconda builds.
+If something goes wrong, see [part 3 of this guide]({% post_url 2024-08-16-debugging-bioconda-build-quickguide %}) on debugging the Bioconda builds.
 
 Regardless, in both local build approaches, these commands will dump a huge amount of output to the terminal, and if it fails, we'll have to trawl through it to debug it.
 
@@ -426,7 +426,7 @@ _Screenshot of bottom of a GitHub PR with the checks list displayed with blue 'D
 
 _Screenshot of the Microsoft Azure interface with the three (successful) Bioconda CI stages._
 
-If you get errors or something goes wrong, see [part 3 of this guide](debugging-bioconda-build-quickguide) on how to locally debug the Bioconda build.
+If you get errors or something goes wrong, see [part 3 of this guide]({% post_url 2024-08-16-debugging-bioconda-build-quickguide %}) on how to locally debug the Bioconda build.
 
 ### Test driving the docker Biocontainer (optional)
 
@@ -446,7 +446,7 @@ docker run -it <image_id_from_docker_images_command>
 
 This should dump us within a shell in the container so we can test commands etc. as we would with any other Docker container.
 
-If something goes wrong here and you encounter issues with the build within the container, you can see [part 3 of this guide](debugging-bioconda-build-quickguide) to get tips and tricks how to manually re-build the recipe step-by-step.
+If something goes wrong here and you encounter issues with the build within the container, you can see [part 3 of this guide]({% post_url 2024-08-16-debugging-bioconda-build-quickguide %}) to get tips and tricks how to manually re-build the recipe step-by-step.
 Otherwise, if you're happy you can continue to finalise the PR in the next section.
 
 ### Finalising the PR
@@ -464,8 +464,8 @@ For the Singularity version of the Docker container, this can take up to 24h bef
 
 This part one of this guide hopefully has given you enough pointers on the steps required to _make_ a recipe and submit your tool/package to Bioconda.
 
-In the [second part](updating-bioconda-recipe-quickguide) of this guide, we will go through how to update an existing recipe.
-In the [third part](debugging-bioconda-build-quickguide), we will go through how to manually debug the build process if things go wrong.
+In the [second part]({% post_url 2024-08-16-updating-bioconda-recipe-quickguide %}) of this guide, we will go through how to update an existing recipe.
+In the [third part]({% post_url 2024-08-16-debugging-bioconda-build-quickguide %}), we will go through how to manually debug the build process if things go wrong.
 
 As with all bioinformatics and software development in general, things rarely just 'work' straight out of the box.
 My three biggest points of advice:

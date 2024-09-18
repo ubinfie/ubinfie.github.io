@@ -1,7 +1,7 @@
 ---
 layout: post
 title: What does it take to switch over to BAM from FASTQ?
-image: /assets/images/ubam-gather-round.png
+image: /assets/images/switch-to-bam_gather-round.png
 tags:
   - BAM
   - uBAM

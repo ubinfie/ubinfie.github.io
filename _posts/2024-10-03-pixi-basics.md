@@ -30,15 +30,16 @@ I'll choose a random software package hmmm.... `mashtree`?
 
 ### Configuring
 
-First, if your system is like mine, you have a few things to change:
-remove anaconda and account for an older system.
+First, if you are running this on RHEL8 like me, you have a few things to change: 1) remove the anaconda defaults channel and 2) account for RHEL8 (or other older operating systems).
 
-First, start off the config file. It lives in `~/.config/pixi`
+First, start off the config file in your user space. It lives in `~/.config/pixi`. _Note_: you can have [system-wide configs or local configs](https://pixi.sh/latest/reference/pixi_configuration/)
+but I will leave that outside the scope of this post.
 
 ```bash
 mkdir -pv ~/.config/pixi
 # paste in these contents with `cat` and then ctrl-D to end the paste
 cat > ~/.config/pixi/config.toml
+# or just open a blank file ~/.config/pixi/config.toml with, e.g., nano or vim, and paste in these contents
 ```
 
 ```text
@@ -59,6 +60,8 @@ The following toml snippet would have to be added at the end of any of your `pix
 linux = "3"
 libc = { family = "glibc", version = "2.0" }
 ```
+
+This pins the Linux kernel to version 3 and the glibc library to version 2.0.
 
 ### pixi init
 
@@ -122,7 +125,7 @@ pixi install
 
 At this point, you or another person can go into this directory and run things from pixi.
 The easiest thing is to run `pixi shell` which actually starts a new shell.
-To exit, run `exit` like you normally would from a subshell.
+To exit, run `exit` like you normally would from a subshell (or ctrl-D!).
 No more `conda deactivate` nonsense.
 
 ```bash
@@ -173,6 +176,7 @@ I wanted to benchmark this specifically for bioinformatics and so I took a list 
 
 I benchmarked installation and removal of all of these software packages at once and then one at a time for a total of 8 tests.
 For benchmarking, I used the `hyperfine` project.
+For Conda, I used [miniforge](https://github.com/conda-forge/miniforge) v24.7.1-2.
 
 Essentially, for conda it runs `conda create` followed by `rm -rf` to delete the environment. For pixi, it runs `pixi add`, `pixi install`, and then `pixi remove`.
 Then, it compares the average times.

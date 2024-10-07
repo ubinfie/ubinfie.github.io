@@ -360,3 +360,34 @@ This workflow gets much better if you are in a collaborative environment with mu
 
 That is all to say that I don't think that there is a definitive reason to switch to pixi -- I think it just flows better.
 The same way that you start off a development project with `git init`.
+
+## Caveats
+
+There are many caveats to switching over from conda.
+In fact, there is a [whole article](https://pixi.sh/latest/switching_from/conda/) about it.
+Here are some noteworthy one caveats.
+
+* Python itself should be added to the dependencies section, e.g.,
+
+```toml
+[dependencies]
+python = ">=3.9"
+```
+
+* pip requirements can be added under the `[project]` section, e.g.,
+
+```toml
+[project]
+dependencies = [
+    "numpy",
+    "pandas",
+    "matplotlib",
+]
+```
+
+You can specify the required python version with `requires-python` without including it in the specific env like so:
+
+```toml
+[project]
+requires-python = ">=3.9"
+```

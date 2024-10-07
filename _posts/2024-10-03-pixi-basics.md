@@ -176,7 +176,7 @@ I wanted to benchmark this specifically for bioinformatics and so I took a list 
 
 I benchmarked installation and removal of all of these software packages at once and then one at a time for a total of 8 tests.
 For benchmarking, I used the `hyperfine` project.
-For Conda, I used [miniforge](https://github.com/conda-forge/miniforge) v24.7.1-2.
+For Conda, I used [miniforge](https://github.com/conda-forge/miniforge) v24.7.1-2 which uses the libmamba solver.
 
 Essentially, for conda it runs `conda create` followed by `rm -rf` to delete the environment. For pixi, it runs `pixi add`, `pixi install`, and then `pixi remove`.
 Then, it compares the average times.

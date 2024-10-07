@@ -11,6 +11,10 @@ tags:
   - pixi
 contributors:
   - lskatz
+reviewers:
+- samuell
+- ammaraziz
+- rpetit3
 ---
 
 Recently I had an issue where Conda was no longer a viable solution

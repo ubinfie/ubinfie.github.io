@@ -31,6 +31,7 @@ Also, the whole thing is written in Rust which I really really respect for stabi
 
 The only way I can think of how to show this off properly is to get a real example.
 I'll choose a random software package hmmm.... `mashtree`?
+
 ### Installation
 
 Pixi can be installed following [instructions on their website](https://pixi.sh/latest/)
@@ -365,7 +366,7 @@ However, with pixi, the environment creation is fast enough that you don't have 
 The initialization is folder/project based too -- it is simple enough to write into your notebook to start with `pixi shell` and to have the `pixi.toml` file as part of your project.
 This workflow gets much better if you are in a collaborative environment with multiple hands on the same folder.
 Activating the correct environment is pretty much fail-safe because the folder itself dictates the environment.
-Or, dare to imagine, packaging up an entire project directory with its dependency software in a single toml file.
+Or, dare to imagine, you could archive an entire project directory with its dependency software in a single toml file.
 
 That is all to say that I don't think that there is a definitive reason to switch to pixi -- I think it just flows better.
 The same way that you start off a development project with `git init`.

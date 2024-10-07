@@ -387,9 +387,17 @@ dependencies = [
 ]
 ```
 
-You can specify the required python version with `requires-python` without including it in the specific env like so:
+* Specifically for Python, you can specify the required version with `requires-python` like so:
 
 ```toml
 [project]
 requires-python = ">=3.9"
+```
+
+* Adding pypi packages on the command line is straightforward too, e.g.,
+
+```bash
+# allows you to add a library to your python script, e.g., 
+#   from rich import print
+pixi add --pypi rich
 ```

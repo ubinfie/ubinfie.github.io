@@ -357,6 +357,8 @@ The 0.01% of us might have even been careful enough to save the environment into
 However, with pixi, the environment creation is fast enough that you don't have to save it forever in your project folder.
 The initialization is folder/project based too -- it is simple enough to write into your notebook to start with `pixi shell` and to have the `pixi.toml` file as part of your project.
 This workflow gets much better if you are in a collaborative environment with multiple hands on the same folder.
+Activating the correct environment is pretty much fail-safe because the folder itself dictates the environment.
+Or, dare to imagine, packaging up an entire project directory with its dependency software in a single toml file.
 
 That is all to say that I don't think that there is a definitive reason to switch to pixi -- I think it just flows better.
 The same way that you start off a development project with `git init`.
@@ -365,7 +367,7 @@ The same way that you start off a development project with `git init`.
 
 There are many caveats to switching over from conda.
 In fact, there is a [whole article](https://pixi.sh/latest/switching_from/conda/) about it.
-Here are some noteworthy one caveats.
+Here are some noteworthy caveats.
 
 * Python itself should be added to the dependencies section, e.g.,
 

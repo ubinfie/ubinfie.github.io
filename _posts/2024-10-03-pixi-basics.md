@@ -27,6 +27,9 @@ Also, the whole thing is written in Rust which I really really respect for stabi
 
 The only way I can think of how to show this off properly is to get a real example.
 I'll choose a random software package hmmm.... `mashtree`?
+### Installation
+
+Pixi can be installed following [instructions on their website](https://pixi.sh/latest/)
 
 ### Configuring
 

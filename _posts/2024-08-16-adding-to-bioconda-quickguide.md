@@ -159,7 +159,7 @@ This is often sufficient for PyPi Python and many R packages (respectively).
 
 2. Make a `meta.yaml` file within the created directory, with one of two methods:
 
-   1. If the tool is a Python package on pypi or a R package on CRAN, we can use `grayskull` to generate this for us.
+   1. If the tool is a Python package on pypi or a R package on CRAN, we can use `greyskull` to generate this for us.
 
       ```bash
       cd recipes/
@@ -186,7 +186,7 @@ This is often sufficient for PyPi Python and many R packages (respectively).
       touch recipes/<toolname>/meta.yaml
       ```
 
-3. Add the following sections in the `meta.yaml` file (or double check if already made with `grayskull`).
+3. Add the following sections in the `meta.yaml` file (or double check if already made with `greyskull`).
    When in doubt, copy from other similar existing recipes already on Bioconda:
 
    - `package:`

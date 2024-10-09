@@ -409,3 +409,13 @@ requires-python = ">=3.9"
 #   from rich import print
 pixi add --pypi rich
 ```
+
+## Conclusions
+
+I wanted to write all this to give some overview and show why someone might want to switch to pixi in some instances.
+I was expecially motivated due to our own local computational architecture.
+However, I do not want to make it sound like this is a total replacement for Conda -- I can already foresee using a mix of both in my own day-to-day.
+Pixi feels much more like a collaborative method when working on projects
+Or also, a good archival method of keeping the same software and versions in a single project.
+Being fast is also not a bad feature too ;)  
+That all said, I hope this encourages people to try it out!

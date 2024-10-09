@@ -64,7 +64,7 @@ git switch -c add-<toolname>
 ## Make recipe meta.yaml
    ## Option 1: If using Greyskull
    cd recipes/
-   greyskull <pypi/cran> > <toolname>/meta.yaml
+   greyskull <pypi/cran> <toolname>
 
    ## Option 2: If not using Greyskull
    mkdir recipes/<toolname>

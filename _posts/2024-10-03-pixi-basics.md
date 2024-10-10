@@ -189,10 +189,11 @@ For Conda, I used [miniforge](https://github.com/conda-forge/miniforge) v24.7.1-
 Essentially, for conda it runs `conda create` followed by `rm -rf` to delete the environment. For pixi, it runs `pixi add`, `pixi install`, and then `pixi remove`.
 Then, it compares the average times.
 
-<details>
+<details markdown=1>
   <summary>
     Here is the actual script.
   </summary>
+
 
 ```bash
 #!/bin/bash
@@ -222,7 +223,7 @@ done
 
 </details>
 
-<details>
+<details markdown=1>
 
   <summary>
     Pixi created an environment faster than conda. Click for details.

@@ -380,36 +380,36 @@ Here are some noteworthy caveats.
 
 * Python itself should be added to the dependencies section, e.g.,
 
-```toml
-[dependencies]
-python = ">=3.9"
-```
+  ```toml
+  [dependencies]
+  python = ">=3.9"
+  ```
 
 * pip requirements can be added under the `[project]` section, e.g.,
 
-```toml
-[project]
-dependencies = [
-    "numpy",
-    "pandas",
-    "matplotlib",
-]
-```
+  ```toml
+  [project]
+  dependencies = [
+      "numpy",
+      "pandas",
+      "matplotlib",
+  ]
+  ```
 
 * Specifically for Python, you can specify the required version with `requires-python` like so:
 
-```toml
-[project]
-requires-python = ">=3.9"
-```
+  ```toml
+  [project]
+  requires-python = ">=3.9"
+  ```
 
 * Adding pypi packages on the command line is straightforward too, e.g.,
 
-```bash
-# allows you to add a library to your python script, e.g., 
-#   from rich import print
-pixi add --pypi rich
-```
+  ```bash
+  # allows you to add a library to your python script, e.g., 
+  #   from rich import print
+  pixi add --pypi rich
+  ```
 
 ## Conclusions
 

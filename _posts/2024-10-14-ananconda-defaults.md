@@ -59,12 +59,9 @@ That's it!
 1. To check if your installation has `defaults` channel in your global configuration:
 
 ```
-# this will show channel priorities and other settings
-conda config --get
-```
-or
-```
 conda config --show channels
+# or more informative: 
+conda config --get
 ```
 
 2. Now remove `defaults`:
@@ -76,6 +73,7 @@ conda config --remove channels defaults
 ```
 conda config --show channels
 ```
+Done!
 
 ### Protecting against `defaults` channel
 

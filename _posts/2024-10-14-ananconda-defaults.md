@@ -129,13 +129,13 @@ https://prefix.dev/channels/conda-forge
 https://prefix.dev/channels/bioconda
 ```
 [Follow these instructions](https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/mirroring.html
-) to find out how to configure the mirrors. 
+) to configure the mirrors. 
 
 Questions? Feel free to ask in the comments.
 
 ### See Also
 
-- [The amazing Lee Katz has written a fantastic blog on how to use the `pixi`](https://ubinfie.github.io/2024/10/03/pixi-basics.html) to do all things software related.
+- The amazing Lee Katz has written a [fantastic blog](https://ubinfie.github.io/2024/10/03/pixi-basics.html) on how to use the `pixi` to do all things software related.
 - Related: [An ideal setup for a multi-user conda installation](https://ubinfie.github.io/2024/04/02/shared-conda-tutorial.html)
 
 

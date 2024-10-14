@@ -3,7 +3,7 @@ layout: post
 title: Ananconda, defaults, and how to not get sued
 
 date: 2024-10-14 15:00:00
-author: "Lee Katz"
+author: "Ammar Aziz"
 tags:
   - anaconda
   - conda

@@ -131,7 +131,7 @@ https://prefix.dev/channels/bioconda
 [Follow these instructions](https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/mirroring.html
 ) to configure the mirrors. 
 
-Questions? Feel free to ask in the comments.
+Questions? Ask in the comments below!
 
 ### See Also
 

@@ -17,7 +17,7 @@ reviewers:
 
 # Ananconda, defaults, and how to not get sued
 
-Ananconda Inc has started to threaten legal action against against commercial companies](https://www.reuters.com/legal/litigation/intel-sued-copyright-infringement-over-ai-software-2024-08-09/) and [has also advised non-profits](https://www.theregister.com/2024/08/08/anaconda_puts_the_squeeze_on/) to purchase licenses to the anaconda software/distribution channels. Some institutions are blocking the `anaconda.org` domain completely while the situation is resolved.
+Ananconda Inc has started to threaten [legal action against against commercial companies](https://www.reuters.com/legal/litigation/intel-sued-copyright-infringement-over-ai-software-2024-08-09/) and [has also advised non-profits](https://www.theregister.com/2024/08/08/anaconda_puts_the_squeeze_on/) to purchase licenses to the anaconda software/distribution channels. Some institutions are blocking the `anaconda.org` domain completely while the situation is resolved.
 
 This change is due ToS changes, the [first was back in 2020](https://www.anaconda.com/blog/sustaining-our-stewardship-of-the-open-source-data-science-community) and a very [recent change in March 2024](https://legal.anaconda.com/policies/en/?name=terms-of-service#anaconda-terms-of-service) that affects non profit organisations ["government entities and non-profit entities with over 200 employees or contractors"].
 

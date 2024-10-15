@@ -31,9 +31,9 @@ Ananconda Inc has started to threaten [legal action against against commercial c
 
 This has been brewing for a number of years. The first change happened [back in 2020](https://www.anaconda.com/blog/sustaining-our-stewardship-of-the-open-source-data-science-community), and the second happened very [recently in March 2024](https://legal.anaconda.com/policies/en/?name=terms-of-service#anaconda-terms-of-service) that affects non profit organisations ["government entities and non-profit entities with over 200 employees or contractors"](https://www.theregister.com/2024/08/08/anaconda_puts_the_squeeze_on/). This is problematic due the wording around 'employees' - many organisations have hundreds of employees but few users of `conda` software.
 
-Before we dvice in, a quick recap definitions:
+Before we dive in, a quick recap definitions:
 
-- Anaconda Inc is the comerical entity behind the `conda` and `miniconda` software and the `Anaconda.Navigator` software suite.
+- Anaconda Inc is the commercial entity behind the `conda` and `miniconda` software and the `Anaconda.Navigator` software suite.
 - Anaconda has curated packages which are available [through specific channels](https://repo.anaconda.com/pkgs/)  
 - `Miniforge` is a non-Anaconda installer specific to `conda-forge` channel, 
 - `mamba` is a drop in replacement to `conda`.
@@ -47,7 +47,7 @@ Below is guidance on how to best deal with `defaults` channel.
 
 ### Fresh Install - Best practices
 
-1. Install `miniforge` conda-forge specific distrubtion  - [instructions here](https://github.com/conda-forge/miniforge), this will also install mamba.
+1. Install `miniforge` conda-forge specific distribution  - [instructions here](https://github.com/conda-forge/miniforge), this will also install mamba.
 2. Add the channels `bioconda` and `nodefaults` [in that order] as global defaults
 ```
 conda config --add channels bioconda nodefaults
@@ -129,7 +129,7 @@ https://prefix.dev/channels/conda-forge
 https://prefix.dev/channels/bioconda
 ```
 [Follow these instructions](https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/mirroring.html
-) to configure the mirrors. 
+) to configure the mirrors.
 
 Questions? Ask in the comments below!
 

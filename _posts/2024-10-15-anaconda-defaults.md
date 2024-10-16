@@ -65,14 +65,15 @@ conda config --get
 ```
 
 2. Now remove `defaults`:
-```
-conda config --remove channels defaults
-```
+  ```
+  conda config --remove channels defaults
+  ```
 
 3. Check `defaults` is removed:
-```
-conda config --show channels
-```
+  ```
+  conda config --show channels
+  ```
+
 Done!
 
 ### Protecting against `defaults` channel
@@ -112,11 +113,13 @@ If you are worried it will break your setup, `conda-forge` [has great documentat
 
 - How can I see if packages are installed from `defaults`? 
 
-Run this command:
+Run this command to show the source of packages in the current actived environment:
 
-```
-conda list --show-channel-urls | grep "defaults"
-```
+  ```
+  conda list --show-channel-urls | grep "defaults"
+  ```
+
+Add `--name ENV` to inspect a specific environment without activing it.
 
 If nothing appears, you're golden!
 

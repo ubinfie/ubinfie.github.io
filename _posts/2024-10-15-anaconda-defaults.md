@@ -39,7 +39,7 @@ Before we dive in, a quick recap definitions:
 - `mamba` is a drop in replacement to `conda`.
 - Far more detailed information on all the different channels/distributions [can be found here.](https://bioconda.github.io/faqs.html#what-s-the-difference-between-anaconda-conda-miniconda-mamba-mambaforge-micromamba)
 
-All the hooha surrounds the [curated Ananconda channels](https://docs.anaconda.com/working-with-conda/reference/default-repositories/), the primary one being the `defaults` channel. **When installing `conda/miniconda` software, the `defaults` channel is added to your global channels list.** You cond inadvertantly be using Anaconda services without intending to.
+All the hoohah surrounds the [curated Ananconda channels](https://docs.anaconda.com/working-with-conda/reference/default-repositories/), the primary one being the `defaults` channel. **When installing `conda/miniconda` software, the `defaults` channel is added to your global channels list.** You cond inadvertantly be using Anaconda services without intending to.
 
 ## How to's
 

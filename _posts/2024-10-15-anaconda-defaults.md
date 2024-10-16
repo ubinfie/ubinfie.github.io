@@ -56,7 +56,7 @@ That's it!
 
 ### Current install - Remove `defaults`:
 
-1. To check if your installation has `defaults` channel in your global configuration:
+1. To check if your installation comes has `defaults` channel in your global configuration (regardless if that's `anaconda`, `miniconda`, `miniforge`, etc.):
 
 ```
 conda config --show channels

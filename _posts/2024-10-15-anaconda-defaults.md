@@ -35,7 +35,7 @@ Before we dive in, a quick recap definitions:
 
 - Anaconda Inc is the commercial entity behind the `conda` and `miniconda` software and the `Anaconda.Navigator` software suite.
 - Anaconda has curated packages which are available [through specific channels](https://repo.anaconda.com/pkgs/)  
-- `Miniforge` is a non-Anaconda installer specific to `conda-forge` channel, 
+- `Miniforge` is a non-Anaconda community-developed installer specific to `conda-forge` channel, 
 - `mamba` is a drop in replacement to `conda`.
 - Far more detailed information on all the different channels/distributions [can be found here.](https://bioconda.github.io/faqs.html#what-s-the-difference-between-anaconda-conda-miniconda-mamba-mambaforge-micromamba)
 

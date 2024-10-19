@@ -1,9 +1,7 @@
 ---
 layout: post
-title: Ananconda, defaults, and how to not get sued
+title: Guide to Ananconda `defaults` channel
 
-date: 2024-10-15 00:00:00
-author: "Ammar Aziz"
 tags:
   - anaconda
   - conda
@@ -15,19 +13,11 @@ reviewers:
 - TBA
 ---
 
-# Guide to Ananconda `defaults` channel
-
-**tldr:** Run these commands:
-
-```
-conda config --show channels
-conda config --remove channels defaults
-conda config --show channels
-```
+# Guide to Anaconda `defaults` channel
 
 ## Background
 
-Ananconda Inc has started to threaten [legal action against against commercial companies](https://www.reuters.com/legal/litigation/intel-sued-copyright-infringement-over-ai-software-2024-08-09/) and [has also advised non-profits](https://www.theregister.com/2024/08/08/anaconda_puts_the_squeeze_on/) to purchase licenses to the anaconda software/distribution channels. While the situation is being resolved, some institutions have blocked the `anaconda.org` domain completely.
+Anaconda Inc has started to threaten [legal action against against commercial companies](https://www.reuters.com/legal/litigation/intel-sued-copyright-infringement-over-ai-software-2024-08-09/) and [has also advised non-profits](https://www.theregister.com/2024/08/08/anaconda_puts_the_squeeze_on/) to purchase licenses to the anaconda software/distribution channels. While the situation is being resolved, some institutions have blocked the `anaconda.org` domain completely.
 
 This has been brewing for a number of years. The first change happened [back in 2020](https://www.anaconda.com/blog/sustaining-our-stewardship-of-the-open-source-data-science-community), and the second happened very [recently in March 2024](https://legal.anaconda.com/policies/en/?name=terms-of-service#anaconda-terms-of-service) that affects non profit organisations ["government entities and non-profit entities with over 200 employees or contractors"](https://www.theregister.com/2024/08/08/anaconda_puts_the_squeeze_on/). This is problematic due the wording around 'employees' - many organisations have hundreds of employees but few users of `conda` software.
 
@@ -39,22 +29,25 @@ Before we dive in, a quick recap definitions:
 - `mamba` is a drop in replacement to `conda`.
 - Far more detailed information on all the different channels/distributions [can be found here.](https://bioconda.github.io/faqs.html#what-s-the-difference-between-anaconda-conda-miniconda-mamba-mambaforge-micromamba)
 
-All the hoohah surrounds the [curated Ananconda channels](https://docs.anaconda.com/working-with-conda/reference/default-repositories/), the primary one being the `defaults` channel. **When installing `conda/miniconda` software, the `defaults` channel is added to your global channels list.** You could inadvertantly be using Anaconda services without intending to.
+All the hoohah surrounds the [curated Ananconda channels](https://docs.anaconda.com/working-with-conda/reference/default-repositories/), the primary one being the `defaults` channel. **When installing `conda/miniconda` software, the `defaults` channel is added to your global channels list.** You could inadvertently be using Anaconda services without intending to.
 
 ## How to's
 
 Below is guidance on how to best deal with `defaults` channel.
 
-### Fresh Install - Best practices
+### Safest: Fresh Install of Miniforge distribution
 
-1. Install `miniforge` conda-forge specific distribution  - [instructions here](https://github.com/conda-forge/miniforge), this will also install mamba.
-2. Add the channels `bioconda` and `nodefaults` [in that order] as global defaults
+1. Install the conda-forge distribution `miniforge`   - [instructions here](https://github.com/conda-forge/miniforge), this will also install mamba.
+2. Add the channels `bioconda` and `nodefaults` [in that order] as global defaults:
 ```
 conda config --add channels bioconda nodefaults
 ```
-That's it!
 
-### Current install - Remove `defaults`:
+That's it! 
+
+### Best: Current `Miniforge` install:
+
+**Note `miniconda` users:** The below solution is only for `miniforge` installs. See below for more details.
 
 1. To check if your installation comes has `defaults` channel in your global configuration (regardless if that's `anaconda`, `miniconda`, `miniforge`, etc.):
 
@@ -76,6 +69,20 @@ conda config --get
 
 Done!
 
+### Dangerous: Conda/Miniconda
+
+It's tricky to fully decouple your usage from `defaults` due to hard coding of the defaults channel in the `conda` code base. 
+
+The conda developers have [deprecated](https://github.com/conda/conda/pull/14288) the implicit adding `defaults` and [are moving to remove it completely](https://github.com/conda/conda/issues/14217).
+
+The safest option is to install the `conda-forge` distribution. This has the added benefit of installing `mamba` from the beginning and it is also the [recommended method](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) by the `mamba` devs.
+
+During the writing of this post, a colleague could not stop their `miniconda` installation from using the `defaults` channel, even when `defaults` was not in the channels list. After testing, several people also observed the same issue. We (thanks James and Helena) eventually tracked the bug to (we think) the `miniconda` + `libmamba` solver.
+
+To test your setup, remove the `defaults` channel (see above) try to install `fonts-anaconda`, which is accessible only via `defaults`. Warning: this will access the Anaconda defaults channel! Also check to see if you are using the `classic` or `libmamba` solver by running `conda config --show | grep "solver:"`
+
+It is far simpler to install `miniforge3`.
+
 ### Protecting against `defaults` channel
 
 It's possible to protect users of your pipelines/tools by including `nodefaults` channel in a `conda.yaml` file. For example:
@@ -89,11 +96,19 @@ channels:
 
 This will [override the defaults channel](https://docs.conda.io/projects/conda/en/4.6.1/user-guide/tasks/manage-environments.html#creating-an-environment-file-manually) if it exists in the users global config. Unfortunately, [this is specific to `conda env` subcommand](https://stackoverflow.com/a/67708768), therefore it will not work for `conda install` or `conda create` when added to global config. There is an issue on github for this feature.
 
-### Possible FAQs
+### FAQs + FYIs
 
-- What happens if a `conda.yaml` file contains the `defaults` channel?
+- How can I transition safely from `defaults` channel?
 
-As far as I know, there is no setting available to protect against this. There is a feature request for `nodefaults` [to apply everywhere](https://github.com/conda/conda/issues/12010). 
+If you are worried it will break your setup, `conda-forge` [has great documentation](https://conda-forge.org/docs/user/transitioning_from_defaults/) on how to test and transition from your addiction to `defaults`.
+
+- Be wary of foreign `conda.yaml` files in software/pipelines
+
+Lots of pipelines/tools will use `conda.yaml` to enable easy installation of dependencies. It's very likely `defaults` could be in a `conda.yaml` file.
+
+Unfortunately as far as I know, there is no setting or method available to protect against a `conda.yaml` using a package from `defaults` if it's in yaml file.
+
+There is a feature request for `nodefaults` [to apply everywhere](https://github.com/conda/conda/issues/12010). 
 
 I suggest always double checking foreign `conda.yaml` files before installing.
 
@@ -103,15 +118,11 @@ Unlikely. `conda-forge` [transitioned away](https://conda-forge.org/news/2021/09
 
 Anecdotally, several people including myself have been operating without `defaults` channel for over a year. We've not had any issues. 
 
-- How can I transition safely from `defaults` channel?
-
-If you are worried it will break your setup, `conda-forge` [has great documentation](https://conda-forge.org/docs/user/transitioning_from_defaults/) on how to test and transition from your addiction to `defaults`.
-
 - What about `bioconda` packages?
 
 `bioconda` channel has always had strong dependencies on `conda-forge`. Therefore, dropping `defaults` will have little to no effect. If you are worried see above on how to transition from `defaults`.
 
-- How can I see if packages are installed from `defaults`? 
+- How can I see if packages were installed from `defaults`? 
 
 Run this command to show the source of packages in the current actived environment:
 
@@ -131,12 +142,19 @@ If nothing appears, you're golden!
 https://prefix.dev/channels/conda-forge
 https://prefix.dev/channels/bioconda
 ```
+
 [Follow these instructions](https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/mirroring.html
 ) to configure the mirrors.
 
-Questions? Ask in the comments below!
+- Be careful of channel leakage
+
+I came across this interesting issue on github [defaults channels leak into environments config](https://github.com/conda/conda/issues/12136). The summary is that due to how conda merges (*not replaces*) config files, your primary `.condarc` file could leak into other envs. More info on conda's configuration engine can be [found here](https://www.anaconda.com/blog/conda-configuration-engine-power-users) and the [documentation is here](https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html#conflict-merging-strategy).
+
+Again, the safest option is to remove `defaults` from your `.condarc` (see above).
+
+**Questions?** Ask in the comments below!
 
 ### See Also
 
-- The amazing Lee Katz has written a [fantastic blog](https://ubinfie.github.io/2024/10/03/pixi-basics.html) on how to use the `pixi` to do all things software related.
-- Related: [An ideal setup for a multi-user conda installation](https://ubinfie.github.io/2024/04/02/shared-conda-tutorial.html)
+- Lee Katz has written a [fantastic blog](https://ubinfie.github.io/2024/10/03/pixi-basics.html) on how to use the `pixi` to do all things software related.
+- Another one of our blogs deals with [setting up a multi-user conda installation](https://ubinfie.github.io/2024/04/02/shared-conda-tutorial.html).

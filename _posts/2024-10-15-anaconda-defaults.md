@@ -1,4 +1,4 @@
-That's it! 
+---
 layout: post
 title: A Guide to the Anaconda `defaults` channel
 

@@ -9,16 +9,15 @@ tags:
   - conda-forge
   - defaults
 contributors:
-  - ammarziz
+  - ammaraziz
 reviewers:
 - pmenzel
 - jfy133
 ---
 
-# A Guide to the Anaconda `defaults` channel
 
 ![In the art style of 1990s Disney, cel shading: A mysterious blacksmith in a dark, forge-like setting. She wears a sleek, gold-plated helmet embossed with the symbol of a snake and an armored robe with intricate designs. Sparks fly as she hammers a molten weapon on an anvil, which begins to take the shape of a coiled snake. The forge’s flames cast a warm glow, reflecting off her helmet and tools. The snake is a python with a green sheen.]({% link assets/images/way-of-the-mambalorian.webp %})
-</sup> The way of the Mambalorian is miniforge distribution. This is the way. </sup>
+<sup> The way of the Mambalorian is miniforge distribution. This is the way. </sup>
 
 ## Background
 

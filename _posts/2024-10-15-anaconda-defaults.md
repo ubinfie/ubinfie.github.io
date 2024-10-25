@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A Guide to the Anaconda `defaults` channel
-mage: /assets/images/way-of-the-mambalorian.webp
+image: /assets/images/way-of-the-mambalorian.webp
 
 tags:
   - Conda

@@ -15,13 +15,12 @@ reviewers:
 - jfy133
 ---
 
-
-![In the art style of 1990s Disney, cel shading: A mysterious blacksmith in a dark, forge-like setting. She wears a sleek, gold-plated helmet embossed with the symbol of a snake and an armored robe with intricate designs. Sparks fly as she hammers a molten weapon on an anvil, which begins to take the shape of a coiled snake. The forge’s flames cast a warm glow, reflecting off her helmet and tools. The snake is a python with a green sheen.]({% link assets/images/way-of-the-mambalorian.webp %})
-<sup> The way of the Mambalorian is miniforge distribution. This is the way. </sup>
-
-## Background
-
 Anaconda (the company) has begun to threaten [legal action against against commercial companies](https://www.reuters.com/legal/litigation/intel-sued-copyright-infringement-over-ai-software-2024-08-09/) and [has also advised non-profits](https://www.theregister.com/2024/08/08/anaconda_puts_the_squeeze_on/) to purchase licenses to the anaconda software/distribution channels. While the situation is being resolved, some institutions have blocked the `anaconda.org` domain completely.
+
+<figure class="floating">
+  <img src="{% link assets/images/way-of-the-mambalorian.webp %}" alt="In the art style of 1990s Disney, cel shading: A mysterious blacksmith in a dark, forge-like setting. She wears a sleek, gold-plated helmet embossed with the symbol of a snake and an armored robe with intricate designs. Sparks fly as she hammers a molten weapon on an anvil, which begins to take the shape of a coiled snake. The forge’s flames cast a warm glow, reflecting off her helmet and tools. The snake is a python with a green sheen.">
+  <figcaption>The way of the Mambalorian is miniforge distribution. This is the way.</figcaption>
+</figure>
 
 This has been brewing for a number of years. The first change happened [back in 2020](https://www.anaconda.com/blog/sustaining-our-stewardship-of-the-open-source-data-science-community), and the second happened very [recently in March 2024](https://legal.anaconda.com/policies/en/?name=terms-of-service#anaconda-terms-of-service) that affects ["government entities and non-profit entities with over 200 employees or contractors"](https://www.theregister.com/2024/08/08/anaconda_puts_the_squeeze_on/). This is problematic due the wording around 'employees' - many organisations have hundreds of employees but few users of `conda` software. 
 

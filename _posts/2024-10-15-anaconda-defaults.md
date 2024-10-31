@@ -11,11 +11,13 @@ tags:
 contributors:
   - ammaraziz
 reviewers:
-- pmenzel
+- hexylena
+- audy
 - jfy133
+- pmenzel
 ---
 
-Anaconda (the company) has begun to threaten [legal action against against commercial companies](https://www.reuters.com/legal/litigation/intel-sued-copyright-infringement-over-ai-software-2024-08-09/) and [has also advised non-profits](https://www.theregister.com/2024/08/08/anaconda_puts_the_squeeze_on/) to purchase licenses to the anaconda software/distribution channels. While the situation is being resolved, some institutions have blocked the `anaconda.org` domain completely.
+[Anaconda Inc.](https://www.anaconda.com/about-us) (the company) has begun to threaten [legal action against against commercial companies](https://www.reuters.com/legal/litigation/intel-sued-copyright-infringement-over-ai-software-2024-08-09/) and [has also advised non-profits](https://www.theregister.com/2024/08/08/anaconda_puts_the_squeeze_on/) to purchase licenses to the anaconda software/distribution channels. While the situation is being resolved, some institutions have blocked the `anaconda.org` domain completely.
 
 <figure class="floating">
   <img src="{% link assets/images/way-of-the-mambalorian.webp %}" alt="In the art style of 1990s Disney, cel shading: A mysterious blacksmith in a dark, forge-like setting. She wears a sleek, gold-plated helmet embossed with the symbol of a snake and an armored robe with intricate designs. Sparks fly as she hammers a molten weapon on an anvil, which begins to take the shape of a coiled snake. The forge’s flames cast a warm glow, reflecting off her helmet and tools. The snake is a python with a green sheen.">
@@ -28,9 +30,9 @@ In order to avoid any potential problems, avoiding `defaults` channel is the bes
 
 Before we dive in, a quick recap on definitions:
 
-- Anaconda Inc is the commercial entity behind the `conda` and `miniconda`  and the `Anaconda.Navigator` software suite.
-- Anaconda Inc curates a set of packages which are available [through specific channels](https://repo.anaconda.com/pkgs/) - also known as `defaults` channel  
-- `Miniforge` is a non-Anaconda community-developed installer specific to `conda-forge` channel
+- [Anaconda Inc.](https://www.anaconda.com/about-us) is the commercial entity behind the `conda`, `miniconda`, and the `Anaconda.Navigator` software suite.
+- Anaconda Inc. curates a set of packages which are available [through specific channels](https://repo.anaconda.com/pkgs/) - also known as `defaults` channel  
+- [Miniforge](https://github.com/conda-forge/miniforge) is a non-Anaconda community-developed installer specific to `conda-forge` channel
 - `mamba` is a drop in replacement to `conda`.
 - Far more detailed information on all the different channels/distributions [can be found here.](https://bioconda.github.io/faqs.html#what-s-the-difference-between-anaconda-conda-miniconda-mamba-mambaforge-micromamba)
 
@@ -42,7 +44,7 @@ Below is guidance on how to best deal with `defaults` channel.
 
 ### Safest: Fresh Install of Miniforge distribution
 
-1. Install the conda-forge distribution `miniforge3` - [instructions here](https://github.com/conda-forge/miniforge), this will also install mamba.
+1. Install the conda-forge distribution `miniforge3` - [instructions here](https://github.com/conda-forge/miniforge), this will also install `mamba`.
 2. Add the channels `bioconda` and `nodefaults` [in that order] as global defaults:
   ```
   conda config --add channels bioconda nodefaults
@@ -84,13 +86,13 @@ Done!
 
 ### Dangerous: Conda/Miniconda
 
-It's tricky to fully decouple your usage from `defaults` due to hard coding of the defaults channels in the `conda` code base. 
+It's tricky to fully decouple your conda usage from the `defaults` channel, because it is hard-coded in some places the `miniconda` code. 
+
+During the writing of this post, a colleague could not stop their `miniconda` installation from using the `defaults` channel, even when `defaults` was not in the channels list (we double and triple checked everything). After testing, several people also observed the same issue. We (thanks James and Helena) eventually tracked the bug to (we think) the `miniconda` + `libmamba` solver.
 
 The conda developers have [deprecated](https://github.com/conda/conda/pull/14288) the implicit adding `defaults` and [are moving to remove it completely](https://github.com/conda/conda/issues/14217).
 
-The safest option is to install the `conda-forge` distribution. This has the added benefit of installing `mamba` from the beginning and is the [recommended method of installation](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) by the `mamba` devs.
-
-During the writing of this post, a colleague could not stop their `miniconda` installation from using the `defaults` channel, even when `defaults` was not in the channels list (we double and triple checked everything). After testing, several people also observed the same issue. We (thanks James and Helena) eventually tracked the bug to (we think) the `miniconda` + `libmamba` solver.
+The safest option is to install the `conda-forge` distribution. This has the added benefit of installing `mamba` from the very beginning and is the [recommended method of installation](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) by the `mamba` devs.
 
 To test your setup, remove the `defaults` channel (see above) try to install `fonts-anaconda`, which is accessible only via `defaults`. Warning: this will access the Anaconda defaults channel! Also check to see if you are using the `classic` or `libmamba` solver by running `conda config --show | grep "solver:"`
 
@@ -119,7 +121,7 @@ If you are worried removing `defaults` will break your current setup, `conda-for
 
 Lots of pipelines/tools will use `conda.yaml` to enable easy installation of dependencies. It's very likely `defaults` could be in a `conda.yaml` file because it's been the... default to include it.
 
-Unfortunately as far as I know, there is no setting or method available to protect against a `conda.yaml` using a package from `defaults` if it's in a  yaml file.
+Unfortunately as far as I know, there is no setting or method available to protect against a `conda.yaml` using a package from `defaults`.
 
 There is a feature request for `nodefaults` [to apply everywhere](https://github.com/conda/conda/issues/12010). 
 

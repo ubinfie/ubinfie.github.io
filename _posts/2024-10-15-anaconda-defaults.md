@@ -142,7 +142,7 @@ Anecdotally, several people including myself have been operating without `defaul
 
 Run this command to show the source of packages in the current actived environment:
 
-  ```
+  ```bash
   conda list --show-channel-urls | grep "defaults"
   ```
 

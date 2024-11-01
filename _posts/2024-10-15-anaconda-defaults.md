@@ -159,8 +159,7 @@ https://prefix.dev/channels/conda-forge
 https://prefix.dev/channels/bioconda
 ```
 
-[Follow these instructions](https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/mirroring.html
-) to configure the mirrors.
+[Follow these instructions](https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/mirroring.html) to configure the mirrors.
 
 ### - Be careful of channel leakage
 

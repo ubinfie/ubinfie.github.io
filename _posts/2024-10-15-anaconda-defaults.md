@@ -47,9 +47,11 @@ Below is guidance on how to best deal with `defaults` channel.
 1. Install the conda-forge distribution `miniforge3` - [instructions here](https://github.com/conda-forge/miniforge), this will also install `mamba`.
 2. Add the channels `bioconda` and `nodefaults` [in that order] as global defaults:
 
-    ```bash
+  ```bash
   conda config --add channels bioconda nodefaults
   ```
+
+Adding the `nodefaults` channel to the global conda config will disable `defaults` in all newly created environments, see also the [docs](https://docs.conda.io/projects/conda/en/4.6.1/user-guide/tasks/manage-environments.html#creating-an-environment-file-manually).
 
 That's it! 
 
@@ -57,7 +59,7 @@ That's it!
 
 **Note `miniconda` users:** The below solution is only for `miniforge` installs. See below for more details.
 
-1. To check if your installation comes has `defaults` channel in your global configuration (regardless if that's `anaconda`, `miniconda`, `miniforge`, etc.):
+1. To check if your installation (regardless if that's `anaconda`, `miniconda`, `miniforge`, etc.) has the `defaults` channel in your global configuration :
 
   ```bash
   conda config --show channels

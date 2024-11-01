@@ -51,6 +51,8 @@ Below is guidance on how to best deal with `defaults` channel.
   conda config --add channels bioconda nodefaults
   ```
 
+More information on `nodefaults` can be seen [below](#protecting-against-defaults-channel).
+
 Adding the `nodefaults` channel to the global conda config will disable `defaults` in all newly created environments, see also the [docs](https://docs.conda.io/projects/conda/en/4.6.1/user-guide/tasks/manage-environments.html#creating-an-environment-file-manually).
 
 That's it! 
@@ -68,17 +70,18 @@ That's it!
   ```
 
 2. Now remove `defaults`:
-  ```
+  ```bash
   conda config --remove channels defaults
   ```
 
 3. Check `defaults` is removed:
-  ```
+  ```bash
   conda config --show channels
   ```
 
 4. Double check that `defaults` is not accessible, this should fail to install `anaconda-fonts`:
-  ```
+
+    ```bash
   # This will access defaults channel!
   conda install fonts-anaconda
   ```

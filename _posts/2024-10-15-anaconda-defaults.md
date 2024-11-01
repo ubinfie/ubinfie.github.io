@@ -103,7 +103,7 @@ It is far simpler to install `miniforge3`.
 
 It's possible to protect users of your pipelines/tools by including `nodefaults` channel in a `conda.yaml` file. For example:
 
-```
+```bash
 channels:
   - conda-forge
   - bioconda

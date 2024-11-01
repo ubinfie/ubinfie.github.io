@@ -17,7 +17,7 @@ reviewers:
 - pmenzel
 ---
 
-[Anaconda Inc.](https://www.anaconda.com/about-us) (the company) has begun to threaten [legal action against against commercial companies](https://www.reuters.com/legal/litigation/intel-sued-copyright-infringement-over-ai-software-2024-08-09/) and [has also advised non-profits](https://www.theregister.com/2024/08/08/anaconda_puts_the_squeeze_on/) to purchase licenses to the anaconda software/distribution channels. While the situation is being resolved, some institutions have blocked the `anaconda.org` domain completely.
+[Anaconda Inc.](https://www.anaconda.com/about-us) (the company) has begun to threaten [legal action against against commercial companies](https://www.reuters.com/legal/litigation/intel-sued-copyright-infringement-over-ai-software-2024-08-09/) and [has also advised non-profits](https://www.theregister.com/2024/08/08/anaconda_puts_the_squeeze_on/) to purchase licenses to the Anaconda software/distribution channels. While the situation is being resolved, some institutions have blocked the `anaconda.org` domain completely.
 
 <figure class="floating">
   <img src="{% link assets/images/way-of-the-mambalorian.webp %}" alt="In the art style of 1990s Disney, cel shading: A mysterious blacksmith in a dark, forge-like setting. She wears a sleek, gold-plated helmet embossed with the symbol of a snake and an armored robe with intricate designs. Sparks fly as she hammers a molten weapon on an anvil, which begins to take the shape of a coiled snake. The forge’s flames cast a warm glow, reflecting off her helmet and tools. The snake is a python with a green sheen.">

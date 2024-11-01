@@ -173,4 +173,4 @@ Again, the safest option is to remove `defaults` from your `.condarc` (see above
 ## See Also
 
 - Lee Katz has written a [fantastic blog](https://ubinfie.github.io/2024/10/03/pixi-basics.html) on how to use the `pixi` to do all things software related.
-- Another ubinfi blogs deals with [setting up a multi-user conda installation](https://ubinfie.github.io/2024/04/02/shared-conda-tutorial.html). Check it out!
+- Another ubinfie blogs deals with [setting up a multi-user conda installation](https://ubinfie.github.io/2024/04/02/shared-conda-tutorial.html). Check it out!

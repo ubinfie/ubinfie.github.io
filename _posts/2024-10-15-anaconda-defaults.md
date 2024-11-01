@@ -130,7 +130,7 @@ I suggest always double checking foreign `conda.yaml` files before installing.
 
 ### - Will removing `defaults` interfere with the install of bioinfo tools?
 
-Very unlikely. `conda-forge` [transitioned away](https://conda-forge.org/news/2021/09/30/defaults-channel-is-now-dropped-when-building-conda-forge-packages/) from Anaconda's `defaults` channel in 2021 and has continued to diverge in both names and recipes. There is a slight chance it may cause issues for old pre 2020/2021 recipes but this is rare as recipies have continually been updated. Not too worry though, `conda-forge` is community driven, [feel free to contribute if you run into any problems!](https://conda-forge.org/docs/user/contributing/)
+Very unlikely. `conda-forge` [transitioned away](https://conda-forge.org/news/2021/09/30/defaults-channel-is-now-dropped-when-building-conda-forge-packages/) from Anaconda's `defaults` channel in 2021 and has continued to diverge in both names and recipes. There is a slight chance it may cause issues for old pre 2020/2021 recipes but this is rare as recipes have continually been updated. Not too worry though, `conda-forge` is community driven, [feel free to contribute if you run into any problems!](https://conda-forge.org/docs/user/contributing/)
 
 Anecdotally, several people including myself have been operating without `defaults` channel for over a year. We've not had any issues. 
 

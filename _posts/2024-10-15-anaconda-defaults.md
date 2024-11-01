@@ -51,9 +51,7 @@ Below is guidance on how to best deal with `defaults` channel.
   conda config --add channels bioconda nodefaults
   ```
 
-More information on `nodefaults` can be seen [below](#protecting-against-defaults-channel).
-
-Adding the `nodefaults` channel to the global conda config will disable `defaults` in all newly created environments, see also the [docs](https://docs.conda.io/projects/conda/en/4.6.1/user-guide/tasks/manage-environments.html#creating-an-environment-file-manually).
+Adding the `nodefaults` channel to the global conda config will disable `defaults` in all newly created environments, see also the [docs](https://docs.conda.io/projects/conda/en/4.6.1/user-guide/tasks/manage-environments.html#creating-an-environment-file-manually) and [below](#protecting-against-defaults-channel).
 
 That's it! 
 

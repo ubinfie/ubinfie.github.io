@@ -58,7 +58,7 @@ That's it!
 
 1. To check if your installation comes has `defaults` channel in your global configuration (regardless if that's `anaconda`, `miniconda`, `miniforge`, etc.):
 
-  ```
+  ```bash
   conda config --show channels
   # or more informative: 
   conda config --get

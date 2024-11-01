@@ -46,7 +46,8 @@ Below is guidance on how to best deal with `defaults` channel.
 
 1. Install the conda-forge distribution `miniforge3` - [instructions here](https://github.com/conda-forge/miniforge), this will also install `mamba`.
 2. Add the channels `bioconda` and `nodefaults` [in that order] as global defaults:
-  ```
+
+    ```bash
   conda config --add channels bioconda nodefaults
   ```
 

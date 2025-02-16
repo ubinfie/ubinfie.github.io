@@ -97,7 +97,7 @@ function conda {
         unset -f conda
 
         # shellcheck disable=SC1090
-        eval "$($CONDA_DIR/bin/conda shell.$SHELL_NAME hook)"
+        eval "$($CONDA_PATH/bin/conda shell.$SHELL_NAME hook)"
         conda "${@}"
 }
 ```

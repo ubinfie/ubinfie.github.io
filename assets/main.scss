@@ -164,6 +164,15 @@ article {
 	}
 }
 
+.post-list {
+	h3 {
+		margin-bottom: 0;
+	}
+	.author {
+		font-weight:100;
+	}
+}
+
 figure.floating {
 	max-width: 30ch;
 	float: right;

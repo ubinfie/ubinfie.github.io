@@ -19,14 +19,21 @@ layout: default
         <h3>
           {% if post.external %}
           <a class="post-link external" href="{{ post.external }}">
-            {{ post.title | escape }}
+            {{ post.title | markdownify }}
           </a>
           {% else %}
           <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
+            {{ post.title | markdownify }}
           </a>
           {% endif %}
         </h3>
+        {% if post.contributors %}
+        <div class="author">By: 
+          {% for c in post.contributors -%}
+            {% include contributor-badge-inline.html id=c clean=true -%}
+            {% unless forloop.last %},{%endunless%}
+          {%- endfor -%}</div>
+        {% endif %}
         {%- if site.show_excerpts -%}
           {{ post.excerpt }}
         {%- endif -%}
